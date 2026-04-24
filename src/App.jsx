@@ -14,7 +14,7 @@ function App() {
       <Route path="/eventos/:slug" element={<EventoDetalle />} />
       <Route path="/legal" element={<Legal />} />
       <Route path="/privacidad" element={<Privacidad />} />
-      <Route path="/terminos" element={<Terminos />} />
+      <Route path="/terminos" element={<Terminos/>} />
     </Routes>
   );
 }
