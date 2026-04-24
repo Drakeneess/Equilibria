@@ -1,0 +1,38 @@
+.legal-page {
+  padding: 4rem 1.5rem;
+  background: var(--color-light-alt);
+}
+
+.legal-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.legal-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-accent-purple);
+}
+
+.legal-intro {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--color-text-main);
+}
+
+.legal-block {
+  margin-bottom: 2rem;
+}
+
+.legal-block h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-accent-green);
+}
+
+.legal-block p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-main);
+}
