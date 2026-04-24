@@ -9,6 +9,7 @@ import OurTechnology from "../components/OurTechnology/OurTechnology";
 import Blog from "../components/Blog/Blog";
 import Contact from "../components/Contact/Contact";
 import usePageTitle from "../hooks/usePageTitle";
+import TrustBar from "../components/TrustBar/TrustBar";
 
 export default function Home() {
   usePageTitle("Equilibria | Bienestar a tu alcance");
@@ -20,7 +21,7 @@ export default function Home() {
       <div className="hero-wrapper">
         <Hero/>
       </div>
-
+      <TrustBar />
       <AboutUs />
       <CEOSection />
       <Services />

@@ -130,6 +130,13 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <div className="footer-legal">
+        <a href="/legal">Información Legal</a>
+        <span>•</span>
+        <a href="/terminos">Términos y Condiciones</a>
+        <span>•</span>
+        <a href="/privacidad">Política de Privacidad</a>
+      </div>
 
       <div className="footer-bottom">
         <p>© 2026 Equilibria. Todos los derechos reservados.</p>

@@ -1,0 +1,63 @@
+.trustbar {
+  background: linear-gradient(
+    90deg,
+    rgba(157,224,210,0.15),
+    rgba(189,167,216,0.15)
+  );
+  padding: 14px 20px;
+  backdrop-filter: blur(6px);
+}
+
+.trustbar-container {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.9rem;
+  color: var(--color-text-main);
+}
+
+.trust-item svg {
+  color: var(--color-primary-strong);
+  font-size: 0.9rem;
+}
+
+.trustbar-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary-strong);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.trustbar-link:hover {
+  opacity: 0.7;
+}
+
+/* 📱 móvil */
+@media (max-width: 600px) {
+  .trust-items {
+    gap: 10px;
+  }
+
+  .trust-item {
+    font-size: 0.8rem;
+  }
+}

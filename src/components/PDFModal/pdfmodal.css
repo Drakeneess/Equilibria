@@ -1,0 +1,75 @@
+.pdfmodal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.pdfmodal-content {
+  width: 90%;
+  max-width: 900px;
+  height: 85vh;
+
+  background: white;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* HEADER */
+
+.pdfmodal-header {
+  height: 50px;
+  padding: 0 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--color-light-alt);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.pdfmodal-header button {
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+
+  padding: 6px 12px;
+  border-radius: 8px;
+
+  color: var(--color-text-main);
+
+  transition: all 0.2s ease;
+}
+
+.pdfmodal-header button:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* PDF */
+
+.pdfmodal-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+
+/* móvil */
+
+@media (max-width: 600px) {
+  .pdfmodal-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
