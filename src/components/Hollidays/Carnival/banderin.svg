@@ -1,0 +1,72 @@
+<!-- banderin-base.svg -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 120 200"
+  width="120"
+  height="200"
+  aria-hidden="true"
+>
+  <defs>
+
+    <!-- Gradiente papel vertical -->
+    <linearGradient id="paperBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#f7f7f7"/>
+      <stop offset="55%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ececec"/>
+    </linearGradient>
+
+    <!-- Sombra lateral tipo doblez -->
+    <linearGradient id="paperFold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#00000022"/>
+      <stop offset="18%"  stop-color="#00000010"/>
+      <stop offset="50%"  stop-color="#00000000"/>
+      <stop offset="82%"  stop-color="#00000010"/>
+      <stop offset="100%" stop-color="#00000022"/>
+    </linearGradient>
+
+  </defs>
+
+  <!-- Papel base + huecos -->
+  <path
+    fill="url(#paperBase)"
+    fill-rule="evenodd"
+    d="
+      M0 0 H120 V200 H0 Z
+
+      M60 28
+      C54 34, 54 46, 60 52
+      C66 46, 66 34, 60 28
+      Z
+
+      M60 68
+      C50 78, 50 102, 60 112
+      C70 102, 70 78, 60 68
+      Z
+
+      M60 122
+      C48 134, 48 166, 60 178
+      C72 166, 72 134, 60 122
+      Z
+
+      M30 38 L42 52 L30 66 L18 52 Z
+      M90 38 L102 52 L90 66 L78 52 Z
+
+      M28 86 L40 102 L28 118 L16 102 Z
+      M92 86 L104 102 L92 118 L80 102 Z
+
+      M34 138 L48 158 L34 178 L20 158 Z
+      M86 138 L100 158 L86 178 L72 158 Z
+    "
+  />
+
+  <!-- Sombra de papel superpuesta -->
+  <rect
+    width="120"
+    height="200"
+    fill="url(#paperFold)"
+    fill-rule="evenodd"
+    mask="none"
+  />
+
+</svg>

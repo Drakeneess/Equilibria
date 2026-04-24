@@ -1,0 +1,348 @@
+.our-technology { 
+  width: 100%; 
+  position: relative; 
+  background: #f7f7f7; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+}
+
+/* wrapper */
+
+.magazine-wrapper {
+  position: relative;
+}
+
+/* === Magazine Grid === */
+
+.magazine-grid {
+  max-width: 1050px;
+  width: 100%;
+
+  padding: 0rem 2rem;
+  margin: auto;
+
+  display: grid;
+
+  grid-template-rows: repeat(3, 190px);
+
+  grid-auto-flow: column dense;
+
+  grid-auto-columns: 240px;
+
+  gap: 0.4rem;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
+
+  scroll-behavior: smooth;
+
+}
+
+/* ocultar scrollbar chrome */
+
+.magazine-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* === gradientes dinámicos === */
+
+.magazine-wrapper::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 60px;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+
+  background: linear-gradient(
+    to right,
+    rgba(247,247,247,1),
+    rgba(247,247,247,0)
+  );
+
+}
+
+.magazine-wrapper::after {
+
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 60px;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+
+  background: linear-gradient(
+    to left,
+    rgba(247,247,247,1),
+    rgba(247,247,247,0)
+  );
+
+}
+
+.magazine-wrapper.has-left::before {
+  opacity: 1;
+}
+
+.magazine-wrapper.has-right::after {
+  opacity: 1;
+}
+
+/* === Card === */
+
+.mag-card {
+
+  position: relative;
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  scroll-snap-align: start;
+
+  background: linear-gradient(
+    135deg,
+    #f0f9ff 0%,
+    #d6efff 35%,
+    #bde5ff 65%,
+    #f0f9ff 100%
+  );
+
+  background-size: 250% 250%;
+
+  animation: gradientFlow 6s ease-in-out infinite;
+
+}
+
+@keyframes gradientFlow {
+
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+
+}
+
+/* === Image === */
+
+.mag-card img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  transform: scale(1.05);
+
+  transition: 0.6s ease;
+
+}
+
+.mag-card:hover img {
+
+  transform: scale(1);
+
+}
+
+/* === Overlay === */
+
+.mag-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+
+  padding: 0rem 1.4rem;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.65) 0%,
+    rgba(0,0,0,0.35) 47%,
+    rgba(0,0,0,0.0) 62%
+  );
+
+}
+
+.mag-overlay h3 {
+
+  font-size: 1rem;
+
+  margin-bottom: 0.4rem;
+
+  color: var(--color-primary-strong);
+
+  text-shadow:
+    0 0 12px rgba(92,195,173,0.35),
+    0 2px 8px rgba(0,0,0,0.6);
+
+  font-weight: 600;
+
+}
+
+.mag-overlay p {
+
+  font-size: 0.65rem;
+
+  line-height: 1.4;
+
+  color: rgba(255,255,255,0.9);
+
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.6);
+
+}
+
+.mag-side {
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+
+}
+.mag-side.right {
+
+  right: 0;
+
+  background: linear-gradient(
+    to left,
+    var(--color-secondary) 20%,
+    rgba(247,247,247,0) 100%
+  );
+
+}
+.mag-side.left {
+
+  left: 0;
+
+  background: linear-gradient(
+    to right,
+    var(--color-secondary) 20%,
+    rgba(247,247,247,0) 100%
+  );
+
+}
+
+.mag-side span {
+
+  font-size: 9rem;
+
+  color: var(--color-primary);
+
+  opacity: 1;
+
+  transition: transform 0.2s ease;
+
+}
+
+.mag-side:hover span {
+
+  transform: scale(1.2);
+
+}
+.magazine-wrapper.has-left .mag-side.left {
+  opacity: 1;
+}
+
+.magazine-wrapper.has-right .mag-side.right {
+  opacity: 1;
+}
+
+@media (max-width: 1000px) {
+
+  .magazine-grid {
+    max-width: 700px;
+
+
+    grid-template-rows: repeat(3, 180px);
+    grid-auto-columns: 210px;
+
+  }
+
+  .mag-side {
+
+    width: 55px;
+
+  }
+
+  .mag-side span {
+
+    font-size: 2.2rem;
+
+  }
+
+}
+
+@media (max-width: 650px) {
+
+  .magazine-grid {
+    max-width: 550px;
+
+
+    grid-template-rows: repeat(3, 180px);
+    grid-auto-columns: 180px;
+
+    padding: 0rem 1rem;
+
+  }
+
+  .mag-side {
+
+    display: none;
+
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .magazine-grid {
+    max-width: 350px;
+
+    grid-template-rows: repeat(3, 140px);
+    grid-auto-columns: 150px;
+
+    gap: 0.3rem;
+
+  }
+
+}

@@ -1,0 +1,45 @@
+.carnival-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Base */
+.serpentine {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+
+  width: var(--size);
+  height: calc(var(--size) * 3);
+
+  opacity: 0.95;
+
+  transform-origin: top center;
+
+  will-change: transform;
+
+  transition:
+    transform 0.18s ease-out,
+    opacity 0.2s ease;
+}
+
+/* Jerarquía visual */
+.serpentine.main {
+  opacity: 1;
+}
+
+.serpentine.soft {
+  opacity: 0.75;
+}
+
+.serpentine.fragment {
+  opacity: 0.6;
+}
+
+.serpentine svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

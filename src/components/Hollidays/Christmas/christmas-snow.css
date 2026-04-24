@@ -1,0 +1,55 @@
+/* =============================
+   CONTENEDOR DE NIEVE
+   ============================= */
+.snow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 50;
+  isolation: isolate;     /* <-- EL FIX */
+}
+.snow-container {
+  will-change: transform;
+}
+
+/* =============================
+   COPOS PREMIUM DORADOS
+   ============================= */
+.snow {
+  position: absolute;
+  top: -10px;
+
+  width: calc(6px * var(--sz));
+  height: calc(6px * var(--sz));
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 150, 0.45));
+
+  left: calc(100% * var(--x));
+
+  animation: snow-fall linear infinite;
+  animation-duration: calc(6s + 6s * var(--d));
+  animation-delay: calc(-10s * var(--d));
+}
+
+/* =============================
+   ANIMACIÓN
+   ============================= */
+@keyframes snow-fall {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(120vh) translateX(20px);
+    opacity: 0.2;
+  }
+}

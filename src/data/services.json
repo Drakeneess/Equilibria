@@ -1,0 +1,221 @@
+[
+  {
+    "category": "Fisioterapia",
+    "services": [
+      {
+        "title": "Traumatología",
+        "description": "Evaluación, tratamiento y rehabilitación de lesiones musculoesqueléticas: fracturas, esguinces, luxaciones y posquirúrgicos.",
+        "image": "/services/Traumatologia.jpg"
+      },
+      {
+        "title": "Fisioterapia Neurológica",
+        "description": "Atención a ACV, Parkinson, esclerosis múltiple y lesiones medulares. Reeducación neuromuscular, equilibrio y marcha.",
+        "image": "/services/Neurologica.jpg"
+      },
+      {
+        "title": "Lesiones Deportivas",
+        "description": "Prevención y rehabilitación con fortalecimiento, estiramientos, terapia manual e instrumental para un retorno seguro.",
+        "image": "/services/Lesiones%20Deportivas.jpg"
+      },
+      
+      {
+        "title": "Fisioterapia Pediátrica",
+        "description": "Intervención en desarrollo motor, trastornos neurológicos y respiratorios en niños y adolescentes.",
+        "image": "/services/Pedi%C3%A1trica.jpg"
+      },
+      
+      {
+        "title": "Fisioterapia Geriátrica",
+        "description": "Mejora de fuerza, equilibrio y funcionalidad para prevenir caídas y mantener independencia.",
+        "image": "/services/Geri%C3%A1trica.jpg"
+      },
+      {
+        "title": "Kinesiotaping",
+        "description": "Vendaje elástico que brinda soporte sin limitar el movimiento; reduce dolor y mejora la circulación.",
+        "image": "/services/Kinesiotaping.jpg"
+      },
+      {
+        "title": "Fisioterapia Respiratoria",
+        "description": "Ejercicios respiratorios y drenaje postural para mejorar ventilación y eliminar secreciones.",
+        "image": "/services/Respiratoria.jpg"
+      },
+      {
+        "title": "Terapia Manual",
+        "description": "Masajes, movilizaciones y manipulaciones para aliviar dolor, mejorar movilidad y función articular.",
+        "image": "/services/Manual.jpg"
+      },
+      {
+        "title": "Terapia Manual Instrumental",
+        "description": "Ganchos, ventosas y dispositivos miofasciales para liberar adherencias y mejorar movilidad.",
+        "image": "/services/Manual%20Instrumental.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Estética y Fisioterapia Dermatofuncional",
+    "services": [
+      {
+        "title": "Limpieza Equilibria",
+        "description": "Limpieza facial profunda con exfoliación, vapor, mascarilla hidratante y agua de rosas. Relaja, hidrata y deja un efecto calmante profundo, inspirado en lo natural.",
+        "long_desc": "",
+        "image": "/services/Limpieza_Equilibria.jpg"
+      },
+      {
+        "title": "Ritual de Loto",
+        "description": "Limpieza facial profunda con exfoliación de aloe vera, gua sha facial y mascarilla revitalizante. Relaja, hidrata y revitaliza la piel desde lo espiritual y natural.",
+        "long_desc": "",
+        "image": "/services/Ritual_de_Loto.jpg"
+      },
+      {
+        "title": "Hielo de Luna",
+        "description": "Limpieza facial con crioterapia, exfoliación y gua sha. Desinflama, tonifica y mejora la circulación, ideal para piel cansada u ojerosa.",
+        "long_desc": "",
+        "image": "/services/Hielo_de_Luna.jpg"
+      },
+      {
+        "title": "Nube de Vainilla",
+        "description": "Limpieza facial con exfoliación de avena y vainilla, gua sha e hidratación. Hidrata, calma y deja la piel suave como una nube. Ideal para pieles secas y sensibles.",
+        "long_desc": "",
+        "image": "/services/Nube_de_Vainilla.jpg"
+      },
+      {
+        "title": "Luz de Arroz",
+        "description": "Limpieza facial con exfoliante y mascarilla de arroz. Calma, suaviza y aporta claridad a la piel con un ritual minimalista de inspiración japonesa.",
+        "long_desc": "",
+        "image": "/services/Luz_de_Arroz.jpg"
+      },
+      {
+        "title": "Luz de Latte",
+        "description": "Limpieza facial con exfoliación de café, gua sha y mascarilla revitalizante. Estimula, despierta y desintoxica la piel opaca o con textura.",
+        "long_desc": "",
+        "image": "/services/Luz_de_Latte.jpg"
+      },
+      {
+        "title": "Facial Detox Plus",
+        "description": "Tratamiento antiedad en tres sesiones con limpieza, radiofrecuencia, mascarilla de colágeno y ultrasonido facial. Devuelve firmeza y vitalidad a la piel madura.",
+        "long_desc": "",
+        "image": "/services/Facial_Detox_Plus.jpg"
+      },
+      {
+        "title": "Reafirmante Nocturno",
+        "description": "Ritual tensor con limpieza, radiofrecuencia y masaje facial. Efecto antiedad ideal para pieles maduras o después de estrés prolongado.",
+        "long_desc": "",
+        "image": "/services/Reafirmante_Nocturno.jpg"
+      },
+      {
+        "title": "Frost Glow",
+        "description": "Limpieza facial con crioterapia y microdermoabrasión con punta de diamante. Calma pieles inflamadas y cierra poros, aportando frescura inmediata.",
+        "long_desc": "",
+        "image": "/services/Frost_Glow.jpg"
+      },
+      {
+        "title": "Teen Skincare",
+        "description": "Limpieza facial purificante con vapor, mascarilla antiacné y ultrasonido. Controla el acné y previene imperfecciones en piel adolescente.",
+        "long_desc": "",
+        "image": "/services/Teen_Skincare.jpg"
+      },
+      {
+        "title": "Glow Básico",
+        "description": "Limpieza facial con extracción, microdermoabrasión y mascarilla hidratante. Mejora textura y devuelve frescura al cutis.",
+        "long_desc": "",
+        "image": "/services/Glow_Basico.jpg"
+      },
+      {
+        "title": "Glow Premium",
+        "description": "Ritual facial avanzado con radiofrecuencia, mascarilla personalizada y rejuvenecimiento ultrasónico. Aporta firmeza, hidratación y efecto lifting.",
+        "long_desc": "",
+        "image": "/services/Glow_Premium.jpg"
+      },
+      {
+        "title": "Fisioterapia Dermatofuncional",
+        "description": "Tratamiento de cicatrices, celulitis, flacidez y edemas con radiofrecuencia, ultrasonido y drenaje.",
+        "image": "/services/Dermatofuncional.jpg"
+      },
+      {
+        "title": "Drenaje Linfático",
+        "description": "Masaje suave y rítmico que reduce edemas, mejora circulación linfática y favorece la recuperación.",
+        "image": "/services/Linf%C3%A1tico.jpg"
+      },
+      {
+        "title": "Tratamientos Faciales y Estéticos",
+        "description": "Limpiezas, peelings, hidratación, radiofrecuencia y US 5 MHz para textura, luminosidad y firmeza.",
+        "image": "/services/Faciales%20y%20Est%C3%A9ticos.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Especialidades",
+    "services": [
+      {
+        "title": "Piso Pélvico",
+        "description": "Tratamiento de incontinencia, prolapsos, dolor pélvico y disfunciones; fortalecimiento y reeducación.",
+        "image": "/services/Piso%20P%C3%A9lvico.jpg"
+      },
+      {
+        "title": "Fisioterapia Invasiva",
+        "description": "Técnicas mínimamente invasivas (punción seca, neuromodulación, electrolisis) para dolor crónico y miofascial.",
+        "image": "/services/Invasiva.jpg"
+      },
+      {
+        "title": "Reeducación Postural Global",
+        "description": "Método terapéutico que corrige desequilibrios musculares y posturales a través de estiramientos activos y respiración consciente.",
+        "image": "/services/RPG.jpg"
+      },
+      {
+        "title": "Evaluación Biomecánica Funcional",
+        "description": "Análisis detallado de la postura, el movimiento y la marcha para detectar disfunciones musculoesqueléticas y optimizar el rendimiento físico.",
+        "image": "/services/Evaluacion_Biomecanica.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Terapias Complementarias",
+    "services": [
+      {
+        "title": "Biomagnetismo Médico",
+        "description": "Imanes de mediana intensidad para equilibrar pH y apoyar procesos de regulación y bienestar.",
+        "image": "/services/M%C3%A9dico.jpg"
+      },
+      {
+        "title": "Gua Sha Terapia",
+        "description": "Raspado con herramientas (cuarzo/jade) para liberar tensión y mejorar la circulación.",
+        "image": "/services/Gua%20Sha.jpg"
+      },
+      {
+        "title": "Acupuntura",
+        "description": "Estimulación de puntos meridianos para analgesia, regulación autonómica y equilibrio funcional.",
+        "image": "/services/Acupuntura.jpg"
+      },
+      {
+        "title": "Reflexología Podal",
+        "description": "Presión en puntos del pie para favorecer relajación, circulación y bienestar general.",
+        "image": "/services/Reflexolog%C3%ADa%20podal.jpg"
+      },
+      {
+        "title": "Auriculoterapia",
+        "description": "Estimulación de puntos en la oreja para dolor, estrés y algunos trastornos crónicos.",
+        "image": "/services/Auriculo%20terapia.jpg"
+      },
+      {
+        "title": "Terapia Vibroacústica",
+        "description": "Vibraciones de baja frecuencia y sonidos terapéuticos para estrés, dolor y calidad del sueño.",
+        "image": "/services/vibro%20ac%C3%BAstica.jpg"
+      },
+      {
+        "title": "Programación Neurolingüística (PNL)",
+        "description": "Herramientas de comunicación y cambio de hábitos para metas personales y manejo emocional.",
+        "image": "/services/Neuroling%C3%BC%C3%ADstica.jpg"
+      },
+      {
+        "title": "Análisis de Bioenergía (Bio-Well)",
+        "description": "Evaluación no invasiva de parámetros de bienestar: estrés, energía, equilibrio y chakras.",
+        "image": "/services/Bioenerg%C3%ADa.jpg"
+      },
+      {
+        "title": "Detoxificación Iónica",
+        "description": "Baño iónico de pies con corriente controlada para apoyar procesos de eliminación de impurezas.",
+        "image": "/services/Detoxificacion%20I%C3%B3nica.jpg"
+      }
+    ]
+  }
+]

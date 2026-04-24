@@ -1,0 +1,322 @@
+/* ==============================
+   HERO BASE
+================================ */
+
+.stage-hero{
+
+  width:100%;
+  min-height:70vh;
+  max-height:900px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  padding:6rem 2rem 2rem;
+
+  position:relative;
+  overflow:hidden;
+
+}
+
+
+/* ==============================
+   HERO IMAGE
+================================ */
+
+.hero-bg{
+
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  z-index:0;
+
+  filter:blur(10px) brightness(.9);
+  transform:scale(1.05);
+
+  transition:
+  filter 1s cubic-bezier(.4,0,.2,1),
+  transform 1.2s cubic-bezier(.22,1,.36,1);
+
+}
+
+.stage-hero.revealed .hero-bg{
+
+  filter:blur(0) brightness(1);
+  transform:scale(1);
+
+}
+
+
+/* ==============================
+   OVERLAY GRADIENT
+================================ */
+
+.stage-hero::after{
+
+  content:"";
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:-1;
+
+  background:
+  radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,.15) 60%,
+    rgba(0,0,0,.28) 100%
+  );
+
+}
+
+
+/* ==============================
+   CONTENIDO
+================================ */
+
+.hero-overlay{
+
+  position:relative;
+  z-index:2;
+  padding:2rem;
+
+}
+
+
+/* ==============================
+   BRANDMARK
+================================ */
+
+.brandmark{
+
+  position:relative;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:3px;
+  margin-bottom:2px;
+
+  cursor:pointer;
+
+  transition:transform .2s ease-out;
+
+}
+
+.brandmark::before{
+
+  content:"";
+
+  position:absolute;
+  inset:-20px;
+
+  border-radius:50%;
+
+  background:rgba(200,253,243,.45);
+
+  filter:blur(35px);
+
+  z-index:-1;
+
+}
+
+
+/* ==============================
+   LOGOS
+================================ */
+
+.isotipo{
+
+  max-width:300px;
+  height:auto;
+
+  filter:
+  drop-shadow(0 0 8px rgba(0,0,0,.45))
+  drop-shadow(0 0 20px rgba(0,0,0,.25))
+  drop-shadow(0 0 38px rgba(124,255,233,.45))
+  drop-shadow(0 0 40px rgba(178,92,255,.35));
+
+}
+
+.logotipo{
+
+  max-width:260px;
+  height:auto;
+
+  filter:drop-shadow(0 1px 8px rgba(0,0,0,.8));
+
+}
+
+
+/* ==============================
+   TITULO
+================================ */
+
+h1{
+
+  font-family:'Poppins',sans-serif;
+
+  font-size:2.6rem;
+  font-weight:700;
+
+  margin:0 0 .6rem 0;
+
+  color:var(--color-primary);
+
+  letter-spacing:-.5px;
+
+}
+
+
+p{
+
+  font-family:'Nunito',sans-serif;
+
+  font-size:1.7rem;
+  font-weight:400;
+
+  margin:0 0 1.5rem 0;
+
+  color:var(--color-primary);
+
+  line-height:1.6;
+
+}
+
+
+/* ==============================
+   SLOGAN TRANSITIONS
+================================ */
+
+.slogan-container{
+
+  position:relative;
+  min-height:3.2rem;
+
+}
+
+.slogan{
+
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  white-space:nowrap;
+
+  opacity:0;
+
+}
+
+
+.fade-in{
+
+  animation:fadeIn .7s ease forwards;
+
+}
+
+.fade-out{
+
+  animation:fadeOut .7s ease forwards;
+
+}
+
+@keyframes fadeIn{
+
+  0%{
+    opacity:0;
+    filter:blur(6px);
+  }
+
+  100%{
+    opacity:1;
+    filter:blur(0);
+  }
+
+}
+
+@keyframes fadeOut{
+
+  0%{
+    opacity:1;
+    filter:blur(0);
+  }
+
+  100%{
+    opacity:0;
+    filter:blur(6px);
+  }
+
+}
+
+
+/* ==============================
+   RESPONSIVE
+================================ */
+
+@media(max-width:768px){
+
+  .stage-hero{
+
+    min-height:70vh;
+    padding:4rem 1.5rem 2rem;
+
+  }
+
+  .isotipo{
+    max-width:150px;
+  }
+
+  .logotipo{
+    max-width:200px;
+  }
+
+  h1{
+    font-size:2rem;
+  }
+
+  p{
+    font-size:1rem;
+  }
+
+}
+
+
+@media(max-width:480px){
+
+  .stage-hero{
+
+    min-height:80vh;
+    padding:3rem 1rem 1rem;
+
+  }
+
+  .isotipo{
+    max-width:130px;
+  }
+
+  .logotipo{
+    max-width:180px;
+  }
+
+  h1{
+    font-size:1.6rem;
+  }
+
+  p{
+    font-size:.9rem;
+  }
+
+}

@@ -1,0 +1,321 @@
+/* ===============================
+   SECTION
+================================= */
+
+.contact {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #fafafa 0%, #f2f2f7 100%);
+  text-align: center;
+}
+
+
+/* ===============================
+   GRID LAYOUT
+================================= */
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Posiciones */
+
+.contact-video {
+  flex: 1 1 260px;
+}
+
+.contact-map {
+  flex: 2 1 520px;
+}
+
+.contact-info {
+  flex: 2 1 520px;
+}
+
+.contact-logo {
+  flex: 1 1 260px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===============================
+   VIDEO
+================================= */
+
+.contact-video {
+  max-height: 420px;
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.contact-video video {
+  border-radius: 16px;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+
+/* ===============================
+   MAP
+================================= */
+
+.contact-map {
+  flex: 2 1 520px;
+
+  min-height: 420px;
+  height: 420px;
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+
+/* ===============================
+   LOGO
+================================= */
+
+.contact-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-logo img {
+  max-width: 160px;
+  opacity: 0.85;
+}
+
+
+/* ===============================
+   INFO BOX
+================================= */
+
+.contact-info {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+
+  padding: 2rem;
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.30);
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+
+  font-family: 'Nunito', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: left;
+}
+
+
+/* ===============================
+   INFO ITEMS
+================================= */
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+
+  margin-bottom: 1.2rem;
+}
+
+.info-icon {
+  color: var(--color-primary-strong);
+  font-size: 1.35rem;
+  margin-top: 0.2rem;
+}
+
+.info-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.55;
+}
+
+.info-item a {
+  color: var(--color-primary-strong);
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: color .2s ease, text-shadow .2s ease;
+}
+
+.info-item a:hover {
+  color: var(--color-secondary-strong);
+  text-shadow: 0 0 10px rgba(157,224,210,.35);
+}
+
+.open {
+  color: #28a745;
+  font-weight: 700;
+}
+
+
+/* ===============================
+   WHATSAPP FORM
+================================= */
+
+.whatsapp-form {
+  margin-top: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.whatsapp-form input,
+.whatsapp-form textarea {
+
+  width: 100%;
+
+  padding: 0.85rem 1rem;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(0,0,0,0.08);
+
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(6px);
+
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+
+  resize: none;
+
+  transition: border-color .2s ease,
+              box-shadow .2s ease,
+              background .2s ease;
+}
+
+.whatsapp-form input::placeholder,
+.whatsapp-form textarea::placeholder {
+  color: #8b8b8b;
+}
+
+.whatsapp-form input:focus,
+.whatsapp-form textarea:focus {
+  outline: none;
+
+  background: rgba(255,255,255,0.92);
+
+  border-color: var(--color-primary-strong);
+
+  box-shadow: 0 0 10px rgba(92,195,173,0.35);
+}
+
+
+/* ===============================
+   WHATSAPP BUTTON
+================================= */
+
+.cta-whatsapp {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  background: #25d366;
+  color: #fff;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  padding: 0.9rem 1.1rem;
+
+  border: none;
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: transform .18s ease,
+              filter .18s ease,
+              box-shadow .18s ease;
+
+  box-shadow: 0 8px 18px rgba(37,211,102,0.25);
+}
+
+.cta-whatsapp:hover {
+  filter: brightness(1.03);
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 10px 22px rgba(37,211,102,0.32);
+}
+
+.cta-whatsapp:active {
+  transform: translateY(0);
+}
+
+
+/* ===============================
+   ACCESSIBILITY
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .cta-whatsapp,
+  .info-item a {
+    transition: none;
+  }
+
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 900px) {
+
+  .contact-container {
+    gap: 1.5rem;
+  }
+
+  .contact-logo {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-map {
+    min-height: 320px;
+  }
+  .contact-logo {
+    display: none;
+  }
+
+}

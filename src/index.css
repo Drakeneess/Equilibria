@@ -1,0 +1,156 @@
+/* index.css → estilos globales y reset básico */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@600;700&display=swap');
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: var(--color-text-main);
+  background-color: var(--color-light);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 🎨 Paleta Refinada de Equilibria */
+:root {
+  /* 🌿 Principales */
+  --color-primary:   #9DE0D2; /* Verde menta suave */
+  --color-secondary: #BDA7D8; /* Lavanda suave */
+
+  /* 🌗 Versiones reforzadas */
+  --color-primary-strong:   #5CC3AD; /* Verde turquesa medio */
+  --color-secondary-strong: #9B7FCF; /* Lavanda/púrpura medio */
+
+  /* ⚖️ Neutros */
+  --color-light:  #FFFFFF; /* Blanco */
+  --color-light-alt: #F4F4F7; /* Gris suave */
+  --color-text-main: #3C3C3C; /* Gris oscuro, accesible */
+
+  /* ✨ Acentos */
+  --color-accent-green:  #2E8B77; /* Verde profundo */
+  --color-accent-purple: #6A4D99; /* Púrpura intenso */
+  --color-accent-yellow: #F7E27C; /* Amarillo pastel resplandor */
+}
+
+/* Reset básico */
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f9f7f3;
+  color: var(--color-text-main);
+  overflow-x: hidden; /* evita scroll horizontal */
+}
+
+/* Root container */
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  text-align: left;
+}
+
+/* Links */
+a {
+  font-weight: 500;
+  color: var(--color-primary-strong);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+a:hover {
+  color: var(--color-secondary-strong);
+}
+
+/* Títulos */
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: var(--color-accent-purple);
+}
+h3 {
+  color: var(--color-accent-green);
+}
+
+/* Botones genéricos */
+button {
+  border-radius: 50px;
+  border: none;
+  padding: 0.8em 1.6em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--color-primary-strong), var(--color-secondary-strong));
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+button:hover {
+  background: linear-gradient(135deg, var(--color-accent-green), var(--color-accent-purple));
+  transform: translateY(-2px);
+}
+button:focus,
+button:focus-visible {
+  outline: 3px solid var(--color-secondary-strong);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   SECTION TITLE CON ICONO DINÁMICO
+   ============================================================ */
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--color-secondary);
+
+  position: relative;
+  display: inline-block; /* ya no inline-flex */
+  text-align: center;
+}
+
+/* Contenedor interno para icono + texto */
+.section-title .title-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Icono */
+.section-title .title-inner::before {
+  content: attr(data-icon);
+  font-size: 2rem;
+  transform: translateY(2px);
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+}
+
+/* Línea decorativa abajo */
+.section-title::after {
+  content: "";
+  display: block;
+  margin: 0.5rem auto 0;
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.7rem;
+  }
+}

@@ -1,0 +1,184 @@
+/* === Wrapper general del carrusel === */
+.services-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 0.5rem;
+  overflow: visible;
+}
+
+/* === Embla core === */
+.embla {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  will-change: transform;
+}
+
+/* 
+ * En desktop: 3 tarjetas visibles
+ * Tablet: 2
+ * Mobile: 1
+ */
+.embla__slide {
+  flex: 0 0 33.333%;
+  padding: 0.5rem;
+  display: flex;
+}
+
+/* El service-card ocupa todo el slide */
+.embla__slide .service-card {
+  width: 100%;
+}
+
+/* === Flechas laterales estilo Equilibria === */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  border: 0.5px solid rgba(134, 111, 221, 0.35); /* borde violeta suave */
+  background: rgba(198, 197, 197, 0.335);
+
+  color: var(--color-accent-purple);
+  font-size: 1.1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 8px rgba(0,0,0,0.15),
+    0 0 6px rgba(124, 95, 231, 0.25); /* glow violeta */
+
+  transition:
+    background 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.25s ease,
+    opacity 0.2s ease;
+}
+
+.nav-btn--prev { left: -4px; }
+.nav-btn--next { right: -4px; }
+
+/* Derecha */
+.carousel-edge-hint.right {
+  right: 6px;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237C5FE7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
+}
+
+/* Izquierda */
+.carousel-edge-hint.left {
+  left: 6px;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237C5FE7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3C/svg%3E");
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.71);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow:
+    0 0 10px rgba(0,0,0,0.22),
+    0 0 8px rgba(124, 95, 231, 0.35);
+}
+
+.nav-btn:active {
+  transform: translateY(-50%) scale(0.94);
+}
+.nav-btn {
+  z-index: 5; /* 🔥 CRÍTICO */
+}
+.services-carousel-wrapper {
+  position: relative;
+  z-index: 2; /* asegura jerarquía */
+}
+.embla {
+  position: relative;
+  z-index: 1;
+}
+
+.nav-btn.disabled {
+  opacity: 0.35;
+  box-shadow: none;
+  border-color: rgba(0,0,0,0.15);
+}
+
+/* === Indicador de desplazamiento (flecha flotante) === */
+.carousel-edge-hint {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+
+  width: 26px;
+  height: 26px;
+
+  background: url("data:image/svg+xml,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%237C5FE7'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline%20points='9%2018%2015%2012%209%206'/%3E%3C/svg%3E") center/contain no-repeat;
+
+  opacity: 1;
+
+  color: var(--color-accent-purple);
+
+  transform: translateY(-50%);
+  animation: hint-pulse 1.7s infinite ease-in-out;
+
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* animación */
+@keyframes hint-pulse {
+  0%   { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
+  50%  { transform: translateY(-50%) translateX(7px);   opacity: 0.9; }
+  100% { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
+}
+
+/* animación elegante */
+@keyframes hint-pulse {
+  0%   { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
+  50%  { transform: translateY(-50%) translateX(7px);  opacity: 0.9; }
+  100% { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
+}
+
+/* Mobile: moverla un poco más hacia adentro */
+@media (max-width: 768px) {
+  .carousel-edge-hint {
+    right: -4px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 1024px) {
+  .embla__slide {
+    flex: 0 0 50%;  /* 2 tarjetas */
+  }
+}
+
+@media (max-width: 768px) {
+  .embla__slide {
+    flex: 0 0 100%; /* 1 tarjeta */
+  }
+
+  .nav-btn--prev {
+    left: 4px;
+  }
+  .nav-btn--next {
+    right: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+}

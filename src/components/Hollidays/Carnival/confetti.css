@@ -1,0 +1,36 @@
+.confetti-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+
+.confetti {
+  position: absolute;
+  top: -10%;
+
+  animation-name: confettiFall;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  will-change: transform;
+}
+
+
+@keyframes confettiFall {
+
+  0% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+  }
+
+  100% {
+    transform:
+      translateY(120vh)
+      rotate(720deg);
+  }
+}

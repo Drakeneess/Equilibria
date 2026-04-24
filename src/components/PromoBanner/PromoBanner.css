@@ -1,0 +1,66 @@
+/* === Contenedor === */
+.promo-single {
+  width: 100%;
+  position: relative;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* === Imagen principal === */
+.fade-img {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 1s ease-in-out;
+  animation: fade 1s ease-in-out;
+  border-radius: 8px;
+}
+
+/* === Animación === */
+@keyframes fade {
+  from { opacity: 0; transform: scale(1.015); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* === Modo Desktop === */
+@media (min-width: 992px) {
+  .promo-title {
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
+  }
+
+  .fade-img {
+    max-width: 1200px;
+    max-height: 75vh;
+  }
+}
+
+/* === Tablets === */
+@media (max-width: 768px) {
+  .promo-title {
+    font-size: 2rem;
+    margin: 1.5rem 0 1.2rem;
+  }
+
+  .fade-img {
+    max-height: 65vh;
+  }
+}
+
+/* === Móviles === */
+@media (max-width: 480px) {
+  .promo-title {
+    font-size: 1.7rem;
+    margin: 1.2rem 0 1rem;
+  }
+
+  .fade-img {
+    max-height: 55vh;
+    object-fit: contain; /* evita recorte */
+    padding: 0 0.5rem;
+  }
+}

@@ -1,0 +1,269 @@
+/* ============================================================
+   NAVBAR PREMIUM – Equilibria Ultra (CENTRADO TOTAL)
+   ============================================================ */
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+
+  box-shadow: 0 3px 18px rgba(0,0,0,0.06);
+  z-index: 1000;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    background 0.3s ease,
+    padding 0.3s ease;
+}
+
+/* Estado inicial */
+.navbar--top {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* Estado visible */
+.navbar--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ============================================================
+   CONTENEDOR CENTRADO REAL
+   ============================================================ */
+
+.navbar-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.9rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+/* ================= Logo ================= */
+.nav-logo {
+  height: 48px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-logo:hover {
+  transform: scale(1.06);
+}
+
+/* ================= Links Desktop ================= */
+.nav-links {
+  list-style: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-dark);
+  font-weight: 500;
+  position: relative;
+  padding: 0.3rem 0;
+
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-secondary);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 0;
+
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 2px;
+
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ================= CTA Desktop ================= */
+.nav-cta {
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.1rem;
+
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: transform 0.3s ease, box-shadow 0.25s ease;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(161, 141, 203, 0.35);
+}
+
+/* ============================================================
+   BOTÓN HAMBURGUESA
+   ============================================================ */
+
+.nav-toggle {
+  display: none;
+  width: 32px;
+  height: 24px;
+
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+
+  background: var(--color-dark);
+  border-radius: 8px;
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* ============================================================
+   MENÚ MOBILE CENTRADO PERFECTO
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .navbar-container {
+    padding: 0.8rem 1rem;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-10px);
+
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.2rem 1.8rem;
+    border-radius: 18px;
+
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-links a {
+    font-size: 1.05rem;
+  }
+}
+
+.navbar-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Lados con ancho automático */
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* ✅ Centro absoluto real */
+.nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  list-style: none;
+  display: flex;
+  gap: 1.6rem;
+}
+
+/* ============================================================
+   ICONOS NAVIDEÑOS MINIMALISTAS (NO CAMBIA ESTÉTICA)
+   ============================================================ */
+
+/* ⭐ Default: pequeña estrella */
+.nav-links li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.nav-links li:nth-child(1)::before { content: "⭐"; }
+.nav-links li:nth-child(2)::before { content: "🎄"; }
+.nav-links li:nth-child(3)::before { content: "❄"; }
+
+/* Hover elegante */
+.nav-links li:hover::before {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+
