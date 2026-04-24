@@ -12,7 +12,7 @@ export default function Services() {
   // siempre máximo 2 categorías abiertas
   const [activeCategories, setActiveCategories] = useState([0, 1]);
 
-  const API_URL = "https://equilibria.sbs/api/services.php";
+  const API_URL = "https://api.equilibria.sbs/api/services.php";
 
   /*
   |--------------------------------------------------------------

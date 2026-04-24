@@ -9,7 +9,7 @@ export default function PromoBanner() {
 
   const sectionRef = useRef(null);
 
-  const API_URL = "https://equilibria.sbs/api/promos.php";
+  const API_URL = "https://api.equilibria.sbs/api/promos.php";
 
   /* =========================
      Lazy load cuando aparece
