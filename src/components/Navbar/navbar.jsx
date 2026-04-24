@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../assets/logo.webp";
 
@@ -6,15 +7,27 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) setScrolled(true);
-      else setScrolled(false);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (section) => {
+    setOpen(false);
+
+    if (location.pathname !== "/") {
+      navigate(`/#${section}`);
+    } else {
+      const el = document.getElementById(section);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className={`navbar ${scrolled ? "navbar--visible" : "navbar--top"}`}>
@@ -30,10 +43,10 @@ export default function Navbar() {
       </div>
 
       <ul className={`nav-links ${open ? "open" : ""}`}>
-        <li><a href="#about" onClick={() => setOpen(false)}>Nosotros</a></li>
-        <li><a href="#services" onClick={() => setOpen(false)}>Servicios</a></li>
-        <li><a href="#tecnologia" onClick={() => setOpen(false)}>Nuestra Tecnología</a></li>
-        <li><a href="#contact" onClick={() => setOpen(false)}>Contacto</a></li>
+        <li><button onClick={() => handleNavClick("about")}>Nosotros</button></li>
+        <li><button onClick={() => handleNavClick("services")}>Servicios</button></li>
+        <li><button onClick={() => handleNavClick("tecnologia")}>Nuestra Tecnología</button></li>
+        <li><button onClick={() => handleNavClick("contact")}>Contacto</button></li>
       </ul>
 
       <div className="nav-right">
