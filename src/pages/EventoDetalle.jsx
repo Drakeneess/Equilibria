@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { eventos } from "../components/Blog/eventos";
 import EventoDetalle from "../components/EventDetails/eventDetail";
 import Navbar from "../components/Navbar/navbar";
-import Footer from "../components/Footer/footer";
+import Footer from "../components/Footer/Footer";
 
 export default function EventoDetallePage() {
   const { slug } = useParams();
