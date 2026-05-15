@@ -14,132 +14,113 @@ export default function Hero() {
 
   const slogans = [
     "Bienestar a tu alcance",
-    "Movimiento que sana"
+    "Movimiento que sana",
+    "Recupera tu equilibrio"
   ];
 
-  const [prevText, setPrevText] = useState(slogans[0]);
-  const [nextText, setNextText] = useState(slogans[1]);
-  const [fadeState, setFadeState] = useState("in");
-
-  // rotación de slogans
   useEffect(() => {
     const interval = setInterval(() => {
-
-      setFadeState("out");
-
-      setTimeout(() => {
-
-        const newIndex = (index + 1) % slogans.length;
-
-        setIndex(newIndex);
-        setPrevText(slogans[newIndex]);
-        setNextText(slogans[(newIndex + 1) % slogans.length]);
-
-        setFadeState("in");
-
-      }, 700);
-
+      setIndex((current) => (current + 1) % slogans.length);
     }, 3500);
 
     return () => clearInterval(interval);
-  }, [index]);
+  }, [slogans.length]);
 
-  // scroll parallax
   useEffect(() => {
-
     const handleScroll = () => {
       const y = window.scrollY;
-      setOffset(Math.min(y * 0.1, 10));
+      setOffset(Math.min(y * 0.08, 12));
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
-
   }, []);
 
-  // mouse parallax
   const handleMouseMove = (e) => {
-
     const { innerWidth, innerHeight } = window;
 
-    const x = (e.clientX - innerWidth / 2) * 0.05;
-    const y = (e.clientY - innerHeight / 2) * 0.05;
+    const x = (e.clientX - innerWidth / 2) * 0.025;
+    const y = (e.clientY - innerHeight / 2) * 0.025;
 
     setPos({ x, y });
-
   };
 
   const toggleReveal = () => {
-    setRevealed(prev => !prev);
+    setRevealed((current) => !current);
   };
 
   return (
-
     <section
       className={`stage-hero ${revealed ? "revealed" : ""}`}
       onMouseMove={handleMouseMove}
+      aria-label="Sección principal de Equilibria"
     >
-
-      {/* HERO IMAGE (optimizado para LCP) */}
       <img
         src={bg}
         alt=""
         className="hero-bg"
         fetchPriority="high"
         loading="eager"
+        aria-hidden="true"
       />
 
       <div className="hero-overlay">
-
-        <div
+        <button
+          type="button"
           className="brandmark"
-          tabIndex={0}
-          aria-label="Logo Equilibria"
+          aria-label="Mostrar imagen principal de Equilibria"
           onClick={toggleReveal}
           style={{
-            transform: `translate(${pos.x}px, ${pos.y + offset}px)`
+            transform: `translate3d(${pos.x}px, ${pos.y + offset}px, 0)`
           }}
         >
-
           <img
             src={iso}
             alt="Isotipo Equilibria"
-            className="isotipo animate-in"
+            className="isotipo"
             width="300"
             height="300"
           />
 
           <img
             src={logo}
-            alt="Logotipo Equilibria"
-            className="logotipo animate-in"
+            alt="Equilibria"
+            className="logotipo"
             width="260"
             height="100"
           />
+        </button>
 
+        <div className="hero-copy">
+          <div className="slogan-container" aria-live="polite">
+            <h1 key={slogans[index]} className="hero-title">
+              {slogans[index]}
+            </h1>
+          </div>
+
+          <p className="hero-description">
+            Fisioterapia, kinesiología y bienestar integral para ayudarte a moverte mejor,
+            sentirte mejor y volver a tu equilibrio.
+          </p>
+
+          <div className="hero-actions">
+            <a
+              href="#services"
+              className="hero-btn hero-btn-primary"
+            >
+              Ver servicios
+            </a>
+
+            <a
+              href="#contact"
+              className="hero-btn hero-btn-secondary"
+            >
+              Reservar cita
+            </a>
+          </div>
         </div>
-
-        <div className="slogan-container">
-
-          <h1
-            key={`prev-${index}`}
-            className="slogan fade-out"
-          >
-            {prevText}
-          </h1>
-
-          <h1
-            key={`next-${index}`}
-            className="slogan fade-in"
-          >
-            {nextText}
-          </h1>
-
-        </div>
-
       </div>
-
     </section>
   );
 }

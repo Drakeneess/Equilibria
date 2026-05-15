@@ -1,184 +1,204 @@
-/* === Wrapper general del carrusel === */
+/* ============================================================
+   SERVICES CAROUSEL
+============================================================ */
+
 .services-carousel-wrapper {
   position: relative;
+
   width: 100%;
-  margin-top: 0.5rem;
-  overflow: visible;
+
+  overflow: hidden;
+
+  border-radius: 1.35rem;
 }
 
-/* === Embla core === */
 .embla {
-  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
   width: 100%;
+
+  overflow: hidden;
 }
 
 .embla__container {
   display: flex;
+
   will-change: transform;
 }
 
-/* 
- * En desktop: 3 tarjetas visibles
- * Tablet: 2
- * Mobile: 1
- */
 .embla__slide {
   flex: 0 0 33.333%;
+
+  min-width: 0;
+
   padding: 0.5rem;
+
   display: flex;
 }
 
-/* El service-card ocupa todo el slide */
 .embla__slide .service-card {
   width: 100%;
 }
 
-/* === Flechas laterales estilo Equilibria === */
-.nav-btn {
+
+/* ============================================================
+   SIDE CONTROLS
+   Reemplazo de botones circulares
+============================================================ */
+
+.carousel-side-control {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  top: 0;
+  bottom: 0;
+  z-index: 6;
 
-  border-radius: 50%;
-  border: 0.5px solid rgba(134, 111, 221, 0.35); /* borde violeta suave */
-  background: rgba(198, 197, 197, 0.335);
-
-  color: var(--color-accent-purple);
-  font-size: 1.1rem;
+  width: 3.2rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border: 0;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(46, 139, 119, 0.52),
+      rgba(106, 77, 153, 0.58)
+    );
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   cursor: pointer;
 
-  box-shadow:
-    0 0 8px rgba(0,0,0,0.15),
-    0 0 6px rgba(124, 95, 231, 0.25); /* glow violeta */
+  opacity: 0;
 
   transition:
-    background 0.25s ease,
-    transform 0.15s ease,
-    box-shadow 0.25s ease,
-    opacity 0.2s ease;
+    opacity 0.25s ease,
+    width 0.25s ease,
+    background 0.25s ease;
 }
 
-.nav-btn--prev { left: -4px; }
-.nav-btn--next { right: -4px; }
-
-/* Derecha */
-.carousel-edge-hint.right {
-  right: 6px;
-
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237C5FE7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
-}
-
-/* Izquierda */
-.carousel-edge-hint.left {
-  left: 6px;
-
-  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237C5FE7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3C/svg%3E");
-}
-
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.71);
-  transform: translateY(-50%) scale(1.08);
-  box-shadow:
-    0 0 10px rgba(0,0,0,0.22),
-    0 0 8px rgba(124, 95, 231, 0.35);
-}
-
-.nav-btn:active {
-  transform: translateY(-50%) scale(0.94);
-}
-.nav-btn {
-  z-index: 5; /* 🔥 CRÍTICO */
-}
-.services-carousel-wrapper {
+.carousel-side-control svg {
   position: relative;
-  z-index: 2; /* asegura jerarquía */
-}
-.embla {
-  position: relative;
-  z-index: 1;
-}
+  z-index: 2;
 
-.nav-btn.disabled {
-  opacity: 0.35;
-  box-shadow: none;
-  border-color: rgba(0,0,0,0.15);
+  font-size: 1.15rem;
+
+  filter:
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
 }
 
-/* === Indicador de desplazamiento (flecha flotante) === */
-.carousel-edge-hint {
-  position: absolute;
-  top: 50%;
-  right: 6px;
-
-  width: 26px;
-  height: 26px;
-
-  background: url("data:image/svg+xml,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%237C5FE7'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline%20points='9%2018%2015%2012%209%206'/%3E%3C/svg%3E") center/contain no-repeat;
-
+.services-carousel-wrapper:hover .carousel-side-control:not(.disabled) {
   opacity: 1;
+}
 
-  color: var(--color-accent-purple);
+.carousel-side-control:not(.disabled):hover {
+  width: 3.75rem;
 
-  transform: translateY(-50%);
-  animation: hint-pulse 1.7s infinite ease-in-out;
+  background:
+    linear-gradient(
+      180deg,
+      var(--category-start),
+      var(--category-end)
+    );
+}
+
+.carousel-side-control--prev {
+  left: 0;
+
+  border-radius: 1.35rem 0 0 1.35rem;
+}
+
+.carousel-side-control--next {
+  right: 0;
+
+  border-radius: 0 1.35rem 1.35rem 0;
+}
+
+.carousel-side-control.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   EDGE FADES
+============================================================ */
+
+.carousel-edge-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+
+  width: 4rem;
 
   pointer-events: none;
-  z-index: 9;
 }
 
-/* animación */
-@keyframes hint-pulse {
-  0%   { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
-  50%  { transform: translateY(-50%) translateX(7px);   opacity: 0.9; }
-  100% { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
+.carousel-edge-fade--left {
+  left: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.92),
+      transparent
+    );
 }
 
-/* animación elegante */
-@keyframes hint-pulse {
-  0%   { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
-  50%  { transform: translateY(-50%) translateX(7px);  opacity: 0.9; }
-  100% { transform: translateY(-50%) translateX(0);     opacity: 0.4; }
+.carousel-edge-fade--right {
+  right: 0;
+
+  background:
+    linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0.92),
+      transparent
+    );
 }
 
-/* Mobile: moverla un poco más hacia adentro */
-@media (max-width: 768px) {
-  .carousel-edge-hint {
-    right: -4px;
-    width: 24px;
-    height: 24px;
-  }
-}
 
-/* === Responsive === */
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
 @media (max-width: 1024px) {
   .embla__slide {
-    flex: 0 0 50%;  /* 2 tarjetas */
+    flex: 0 0 50%;
   }
 }
 
 @media (max-width: 768px) {
   .embla__slide {
-    flex: 0 0 100%; /* 1 tarjeta */
+    flex: 0 0 100%;
   }
 
-  .nav-btn--prev {
-    left: 4px;
+  .carousel-side-control {
+    opacity: 1;
+    width: 2.7rem;
   }
-  .nav-btn--next {
-    right: 4px;
+
+  .carousel-side-control:not(.disabled):hover {
+    width: 2.9rem;
+  }
+
+  .carousel-edge-fade {
+    width: 2.6rem;
   }
 }
 
 @media (max-width: 480px) {
-  .nav-btn {
-    width: 30px;
-    height: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  .carousel-side-control {
+    width: 2.35rem;
+  }
+
+  .carousel-side-control:not(.disabled):hover {
+    width: 2.45rem;
   }
 }

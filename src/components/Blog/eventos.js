@@ -1,7 +1,12 @@
 // 👇 Lazy glob (IMPORTANTE: sin eager)
 const modules = import.meta.glob(
-  "../../assets/eventos/*/*.{jpg,jpeg,png,webp}"
+  "../../assets/eventos/*/*.{jpg,jpeg,png,webp,mp4,webm}"
 );
+
+function getType(path) {
+  if (path.match(/\.(mp4|webm)$/)) return "video";
+  return "image";
+}
 
 // 👇 obtiene solo la primera imagen (cover)
 export function getCover(folder) {
@@ -12,12 +17,12 @@ export function getCover(folder) {
   return entry ? entry[1]().then((mod) => mod.default) : null;
 }
 
-
 // 👇 obtiene TODAS las imágenes (solo cuando se llame)
 export async function getImagesByFolder(folder) {
   const entries = Object.entries(modules).filter(([path]) =>
     path.includes(`/eventos/${folder}/`)
 );
+
 
 const images = await Promise.all(
   entries.map(([, loader]) => loader().then((mod) => mod.default))
@@ -26,6 +31,27 @@ const images = await Promise.all(
 return images.sort((a, b) =>
   a.localeCompare(b, undefined, { numeric: true })
 );
+}
+
+export async function getMediaByFolder(folder) {
+  const entries = Object.entries(modules).filter(([path]) =>
+    path.includes(`/eventos/${folder}/`)
+  );
+
+  const media = await Promise.all(
+    entries.map(async ([path, loader]) => {
+      const mod = await loader();
+      return {
+        src: mod.default,
+        type: getType(path),
+        name: path
+      };
+    })
+  );
+
+  return media.sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { numeric: true })
+  );
 }
 
 export function getImageCount(folder) {
@@ -54,6 +80,16 @@ export const eventos = [
     description:
     "El Aniversario de Equilibria este 2026 fue un punto de encuentro entre comunidad, práctica y experiencia.\n\nNo se trató solo de celebrar un año más, sino de reunir a quienes forman parte del proceso: practicantes, usuarios y profesionales que trabajan día a día con el bienestar desde una perspectiva integral.\n\nDurante la jornada compartimos espacios de conexión, demostraciones y acompañamiento personalizado, mostrando en vivo cómo se aplican nuestras herramientas en contextos reales.\n\nEquilibria no es solo un servicio, es una comunidad en movimiento. Este aniversario reafirma nuestro compromiso con un enfoque práctico, humano y sostenible del bienestar."
   },
+  /*
+  {
+    slug: "capacitacion-thailandia-2025",
+    folder: "capacitacion-thailandia-2025",
+    title: "Capacitacion Tailandia 2025",
+    date: "2025-08-21",
+    imageCount: getImageCount("capacitacion-thailandia-2025"),
+    description: ""
+  },
+  */
 ];
 export const eventosOrdenados = [...eventos].sort(
   (a, b) => new Date(b.date) - new Date(a.date)

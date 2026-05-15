@@ -4,19 +4,21 @@ import "./OurTechnology.css";
 
 export default function OurTechnology() {
   return (
-    <section className="our-technology">
+    <section id="tecnologia" className="our-technology">
+      <div className="technology-header">
+        <span className="technology-kicker">Innovación aplicada</span>
 
-      <h2 className="section-title">
-        <span
-          className="title-inner"
-          data-icon="🧬"
-        >
+        <h2 className="section-title">
           Nuestra Tecnología
-        </span>
-      </h2>
+        </h2>
+
+        <p className="technology-intro">
+          Equipos y herramientas especializadas que complementan nuestros tratamientos
+          para ofrecer procesos más precisos, seguros y personalizados.
+        </p>
+      </div>
 
       <TechnologyMagazine items={technologyData} />
-
     </section>
   );
 }

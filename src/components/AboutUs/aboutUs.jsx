@@ -1,32 +1,52 @@
-import AboutCard from "./AboutCard"; // Importa el nuevo componente
+import AboutCard from "./AboutCard";
 import "./aboutUs.css";
 
 const AboutUs = () => {
   return (
     <section id="about" className="about-container">
-      <h2 className="section-title">
-        <span className="title-inner" data-icon="🎊">Acerca de Nosotros</span>
-      </h2>
+      <div className="about-header">
+        <span className="about-kicker">Quiénes somos</span>
+
+        <h2 className="section-title">
+          Acerca de Nosotros
+        </h2>
+
+        <p className="about-intro">
+          En Equilibria combinamos atención profesional, tecnología y un enfoque humano
+          para acompañar procesos de recuperación, bienestar y movimiento consciente.
+        </p>
+      </div>
 
       <div className="about-sections">
-
-        <AboutCard type="mission" title="Misión">
+        <AboutCard
+          type="mission"
+          eyebrow="Nuestro propósito"
+          title="Misión"
+        >
           <p>
-            Ofrecer servicios de rehabilitación personalizados y de alta calidad 
-            para mejorar el bienestar y la calidad de vida de los pacientes, 
-            con un enfoque ético y profesional.
+            Ofrecer servicios de rehabilitación personalizados y de alta calidad para
+            mejorar el bienestar y la calidad de vida de nuestros pacientes, con un
+            enfoque ético, profesional y cercano.
           </p>
         </AboutCard>
 
-        <AboutCard type="vision" title="Visión">
+        <AboutCard
+          type="vision"
+          eyebrow="Hacia dónde vamos"
+          title="Visión"
+        >
           <p>
-            Ser líderes en fisioterapia y kinesiología, reconocidos por la 
-            excelencia y la innovación en el cuidado de la salud, expandiendo 
-            nuestros servicios para atender las necesidades cambiantes de los pacientes.
+            Ser un referente en fisioterapia y kinesiología, reconocido por la excelencia,
+            la innovación y la capacidad de adaptarnos a las necesidades reales de cada
+            paciente.
           </p>
         </AboutCard>
 
-        <AboutCard type="values" title="Valores">
+        <AboutCard
+          type="values"
+          eyebrow="Lo que nos guía"
+          title="Valores"
+        >
           <ul>
             <li>Eficiencia</li>
             <li>Seguridad</li>
@@ -36,7 +56,6 @@ const AboutUs = () => {
             <li>Colaboración</li>
           </ul>
         </AboutCard>
-
       </div>
     </section>
   );

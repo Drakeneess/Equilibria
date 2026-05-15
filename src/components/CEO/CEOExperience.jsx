@@ -41,19 +41,32 @@ const flags = {
 export default function CEOExperience() {
   return (
     <section className="ceo-exp-container">
-      <h3 className="ceo-exp-title">Experiencia Profesional</h3>
+      <div className="ceo-exp-header">
+        <span className="ceo-exp-kicker">Trayectoria</span>
+
+        <h3 id="ceo-experience-title" className="ceo-exp-title">
+          Experiencia Profesional
+        </h3>
+
+        <p className="ceo-exp-description">
+          Formación multidisciplinaria en fisioterapia, rehabilitación, terapias
+          complementarias y tecnologías aplicadas al bienestar físico.
+        </p>
+      </div>
 
       <div className="ceo-exp-grid">
         {experiencia.map((item, i) => (
-          <div key={i} className="ceo-exp-item">
-
+          <article key={`${item.text}-${i}`} className="ceo-exp-item">
             <span
-              className={`fi fi-${flags[item.country] || "un"} ceo-exp-flag`}
+              className={`fi fi-${flags[item.country] || "xx"} ceo-exp-flag`}
+              aria-hidden="true"
             />
 
-            <p>{item.text}</p>
-
-          </div>
+            <div>
+              <p>{item.text}</p>
+              <span>{item.country}</span>
+            </div>
+          </article>
         ))}
       </div>
     </section>

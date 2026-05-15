@@ -1,105 +1,122 @@
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 function getGridSpan(grid = "1x1") {
-  const [col, row] = grid.split("x");
+  const [col = "1", row = "1"] = grid.split("x");
 
   return {
-    gridColumn: `span ${col || 1}`,
-    gridRow: `span ${row || 1}`
+    gridColumn: `span ${Number(col) || 1}`,
+    gridRow: `span ${Number(row) || 1}`
   };
 }
 
-export default function TechnologyMagazine({ items }) {
-
+export default function TechnologyMagazine({ items = [] }) {
   const gridRef = useRef(null);
 
   const [hasLeft, setHasLeft] = useState(false);
-  const [hasRight, setHasRight] = useState(true);
+  const [hasRight, setHasRight] = useState(false);
+
+  const sortedItems = useMemo(() => {
+    return [...items].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+  }, [items]);
 
   const updateScrollState = () => {
-
     const el = gridRef.current;
     if (!el) return;
 
-    const scrollLeft = el.scrollLeft;
     const maxScroll = el.scrollWidth - el.clientWidth;
+    const tolerance = 16;
 
-    const tolerance = 20;
-
-    setHasLeft(scrollLeft > tolerance);
-    setHasRight(scrollLeft < maxScroll - tolerance);
-
+    setHasLeft(el.scrollLeft > tolerance);
+    setHasRight(el.scrollLeft < maxScroll - tolerance);
   };
 
-  const scroll = (dir) => {
+  const scroll = (direction) => {
+    const el = gridRef.current;
+    if (!el) return;
 
-    const container = gridRef.current;
+    const amount = el.clientWidth * 0.82;
 
-    const amount = container.clientWidth * 0.8;
-
-    container.scrollBy({
-      left: dir * amount,
+    el.scrollBy({
+      left: direction * amount,
       behavior: "smooth"
     });
-
   };
 
   useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
 
-    const el = document.querySelector(".magazine-grid")
+    updateScrollState();
 
-    const init = () => updateScrollState();
-
-    requestAnimationFrame(init);
-
-    el.addEventListener("scroll", updateScrollState);
+    el.addEventListener("scroll", updateScrollState, { passive: true });
     window.addEventListener("resize", updateScrollState);
 
     return () => {
       el.removeEventListener("scroll", updateScrollState);
       window.removeEventListener("resize", updateScrollState);
     };
+  }, [sortedItems.length]);
 
-  }, []);
-
-  const sortedItems = [...items].sort(
-    (a, b) => (a.order ?? 999) - (b.order ?? 999)
-  );
+  if (!sortedItems.length) {
+    return (
+      <div className="technology-empty">
+        No hay tecnologías registradas por el momento.
+      </div>
+    );
+  }
 
   return (
-
-    <div className={`magazine-wrapper ${hasLeft ? "has-left" : ""} ${hasRight ? "has-right" : ""}`}>
-      <div
-        className="mag-side left"
+    <div
+      className={`magazine-wrapper ${hasLeft ? "has-left" : ""} ${hasRight ? "has-right" : ""}`}
+    >
+      <button
+        type="button"
+        className="mag-side mag-side--left"
         onClick={() => scroll(-1)}
+        disabled={!hasLeft}
+        aria-label="Ver tecnologías anteriores"
       >
-        <span>‹</span>
-      </div>
+        <span aria-hidden="true">‹</span>
+      </button>
 
-      <div className="magazine-grid" ref={gridRef}>
-        {sortedItems.map((item, i) => (
+      <div
+        className="magazine-grid"
+        ref={gridRef}
+        onScroll={updateScrollState}
+      >
+        {sortedItems.map((item, index) => (
           <article
-            key={i}
+            key={item.id || item.name || index}
             className="mag-card"
             style={getGridSpan(item.grid)}
           >
-            <img src={item.img} alt={item.name} />
+            <img
+              src={item.img}
+              alt={item.name}
+              loading="lazy"
+            />
 
             <div className="mag-overlay">
-              <h3>{item.name}</h3>
-              <p>{item.desc}</p>
-            </div>
+              <span className="mag-chip">Tecnología</span>
 
+              <div className="mag-copy">
+                <h3>{item.name}</h3>
+                <p>{item.desc}</p>
+              </div>
+            </div>
           </article>
         ))}
       </div>
 
-      <div
-        className="mag-side right"
+      <button
+        type="button"
+        className="mag-side mag-side--right"
         onClick={() => scroll(1)}
+        disabled={!hasRight}
+        aria-label="Ver más tecnologías"
       >
-        <span>›</span>
-      </div>
+        <span aria-hidden="true">›</span>
+      </button>
     </div>
   );
 }

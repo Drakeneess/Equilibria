@@ -6,11 +6,11 @@ import "./carousel.css";
 
 export default function CategoryCarousel({ services }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: services.length > 3,   // loop solo si hay suficiente contenido
+    loop: services.length > 3,
     align: "start",
     skipSnaps: false,
     dragFree: false,
-    containScroll: "trimSnaps",
+    containScroll: "trimSnaps"
   });
 
   const [canPrev, setCanPrev] = useState(false);
@@ -26,52 +26,52 @@ export default function CategoryCarousel({ services }) {
 
     emblaApi.on("select", updateButtons);
     emblaApi.on("reInit", updateButtons);
+
     updateButtons();
+
+    return () => {
+      emblaApi.off("select", updateButtons);
+      emblaApi.off("reInit", updateButtons);
+    };
   }, [emblaApi]);
 
-  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-  const scrollNext = () => emblaApi && emblaApi.scrollNext();
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
 
   return (
     <div className="services-carousel-wrapper">
+      <button
+        type="button"
+        className={`carousel-side-control carousel-side-control--prev ${!canPrev ? "disabled" : ""}`}
+        onClick={scrollPrev}
+        disabled={!canPrev}
+        aria-label="Ver servicios anteriores"
+      >
+        <FaChevronLeft />
+      </button>
+
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
-          {services.map((s) => (
-            <div className="embla__slide" key={s.id}>
-              <ServiceCard {...s} />
+          {services.map((service) => (
+            <div className="embla__slide" key={service.id}>
+              <ServiceCard {...service} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* ← Indicador animado de que hay más contenido */}
-      {canPrev && (
-        <div className="carousel-edge-hint left"></div>
-      )}
+      <button
+        type="button"
+        className={`carousel-side-control carousel-side-control--next ${!canNext ? "disabled" : ""}`}
+        onClick={scrollNext}
+        disabled={!canNext}
+        aria-label="Ver más servicios"
+      >
+        <FaChevronRight />
+      </button>
 
-      {canNext && (
-        <div className="carousel-edge-hint right"></div>
-      )}
-
-      {/* Flechas reales de navegación */}
-      {services.length > 3 && (
-        <>
-          <button
-            className={`nav-btn nav-btn--prev ${!canPrev ? "disabled" : ""}`}
-            onClick={scrollPrev}
-            disabled={!canPrev}
-          >
-            <FaChevronLeft />
-          </button>
-          <button
-            className={`nav-btn nav-btn--next ${!canNext ? "disabled" : ""}`}
-            onClick={scrollNext}
-            disabled={!canNext}
-          >
-            <FaChevronRight />
-          </button>
-        </>
-      )}
+      {canPrev && <div className="carousel-edge-fade carousel-edge-fade--left" />}
+      {canNext && <div className="carousel-edge-fade carousel-edge-fade--right" />}
     </div>
   );
 }

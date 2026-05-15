@@ -1,275 +1,525 @@
-/* ===============================
-   SECTION
-================================= */
+/* ============================================================
+   CONTACT SECTION
+============================================================ */
 
 .contact {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #fafafa 0%, #f2f2f7 100%);
+  position: relative;
+
+  width: 100%;
+
+  padding: 6rem 1rem;
+
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(157, 224, 210, 0.22),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 90% 82%,
+      rgba(189, 167, 216, 0.22),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fbfa 48%,
+      #ffffff 100%
+    );
+
   text-align: center;
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+.contact::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(92, 195, 173, 0.052) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155, 127, 207, 0.045) 1px, transparent 1px);
+
+  background-size: 56px 56px;
+
+  mask-image:
+    radial-gradient(circle at center, black 0%, transparent 74%);
+
+  pointer-events: none;
 }
 
 
-/* ===============================
-   GRID LAYOUT
-================================= */
+/* ============================================================
+   HEADER
+============================================================ */
+
+.contact-header {
+  position: relative;
+  z-index: 2;
+
+  max-width: 780px;
+
+  margin: 0 auto 3.5rem;
+}
+
+.contact-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 0.85rem;
+
+  padding: 0.42rem 0.88rem;
+
+  border: 1px solid rgba(92, 195, 173, 0.24);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  color: var(--color-accent-green);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  box-shadow:
+    0 10px 24px rgba(92, 195, 173, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.contact .section-title {
+  margin-bottom: 1rem;
+
+  color: var(--color-accent-purple);
+}
+
+.contact-intro {
+  max-width: 680px;
+
+  margin: 0 auto;
+
+  color: rgba(60, 60, 60, 0.76);
+
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.14rem);
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+
+/* ============================================================
+   GRID AJUSTADO PARA VIDEO VERTICAL
+============================================================ */
 
 .contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.8rem;
+  position: relative;
+  z-index: 2;
 
-  max-width: 1100px;
+  width: min(100%, 1160px);
+
   margin: 0 auto;
-}
 
-/* Posiciones */
+  display: grid;
+  grid-template-columns: 0.9fr 0.55fr 1.25fr;
+  grid-template-areas:
+    "info video map";
 
-.contact-video {
-  flex: 1 1 260px;
-}
+  gap: 1.25rem;
 
-.contact-map {
-  flex: 2 1 520px;
+  align-items: stretch;
 }
 
 .contact-info {
-  flex: 2 1 520px;
+  grid-area: info;
 }
 
-.contact-logo {
-  flex: 1 1 260px;
+.contact-video-card {
+  grid-area: video;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ===============================
-   VIDEO
-================================= */
-
-.contact-video {
-  max-height: 420px;
-
-  border-radius: 16px;
-  overflow: hidden;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(255,255,255,0.25);
-}
-
-.contact-video video {
-  border-radius: 16px;
-  height: 100%;
-  width: auto;
-  object-fit: contain;
-}
-
-
-/* ===============================
-   MAP
-================================= */
-
-.contact-map {
-  flex: 2 1 520px;
-
-  min-height: 420px;
-  height: 420px;
-
-  border-radius: 16px;
-  overflow: hidden;
-
-  background: rgba(255,255,255,0.5);
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-
-/* ===============================
-   LOGO
-================================= */
-
-.contact-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-logo img {
-  max-width: 160px;
-  opacity: 0.85;
-}
-
-
-/* ===============================
-   INFO BOX
-================================= */
-
-.contact-info {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-
-  padding: 2rem;
-
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.30);
-
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-
-  font-family: 'Nunito', sans-serif;
+  min-height: auto;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.contact-map-card {
+  grid-area: map;
+
+  min-height: 620px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   SHARED CARDS
+============================================================ */
+
+.contact-info,
+.contact-map-card,
+.contact-video-card {
+  position: relative;
+
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 2rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.84),
+      rgba(255, 255, 255, 0.56)
+    );
+
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  box-shadow:
+    0 28px 70px rgba(46, 139, 119, 0.11),
+    0 12px 30px rgba(106, 77, 153, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  overflow: hidden;
+}
+
+.contact-info {
+  grid-area: info;
+
+  padding: 1.5rem;
 
   text-align: left;
 }
 
+.contact-map-card {
+  grid-area: map;
 
-/* ===============================
+  min-height: 620px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-video-card {
+  grid-area: video;
+
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.contact-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.2rem;
+
+  border-bottom: 1px solid rgba(92, 195, 173, 0.14);
+}
+
+.contact-brand img {
+  width: 3.2rem;
+  height: 3.2rem;
+
+  object-fit: contain;
+
+  padding: 0.35rem;
+
+  border-radius: 1rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(157, 224, 210, 0.28),
+      rgba(189, 167, 216, 0.20)
+    );
+
+  box-shadow:
+    0 10px 24px rgba(46, 139, 119, 0.10);
+}
+
+.contact-brand span {
+  display: block;
+
+  color: var(--color-accent-purple);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.contact-brand strong {
+  display: block;
+
+  margin-top: 0.18rem;
+
+  color: rgba(60, 60, 60, 0.62);
+
+  font-family: "Nunito", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+
+/* ============================================================
    INFO ITEMS
-================================= */
+============================================================ */
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+
+  margin-bottom: 1.4rem;
+}
 
 .info-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.85rem;
 
-  margin-bottom: 1.2rem;
+  padding: 0.9rem;
+
+  border: 1px solid rgba(92, 195, 173, 0.11);
+  border-radius: 1.15rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(255, 255, 255, 0.48)
+    );
+}
+
+.info-icon-wrap {
+  width: 2.35rem;
+  height: 2.35rem;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(157, 224, 210, 0.34),
+      rgba(189, 167, 216, 0.24)
+    );
+
+  color: var(--color-accent-green);
 }
 
 .info-icon {
-  color: var(--color-primary-strong);
-  font-size: 1.35rem;
-  margin-top: 0.2rem;
+  font-size: 1rem;
 }
 
 .info-item p {
   margin: 0;
-  font-size: 1rem;
-  color: #333;
+
+  color: rgba(44, 62, 58, 0.86);
+
+  font-family: "Nunito", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
   line-height: 1.55;
 }
 
 .info-item a {
   color: var(--color-primary-strong);
-  font-weight: 600;
+
+  font-weight: 900;
   text-decoration: none;
 
-  transition: color .2s ease, text-shadow .2s ease;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
 }
 
 .info-item a:hover {
   color: var(--color-secondary-strong);
-  text-shadow: 0 0 10px rgba(157,224,210,.35);
-}
 
-.open {
-  color: #28a745;
-  font-weight: 700;
+  text-shadow:
+    0 0 10px rgba(157, 224, 210, 0.35);
 }
 
 
-/* ===============================
+/* ============================================================
    WHATSAPP FORM
-================================= */
+============================================================ */
 
 .whatsapp-form {
-  margin-top: 1.25rem;
-
   display: flex;
   flex-direction: column;
-  gap: .8rem;
+  gap: 0.85rem;
+}
+
+.whatsapp-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.whatsapp-form label span {
+  color: rgba(60, 60, 60, 0.68);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .whatsapp-form input,
 .whatsapp-form textarea {
-
   width: 100%;
 
-  padding: 0.85rem 1rem;
+  padding: 0.9rem 1rem;
 
-  border-radius: 10px;
+  border: 1px solid rgba(92, 195, 173, 0.16);
+  border-radius: 1rem;
 
-  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.76);
 
-  background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(6px);
+  color: rgba(44, 62, 58, 0.9);
 
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
-  color: #333;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
 
   resize: none;
 
-  transition: border-color .2s ease,
-              box-shadow .2s ease,
-              background .2s ease;
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
 }
 
 .whatsapp-form input::placeholder,
 .whatsapp-form textarea::placeholder {
-  color: #8b8b8b;
+  color: rgba(60, 60, 60, 0.42);
 }
 
 .whatsapp-form input:focus,
 .whatsapp-form textarea:focus {
   outline: none;
 
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.94);
 
   border-color: var(--color-primary-strong);
 
-  box-shadow: 0 0 10px rgba(92,195,173,0.35);
+  box-shadow:
+    0 0 0 4px rgba(92, 195, 173, 0.16),
+    0 0 18px rgba(92, 195, 173, 0.20);
 }
 
 
-/* ===============================
+/* ============================================================
    WHATSAPP BUTTON
-================================= */
+============================================================ */
 
 .cta-whatsapp {
-  display: inline-flex;
+  position: relative;
 
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
 
-  background: #25d366;
-  color: #fff;
+  min-height: 3.05rem;
 
-  font-size: 1rem;
-  font-weight: 700;
+  margin-top: 0.35rem;
 
-  padding: 0.9rem 1.1rem;
+  padding: 0 1.2rem;
 
   border: none;
-  border-radius: 12px;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #25d366,
+      #1fb95f
+    );
+
+  color: #ffffff;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 900;
 
   cursor: pointer;
 
-  transition: transform .18s ease,
-              filter .18s ease,
-              box-shadow .18s ease;
+  box-shadow:
+    0 14px 28px rgba(37, 211, 102, 0.24),
+    0 8px 20px rgba(31, 185, 95, 0.16);
 
-  box-shadow: 0 8px 18px rgba(37,211,102,0.25);
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+.cta-whatsapp::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -60%;
+
+  width: 45%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.42),
+      transparent
+    );
+
+  transform: skewX(-18deg);
+
+  transition: left 0.55s ease;
+}
+
+.cta-whatsapp svg,
+.cta-whatsapp span {
+  position: relative;
+  z-index: 1;
 }
 
 .cta-whatsapp:hover {
+  transform: translateY(-2px);
+
   filter: brightness(1.03);
 
-  transform: translateY(-1px);
+  box-shadow:
+    0 18px 36px rgba(37, 211, 102, 0.32),
+    0 12px 24px rgba(31, 185, 95, 0.22);
+}
 
-  box-shadow: 0 10px 22px rgba(37,211,102,0.32);
+.cta-whatsapp:hover::before {
+  left: 120%;
 }
 
 .cta-whatsapp:active {
@@ -277,45 +527,193 @@
 }
 
 
-/* ===============================
+/* ============================================================
+   MAP
+============================================================ */
+
+.contact-map-header,
+.contact-video-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding: 1.05rem 1.2rem;
+
+  border-bottom: 1px solid rgba(92, 195, 173, 0.14);
+
+  text-align: left;
+}
+
+.contact-map-header span,
+.contact-video-header span {
+  display: block;
+
+  color: var(--color-accent-green);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-map-header strong,
+.contact-video-header strong {
+  display: block;
+
+  margin-top: 0.18rem;
+
+  color: var(--color-accent-purple);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.contact-map-header svg {
+  color: var(--color-secondary-strong);
+
+  font-size: 1.35rem;
+}
+
+.contact-map {
+  flex: 1;
+
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+.contact-map .leaflet-container {
+  font-family: "Nunito", sans-serif;
+}
+
+.contact-map .leaflet-popup-content-wrapper {
+  border-radius: 1rem;
+
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   VIDEO VERTICAL
+============================================================ */
+
+.contact-video-card {
+  align-self: stretch;
+}
+
+.contact-video {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.75rem;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(157, 224, 210, 0.28),
+      transparent 42%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(157, 224, 210, 0.18),
+      rgba(189, 167, 216, 0.16)
+    );
+}
+
+.contact-video video {
+  display: block;
+
+  width: 100%;
+  max-width: 230px;
+  height: auto;
+
+  aspect-ratio: 9 / 16;
+
+  object-fit: cover;
+
+  border-radius: 1.25rem;
+
+  box-shadow:
+    0 18px 42px rgba(46, 139, 119, 0.14),
+    0 8px 22px rgba(106, 77, 153, 0.10);
+}
+
+/* ============================================================
    ACCESSIBILITY
-================================= */
+============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-
   .cta-whatsapp,
-  .info-item a {
+  .cta-whatsapp::before,
+  .info-item a,
+  .contact-video video {
     transition: none;
+    animation: none;
   }
-
 }
 
-/* ===============================
-   RESPONSIVE
-================================= */
 
-@media (max-width: 900px) {
-
+@media (max-width: 1100px) {
   .contact-container {
-    gap: 1.5rem;
+    grid-template-columns: 0.9fr 1.2fr;
+    grid-template-areas:
+      "info map"
+      "video map";
   }
 
-  .contact-logo {
-    display: none;
+  .contact-video-card {
+    min-height: 360px;
+  }
+
+  .contact-video video {
+    max-width: 210px;
   }
 }
 
-@media (max-width: 768px) {
-
+@media (max-width: 980px) {
   .contact-container {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "info"
+      "map"
+      "video";
+
+    max-width: 760px;
   }
 
-  .contact-map {
-    min-height: 320px;
-  }
-  .contact-logo {
-    display: none;
+  .contact-map-card {
+    min-height: 460px;
   }
 
+  .contact-video-card {
+    min-height: auto;
+  }
+
+  .contact-video {
+    min-height: 420px;
+  }
+
+  .contact-video video {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-video {
+    min-height: 380px;
+  }
+
+  .contact-video video {
+    max-width: 220px;
+  }
 }
