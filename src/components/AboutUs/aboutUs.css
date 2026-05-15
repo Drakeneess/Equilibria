@@ -122,14 +122,13 @@
   z-index: 2;
 
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2rem;
 
-  width: min(100%, 1120px);
+  width: min(100%, 1180px);
 
   margin: 0 auto;
 }
-
 
 /* ============================================================
    CARD
@@ -231,6 +230,10 @@
   background-image: url("../../assets/values-bg.webp");
 }
 
+.about-card--purpose .about-card-button::before {
+  background-image: url("../../assets/purpose-bg.webp");
+}
+
 .about-card-button::after {
   content: "";
 
@@ -303,6 +306,9 @@
 
 .about-card--values .about-card-glow {
   background: rgba(157, 224, 210, 0.30);
+}
+.about-card--purpose .about-card-glow {
+  background: rgba(159, 124, 247, 0.34);
 }
 
 .about-card:hover .about-card-glow,

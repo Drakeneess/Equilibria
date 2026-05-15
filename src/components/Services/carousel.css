@@ -180,8 +180,7 @@
   }
 
   .carousel-side-control {
-    opacity: 1;
-    width: 2.7rem;
+    display: none;
   }
 
   .carousel-side-control:not(.disabled):hover {
@@ -195,7 +194,8 @@
 
 @media (max-width: 480px) {
   .carousel-side-control {
-    width: 2.35rem;
+    display: none;
+
   }
 
   .carousel-side-control:not(.disabled):hover {

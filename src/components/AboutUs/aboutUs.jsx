@@ -56,6 +56,16 @@ const AboutUs = () => {
             <li>Colaboración</li>
           </ul>
         </AboutCard>
+        <AboutCard
+          type="purpose"
+          eyebrow="Nuestra razón de ser"
+          title="Propósito"
+        >
+          <p>
+            Guiar procesos de recuperación con cuidado, precisión y humanidad, para que cada
+            persona vuelva a confiar en su cuerpo y en su capacidad de sentirse mejor.
+          </p>
+        </AboutCard>
       </div>
     </section>
   );

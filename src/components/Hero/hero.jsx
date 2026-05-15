@@ -100,8 +100,8 @@ export default function Hero() {
           </div>
 
           <p className="hero-description">
-            Fisioterapia, kinesiología y bienestar integral para ayudarte a moverte mejor,
-            sentirte mejor y volver a tu equilibrio.
+            Fisioterapia y kinesiología personalizada con tecnología avanzada para cuidar
+            tu movimiento, tu recuperación y tu bienestar diario.
           </p>
 
           <div className="hero-actions">
