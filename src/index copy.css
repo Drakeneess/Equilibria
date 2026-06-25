@@ -35,15 +35,28 @@
   --color-accent-yellow: #F7E27C; /* Amarillo pastel resplandor */
 }
 
-/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   padding: 0;
-  min-width: 320px;
+  min-width: 0;
   min-height: 100vh;
-  background: var(--color-light);
+  width: 100%;
+  max-width: 100%;
+  background: #f9f7f3;
   color: var(--color-text-main);
-  overflow-x: hidden; /* evita scroll horizontal */
+  overflow-x: clip;
 }
 
 /* Root container */
@@ -52,7 +65,7 @@ body {
   padding: 0;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   text-align: left;
 }
 
@@ -100,17 +113,38 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* ============================================================
+   SECTION TITLE CON ICONO DINÁMICO
+   ============================================================ */
+
 .section-title {
   font-family: 'Poppins', sans-serif;
   font-size: 2.4rem;
   font-weight: 700;
   margin-bottom: 3rem;
   color: var(--color-secondary);
+
   position: relative;
-  display: inline-block;
+  display: inline-block; /* ya no inline-flex */
   text-align: center;
 }
 
+/* Contenedor interno para icono + texto */
+.section-title .title-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Icono */
+.section-title .title-inner::before {
+  content: attr(data-icon);
+  font-size: 2rem;
+  transform: translateY(2px);
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+}
+
+/* Línea decorativa abajo */
 .section-title::after {
   content: "";
   display: block;
@@ -119,6 +153,31 @@ button:focus-visible {
   height: 4px;
   border-radius: 2px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+img,
+video,
+canvas,
+picture,
+svg {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+  display: block;
+}
+
+section,
+article,
+aside,
+header,
+footer,
+nav,
+main,
+div {
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
@@ -130,5 +189,310 @@ button:focus-visible {
 @media (max-width: 480px) {
   .section-title {
     font-size: 1.7rem;
+  }
+}
+
+/* ============================================================
+   FIX OVERFLOW MOBILE EQUILIBRIA
+   Porque alguna caja siempre quiere medir más que el planeta.
+   ============================================================ */
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@supports not (overflow-x: clip) {
+  html,
+  body,
+  #root {
+    overflow-x: hidden;
+  }
+}
+
+/* Textos largos */
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+a,
+button,
+strong,
+small {
+  overflow-wrap: break-word;
+}
+
+/* Evita que títulos inline-block se salgan */
+.section-title {
+  max-width: 100%;
+}
+
+/* Los botones globales están contaminando botones especiales */
+.nav-brand,
+.nav-link,
+.nav-toggle,
+.brandmark,
+.about-card-button,
+.service-tab,
+.carousel-side-control,
+.mag-side,
+.ceo-exp-close {
+  max-width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar,
+  .hero-wrapper,
+  .stage-hero,
+  .trustbar,
+  .about-container,
+  .ceo-container,
+  .services,
+  .our-technology,
+  .event-section,
+  .contact,
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .navbar-container,
+  .hero-overlay,
+  .trustbar-container,
+  .about-container,
+  .ceo-container,
+  .services,
+  .our-technology,
+  .event-section,
+  .contact,
+  .footer-shell {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* HERO */
+  .hero-overlay,
+  .hero-copy,
+  .slogan-container,
+  .hero-description,
+  .hero-actions {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .brandmark {
+    max-width: 78vw;
+  }
+
+  .brandmark .isotipo {
+    width: min(42vw, 170px);
+    height: auto;
+  }
+
+  .brandmark .logotipo {
+    width: min(62vw, 220px);
+    height: auto;
+  }
+
+  .hero-title {
+    max-width: 100%;
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.05;
+    text-align: center;
+  }
+
+  .hero-description {
+    text-align: center;
+    font-size: 0.92rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-btn {
+    width: min(100%, 320px);
+    max-width: 100%;
+  }
+
+  /* TRUSTBAR */
+  .trustbar-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .trust-items {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+  }
+
+  .trust-item {
+    min-width: 0;
+    white-space: nowrap;
+    font-size: 0.72rem;
+  }
+
+  .trustbar-link {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* GRIDS PRINCIPALES */
+  .about-sections,
+  .ceo-content,
+  .services-shell,
+  .contact-container,
+  .footer-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* SERVICES */
+  .services-shell,
+  .services-panel,
+  .services-carousel-wrapper,
+  .embla,
+  .embla__container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .services-tabs {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .services-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-tab {
+    flex: 0 0 min(78vw, 280px);
+    min-width: 0;
+    max-width: 280px;
+  }
+
+  .service-tab-content,
+  .service-tab-content strong,
+  .service-tab-content small {
+    min-width: 0;
+    white-space: normal;
+  }
+
+  .embla {
+    overflow: hidden;
+  }
+
+  .embla__container {
+    display: flex;
+  }
+
+  .embla__slide {
+    flex: 0 0 86%;
+    min-width: 0;
+    max-width: 86%;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .carousel-side-control,
+  .carousel-edge-fade {
+    display: none;
+  }
+
+  /* TECNOLOGÍA */
+  .magazine-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .magazine-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .magazine-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mag-card {
+    grid-area: auto !important;
+    flex: 0 0 min(86vw, 340px);
+    max-width: min(86vw, 340px);
+    scroll-snap-align: center;
+  }
+
+  .mag-side {
+    display: none;
+  }
+
+  /* CEO */
+  .ceo-image-area,
+  .ceo-image-wrapper,
+  .ceo-image {
+    max-width: 100%;
+  }
+
+  .ceo-floating-card {
+    max-width: calc(100vw - 32px);
+  }
+
+  /* CONTACTO */
+  .contact-info,
+  .contact-map-card,
+  .contact-video-card,
+  .contact-map,
+  .contact-video {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .whatsapp-form input,
+  .whatsapp-form textarea,
+  .cta-whatsapp {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* FOOTER */
+  .footer-legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
   }
 }

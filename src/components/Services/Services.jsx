@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import CategoryCarousel from "./CategoryCarousel";
 import "./services.css";
 import "./carousel.css";
+import {
+  getServicesProjectBackup,
+  groupServicesByCategory
+} from "../../utils/servicesBackup";
 
 const API_URL = "https://api.equilibria.sbs/api/services.php";
 
@@ -43,54 +47,57 @@ export default function Services() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`${API_URL}?categories`)
-      .then((res) => {
-        if (!res.ok) throw new Error("No se pudieron cargar las categorías");
-        return res.json();
-      })
-      .then((data) => {
-        const sorted = [...data].sort((a, b) => a.id - b.id);
+  async function loadServices() {
+    try {
+      setLoadingCategories(true);
+      setLoadingServices(true);
+      setError("");
 
-        setCategories(sorted);
+      const categoriesResponse = await fetch(`${API_URL}?categories`);
+
+      if (!categoriesResponse.ok) {
+        throw new Error("No se pudieron cargar las categorías desde el API");
+      }
+
+      const servicesResponse = await fetch(API_URL);
+
+      if (!servicesResponse.ok) {
+        throw new Error("No se pudieron cargar los servicios desde el API");
+      }
+
+      const categoriesData = await categoriesResponse.json();
+      const servicesData = await servicesResponse.json();
+
+      const sortedCategories = [...categoriesData].sort((a, b) => a.id - b.id);
+      const groupedServices = groupServicesByCategory(servicesData);
+
+      setCategories(sortedCategories);
+      setServicesData(groupedServices);
+      setActiveCategory(0);
+    } catch (apiError) {
+      console.error("API falló. Cargando backup local:", apiError);
+
+      try {
+        const backup = await getServicesProjectBackup();
+
+        const sortedCategories = [...backup.categories].sort((a, b) => a.id - b.id);
+        const groupedServices = groupServicesByCategory(backup.services);
+
+        setCategories(sortedCategories);
+        setServicesData(groupedServices);
         setActiveCategory(0);
-      })
-      .catch((err) => {
-        console.error("Error cargando categorías:", err);
-        setError("No pudimos cargar las categorías de servicios.");
-      })
-      .finally(() => {
-        setLoadingCategories(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (loadingCategories || error) return;
-
-    fetch(API_URL)
-      .then((res) => {
-        if (!res.ok) throw new Error("No se pudieron cargar los servicios");
-        return res.json();
-      })
-      .then((data) => {
-        const grouped = {};
-
-        data.forEach((service) => {
-          const category = service.category;
-
-          if (!grouped[category]) grouped[category] = [];
-          grouped[category].push(service);
-        });
-
-        setServicesData(grouped);
-      })
-      .catch((err) => {
-        console.error("Error cargando servicios:", err);
+      } catch (backupError) {
+        console.error("También falló el backup local:", backupError);
         setError("No pudimos cargar los servicios.");
-      })
-      .finally(() => {
-        setLoadingServices(false);
-      });
-  }, [loadingCategories, error]);
+      }
+    } finally {
+      setLoadingCategories(false);
+      setLoadingServices(false);
+    }
+  }
+
+  loadServices();
+}, []);
 
   if (loadingCategories) {
     return (
