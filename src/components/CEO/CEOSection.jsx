@@ -3,6 +3,9 @@ import "./ceoSection.css";
 import CEOExperience from "./CEOExperience";
 import ceoImg from "../../assets/icon leila1.webp";
 
+const recognitionPostUrl =
+  "https://www.facebook.com/premiosestrelladelasalud/posts/pfbid032FDKfZm2GPEAdJQ7xumSFj2fs3x7NripwSEGg88PF65AoSVjcNvsqJq657kqtbRtl?rdid=pOX8pQDCoCqdL7Ow#";
+
 export default function CEOSection() {
   const [open, setOpen] = useState(false);
 
@@ -46,6 +49,19 @@ export default function CEOSection() {
             Su liderazgo ha permitido que Equilibria se consolide como un centro
             de referencia en bienestar físico, destacándose por su enfoque humano,
             ético y orientado a resultados.
+          </p>
+
+          <p className="ceo-recognition">
+            Reconocida en los Premios Estrella de la Salud 2026 por su trayectoria
+            en Fisioterapia y Kinesiología, su liderazgo en Equilibria y su
+            compromiso con la innovación terapéutica y el bienestar comunitario.{" "}
+            <a
+              href={recognitionPostUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver reconocimiento
+            </a>
           </p>
 
           <div className="ceo-actions">
