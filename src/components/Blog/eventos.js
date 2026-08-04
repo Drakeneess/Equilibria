@@ -80,16 +80,15 @@ export const eventos = [
     description:
     "El Aniversario de Equilibria este 2026 fue un punto de encuentro entre comunidad, práctica y experiencia.\n\nNo se trató solo de celebrar un año más, sino de reunir a quienes forman parte del proceso: practicantes, usuarios y profesionales que trabajan día a día con el bienestar desde una perspectiva integral.\n\nDurante la jornada compartimos espacios de conexión, demostraciones y acompañamiento personalizado, mostrando en vivo cómo se aplican nuestras herramientas en contextos reales.\n\nEquilibria no es solo un servicio, es una comunidad en movimiento. Este aniversario reafirma nuestro compromiso con un enfoque práctico, humano y sostenible del bienestar."
   },
-  /*
   {
-    slug: "capacitacion-thailandia-2025",
-    folder: "capacitacion-thailandia-2025",
-    title: "Capacitacion Tailandia 2025",
-    date: "2025-08-21",
-    imageCount: getImageCount("capacitacion-thailandia-2025"),
-    description: ""
+    slug: "media-maraton-alcos-2026",
+    folder: "media-maraton-alcos-2026",
+    title: "Media maratón de Alcos 2026",
+    date: "2026-08-02",
+    imageCount: getImageCount("media-maraton-alcos-2026"),
+    description:
+      "La Media Maratón de Alcos 2026 fue una jornada marcada por el esfuerzo, la constancia y el compromiso con el bienestar físico.\n\nDesde Equilibria acompañamos a los participantes durante la competencia, compartiendo de cerca la exigencia que implica recorrer cada kilómetro y la importancia de preparar, cuidar y recuperar el cuerpo adecuadamente.\n\nNuestra presencia no se limitó al evento. Formamos parte de la experiencia, conectando con corredores y promoviendo un enfoque integral en el que el rendimiento, la recuperación y el equilibrio trabajan juntos.\n\nCada carrera representa un desafío personal. Estar presentes en la Media Maratón de Alcos reafirma nuestro compromiso con quienes buscan superar sus límites de manera consciente, responsable y sostenible."
   },
-  */
 ];
 export const eventosOrdenados = [...eventos].sort(
   (a, b) => new Date(b.date) - new Date(a.date)
