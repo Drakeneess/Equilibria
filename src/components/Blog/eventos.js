@@ -89,6 +89,15 @@ export const eventos = [
     description:
       "La Media Maratón de Alcos 2026 fue una jornada marcada por el esfuerzo, la constancia y el compromiso con el bienestar físico.\n\nDesde Equilibria acompañamos a los participantes durante la competencia, compartiendo de cerca la exigencia que implica recorrer cada kilómetro y la importancia de preparar, cuidar y recuperar el cuerpo adecuadamente.\n\nNuestra presencia no se limitó al evento. Formamos parte de la experiencia, conectando con corredores y promoviendo un enfoque integral en el que el rendimiento, la recuperación y el equilibrio trabajan juntos.\n\nCada carrera representa un desafío personal. Estar presentes en la Media Maratón de Alcos reafirma nuestro compromiso con quienes buscan superar sus límites de manera consciente, responsable y sostenible."
   },
+  {
+    slug: "liga-la-paz-v3-circuito-irpavi",
+    folder: "liga-la-paz-v3-circuito-irpavi",
+    title: "Liga La Paz Versión 3 - Corremos por La Paz | Circuito Irpavi",
+    date: "2026-08-22",
+    imageCount: getImageCount("liga-la-paz-v3-circuito-irpavi"),
+    description:
+      "La Liga La Paz Versión 3 llevó la experiencia de Corremos por La Paz al Circuito Irpavi, reuniendo a corredores en una jornada de actividad, esfuerzo y comunidad.\n\nDesde Equilibria estuvimos presentes acompañando a los participantes y formando parte de una experiencia que pone en movimiento a la ciudad y promueve una relación más consciente con la actividad física.\n\nCada circuito presenta sus propios desafíos y exige preparación, constancia y una adecuada recuperación. Por eso, acompañamos estos espacios desde una perspectiva integral, conectando rendimiento y bienestar.\n\nParticipar en Corremos por La Paz reafirma nuestro compromiso con una comunidad activa y con quienes incorporan el movimiento como parte de un estilo de vida sostenible."
+  },
 ];
 export const eventosOrdenados = [...eventos].sort(
   (a, b) => new Date(b.date) - new Date(a.date)
