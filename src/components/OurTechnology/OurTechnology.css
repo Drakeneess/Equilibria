@@ -221,7 +221,7 @@
 
   scrollbar-width: none;
   scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
 }
 
 .magazine-grid::-webkit-scrollbar {
@@ -240,7 +240,7 @@
 
   overflow: hidden;
 
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 
   background:
     linear-gradient(

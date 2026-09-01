@@ -31,16 +31,71 @@ export default function TechnologyMagazine({ items = [] }) {
   };
 
   const scroll = (direction) => {
-    const el = gridRef.current;
-    if (!el) return;
+  const el = gridRef.current;
+  if (!el) return;
 
-    const amount = el.clientWidth * 0.82;
+  const cards = Array.from(
+    el.querySelectorAll(".mag-card")
+  );
 
-    el.scrollBy({
-      left: direction * amount,
-      behavior: "smooth"
-    });
-  };
+  if (!cards.length) return;
+
+  const containerRect = el.getBoundingClientRect();
+
+  const containerCenter =
+    containerRect.left + containerRect.width / 2;
+
+  const tolerance = 30;
+
+  const cardPositions = cards.map((card) => {
+    const rect = card.getBoundingClientRect();
+
+    return {
+      card,
+      rect,
+      center: rect.left + rect.width / 2
+    };
+  });
+
+  let target = null;
+
+  if (direction > 0) {
+    // Primera tarjeta cuyo centro se encuentre
+    // claramente a la derecha del centro actual.
+    target = cardPositions
+      .filter(
+        ({ center }) =>
+          center > containerCenter + tolerance
+      )
+      .sort(
+        (a, b) =>
+          a.center - b.center
+      )[0];
+  } else {
+    // Primera tarjeta hacia la izquierda.
+    target = cardPositions
+      .filter(
+        ({ center }) =>
+          center < containerCenter - tolerance
+      )
+      .sort(
+        (a, b) =>
+          b.center - a.center
+      )[0];
+  }
+
+  if (!target) return;
+
+  // Distancia exacta necesaria para colocar
+  // el centro de la tarjeta en el centro del viewport.
+  const delta =
+    target.center - containerCenter;
+
+  el.scrollBy({
+    left: delta,
+    behavior: "smooth"
+  });
+};
 
   useEffect(() => {
     const el = gridRef.current;
