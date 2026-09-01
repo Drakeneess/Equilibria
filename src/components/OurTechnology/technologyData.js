@@ -12,105 +12,113 @@ import tec12 from "./tec11.webp";
 import tec13 from "./tec12.webp";
 import tec2 from "./tec13.webp";
 import tec14 from "./tec14.webp";
+import tec15 from "./tec15.webp";
 
 const technologyData = [
   {
     name: "CHATTANOOGA WIRELESS PROFESSIONAL ELECTROTHERAPY",
-    desc: "Recupera movilidad y alivia el dolor con electroterapia inalámbrica de última generación, diseñada para brindar tratamientos precisos y cómodos.",
+    desc: "Electroterapia inalámbrica para recuperación muscular, movilidad y manejo del dolor.",
     img: tec14,
-    grid: "2x3",
+    grid: "2x2",
     order: 1
   },
   {
     name: "HTM TECARE",
-    desc: "Reafirma y revitaliza tu piel con radiofrecuencia para un aspecto más firme y juvenil.",
+    desc: "Radiofrecuencia para recuperación, cuidado corporal y bienestar.",
     img: tec2,
     grid: "1x2",
     order: 2
   },
   {
     name: "INTELECT MOBILE 2 COMBO",
-    desc: "Recupera tu movilidad y alivia el dolor con terapia combinada de electroestimulación y ultrasonido avanzada.",
+    desc: "Ultrasonido y electroestimulación combinados para recuperación y rehabilitación.",
     img: tec6,
-    grid: "2x2",
+    grid: "2x1",
     order: 3
   },
   {
-    name: "LASER TERAPEUTICO CEC",
-    desc: "Campos electromagnéticos para regeneración ósea.",
-    img: tec4,
-    grid: "1x1",
+    name: "HEALEEX SYSTEM",
+    desc: "Tecnología portátil orientada al bienestar, equilibrio y recuperación.",
+    img: tec15,
+    grid: "2x2",
     order: 4
   },
   {
-    name: "BIOMAG",
-    desc: "Alivia el dolor y estimula la recuperación con terapia de campos magnéticos.",
-    img: tec5,
+    name: "LÁSER TERAPÉUTICO CEC",
+    desc: "Aplicación localizada para acompañar procesos de recuperación y rehabilitación.",
+    img: tec4,
     grid: "1x1",
     order: 5
   },
   {
-    name: "Equipo de Microdermoabrasión",
-    desc: "Renueva tu piel y luce un rostro más limpio y luminoso.",
-    img: tec1,
-    grid: "2x1",
+    name: "BIOMAG",
+    desc: "Campos magnéticos aplicados a recuperación, relajación y bienestar.",
+    img: tec5,
+    grid: "1x1",
     order: 6
   },
   {
     name: "SONIC COMPACT MAXX",
-    desc: "Moldea, reafirma y revitaliza con ultrasonido y corrientes terapéuticas de última generación.",
+    desc: "Ultrasonido y corrientes terapéuticas para recuperación y cuidado corporal.",
     img: tec3,
     grid: "1x2",
     order: 7
   },
   {
-    name: "ELECTROESTIMULACIÓN",
-    desc: "Activa y fortalece la musculatura mediante electroestimulación multicanal, ideal para rehabilitación, tonificación y alivio del dolor.",
+    name: "ELECTROESTIMULACIÓN MULTICANAL",
+    desc: "Estimulación muscular para fortalecimiento, tonificación y rehabilitación.",
     img: tec7,
     grid: "2x1",
     order: 8
   },
   {
-    name: "ZAPPER THERAPIA",
-    desc: "Estimula el equilibrio del organismo y apoyar procesos naturales de bienestar.",
-    img: tec8,
-    grid: "2x1",
+    name: "EQUIPO DE MICRODERMOABRASIÓN",
+    desc: "Exfoliación mecánica para renovar y mejorar la apariencia de la piel.",
+    img: tec1,
+    grid: "1x1",
     order: 9
   },
   {
     name: "ELECTRÓLISIS TERAPÉUTICA",
-    desc: "Estimula procesos naturales del organismo para favorecer el equilibrio.",
+    desc: "Aplicación localizada dentro de protocolos especializados de fisioterapia.",
     img: tec9,
     grid: "1x1",
     order: 10
   },
   {
     name: "REMODELACIÓN CORPORAL MULTIFUNCIÓN",
-    desc: "Combina tecnologías avanzadas para reducir grasa localizada, mejorar la firmeza de la piel y redefinir la silueta.",
+    desc: "Tecnologías combinadas para tonificación, firmeza y cuidado corporal.",
     img: tec10,
     grid: "2x2",
     order: 11
   },
   {
-    name: "TERAPIA TERAHERTZ",
-    desc: "Estimula procesos naturales del cuerpo, favorece el equilibrio y la recuperación.",
-    img: tec11,
-    grid: "2x1",
+    name: "ZAPPER THERAPIA",
+    desc: "Estimulación de baja intensidad aplicada a protocolos de bienestar.",
+    img: tec8,
+    grid: "1x1",
     order: 12
   },
   {
-    name: "ELECTROESTIMULACIÓN TENS",
-    desc: "Ayuda a aliviar el dolor, mejorar la recuperación muscular y estimular los procesos naturales de rehabilitación.",
-    img: tec12,
-    grid: "2x1",
+    name: "TERAPIA DE ALTA FRECUENCIA",
+    desc: "Tecnología estética para limpieza y cuidado superficial de la piel.",
+    img: tec13,
+    grid: "1x2",
     order: 13
   },
   {
-    name: "TERAPIA DE ALTA FRECUENCIA",
-    desc: "Purifica la piel, reduce imperfecciones y estimula la circulación para un rostro más saludable.",
-    img: tec13,
-    grid: "1x2",
+    name: "ELECTROESTIMULACIÓN TENS",
+    desc: "Estimulación transcutánea para acompañar recuperación y manejo del dolor.",
+    img: tec12,
+    grid: "2x1",
     order: 14
+  },
+  {
+    name: "TERAPIA TERAHERTZ",
+    desc: "Tecnología complementaria integrada a experiencias de relajación y bienestar.",
+    img: tec11,
+    grid: "1x1",
+    order: 15
   }
 ];
 
