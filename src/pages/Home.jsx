@@ -22,10 +22,10 @@ export default function Home() {
         <Hero/>
       </div>
       <TrustBar />
-      <AboutUs />
       <CEOSection />
       <Services />
       <OurTechnology />
+      <AboutUs />
       <Blog />
       <Contact />
       <PromoBanner />

@@ -471,6 +471,8 @@
 
   isolation: isolate;
 
+  cursor: pointer;
+
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -483,6 +485,16 @@
     0 28px 62px rgba(46, 139, 119, 0.18),
     0 14px 30px rgba(106, 77, 153, 0.12);
 }
+
+.service-card:focus-visible {
+  outline: 3px solid var(--category-start);
+  outline-offset: 4px;
+}
+
+
+/* ============================================================
+   IMAGE
+============================================================ */
 
 .service-img {
   position: absolute;
@@ -515,6 +527,15 @@
   transform: scale(1.045);
 }
 
+.service-card.is-open .service-img.loaded {
+  transform: scale(1.055);
+}
+
+
+/* ============================================================
+   OVERLAY
+============================================================ */
+
 .service-overlay {
   position: absolute;
   inset: 0;
@@ -532,14 +553,14 @@
   background:
     linear-gradient(
       180deg,
-      rgba(9, 31, 29, 0.08) 0%,
-      rgba(9, 31, 29, 0.38) 46%,
-      rgba(9, 31, 29, 0.82) 100%
+      rgba(9, 31, 29, 0.04) 0%,
+      rgba(9, 31, 29, 0.15) 48%,
+      rgba(9, 31, 29, 0.78) 100%
     );
 
   transition:
-    background 0.28s ease,
-    backdrop-filter 0.28s ease;
+    background 0.35s ease,
+    backdrop-filter 0.35s ease;
 }
 
 .service-card:hover .service-overlay {
@@ -547,10 +568,25 @@
     linear-gradient(
       180deg,
       rgba(9, 31, 29, 0.03) 0%,
-      rgba(9, 31, 29, 0.28) 42%,
-      rgba(9, 31, 29, 0.78) 100%
+      rgba(9, 31, 29, 0.12) 44%,
+      rgba(9, 31, 29, 0.82) 100%
     );
 }
+
+.service-card.is-open .service-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(9, 31, 29, 0.08) 0%,
+      rgba(9, 31, 29, 0.32) 40%,
+      rgba(9, 31, 29, 0.92) 100%
+    );
+}
+
+
+/* ============================================================
+   TAG
+============================================================ */
 
 .service-card-tag {
   width: fit-content;
@@ -565,6 +601,7 @@
   color: rgba(255, 255, 255, 0.9);
 
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   font-family: "Poppins", sans-serif;
   font-size: 0.68rem;
@@ -573,8 +610,28 @@
   text-transform: uppercase;
 }
 
+
+/* ============================================================
+   CONTENT
+============================================================ */
+
+.service-card-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.service-card-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
 .service-card h3 {
-  margin: 0 0 0.55rem;
+  flex: 1;
+
+  margin: 0;
 
   color: #ffffff;
 
@@ -588,10 +645,65 @@
     0 4px 16px rgba(0, 0, 0, 0.42);
 }
 
-.service-card p {
-  margin: 0;
 
-  color: rgba(255, 255, 255, 0.88);
+/* ============================================================
+   TOGGLE
+============================================================ */
+
+.service-card-toggle {
+  flex-shrink: 0;
+
+  width: 2rem;
+  height: 2rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  color: #ffffff;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1;
+
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.service-card:hover .service-card-toggle {
+  transform: scale(1.08);
+
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.service-card.is-open .service-card-toggle {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* ============================================================
+   DESCRIPTION
+============================================================ */
+
+.service-card-description {
+  margin: 0.85rem 0 0;
+
+  color: rgba(255, 255, 255, 0.9);
 
   font-family: "Nunito", sans-serif;
   font-size: 0.94rem;
@@ -600,6 +712,44 @@
 
   text-shadow:
     0 2px 12px rgba(0, 0, 0, 0.4);
+
+  animation:
+    serviceDescriptionReveal 0.32s
+    cubic-bezier(.22, 1, .36, 1)
+    both;
+}
+
+@keyframes serviceDescriptionReveal {
+  from {
+    opacity: 0;
+
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+============================================================ */
+
+@media (hover: none) {
+  .service-card:hover {
+    transform: none;
+  }
+
+  .service-card:hover .service-img.loaded {
+    transform: scale(1);
+  }
+
+  .service-card.is-open .service-img.loaded {
+    transform: scale(1.04);
+  }
 }
 
 

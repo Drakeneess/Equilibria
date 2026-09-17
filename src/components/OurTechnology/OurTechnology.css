@@ -258,7 +258,11 @@
 
   isolation: isolate;
 
-  animation: technologyGradientFlow 7s ease-in-out infinite;
+  cursor: pointer;
+
+  animation:
+    technologyGradientFlow
+    7s ease-in-out infinite;
 
   transition:
     transform 0.32s ease,
@@ -284,24 +288,36 @@
 }
 
 .mag-card:hover {
-  transform: translateY(-6px);
+  transform:
+    translateY(-6px);
 
   box-shadow:
     0 28px 62px rgba(46, 139, 119, 0.16),
     0 14px 30px rgba(106, 77, 153, 0.11);
 }
 
+.mag-card:focus-visible {
+  outline:
+    3px solid
+    var(--color-accent-green);
+
+  outline-offset: 3px;
+}
+
 @keyframes technologyGradientFlow {
   0% {
-    background-position: 0% 50%;
+    background-position:
+      0% 50%;
   }
 
   50% {
-    background-position: 100% 50%;
+    background-position:
+      100% 50%;
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position:
+      0% 50%;
   }
 }
 
@@ -317,23 +333,38 @@
   object-fit: contain;
 
   padding: 1rem;
+
   box-sizing: border-box;
 
   transform: scale(1.04);
 
   filter:
-    drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+    drop-shadow(
+      0 12px 24px
+      rgba(0, 0, 0, 0.12)
+    );
 
   transition:
-    transform 0.55s cubic-bezier(.22, 1, .36, 1),
+    transform
+    0.55s
+    cubic-bezier(.22, 1, .36, 1),
     filter 0.35s ease;
 }
 
 .mag-card:hover img {
-  transform: scale(1);
+  transform:
+    scale(1);
 
   filter:
-    drop-shadow(0 16px 30px rgba(0, 0, 0, 0.18));
+    drop-shadow(
+      0 16px 30px
+      rgba(0, 0, 0, 0.18)
+    );
+}
+
+.mag-card.is-open img {
+  transform:
+    scale(1.02);
 }
 
 
@@ -347,95 +378,314 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content:
+    space-between;
 
   padding: 1rem;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(8, 30, 28, 0.06) 0%,
-      rgba(8, 30, 28, 0.18) 42%,
-      rgba(8, 30, 28, 0.84) 100%
-    );
-
   color: #ffffff;
 
-  transition:
-    background 0.28s ease,
-    backdrop-filter 0.28s ease;
-}
-
-.mag-card:hover .mag-overlay {
   background:
     linear-gradient(
       180deg,
-      rgba(8, 30, 28, 0.03) 0%,
-      rgba(8, 30, 28, 0.12) 42%,
-      rgba(8, 30, 28, 0.78) 100%
+      rgba(8, 30, 28, 0.04)
+        0%,
+      rgba(8, 30, 28, 0.12)
+        48%,
+      rgba(8, 30, 28, 0.78)
+        100%
+    );
+
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.mag-card:hover
+.mag-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 30, 28, 0.03)
+        0%,
+      rgba(8, 30, 28, 0.10)
+        44%,
+      rgba(8, 30, 28, 0.82)
+        100%
     );
 }
+
+.mag-card.is-open
+.mag-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 30, 28, 0.06)
+        0%,
+      rgba(8, 30, 28, 0.28)
+        42%,
+      rgba(8, 30, 28, 0.92)
+        100%
+    );
+}
+
+
+/* ============================================================
+   CHIP
+============================================================ */
 
 .mag-chip {
   width: fit-content;
 
-  padding: 0.32rem 0.62rem;
+  padding:
+    0.32rem 0.62rem;
 
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 999px;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.24);
 
-  background: rgba(255, 255, 255, 0.14);
+  border-radius:
+    999px;
 
-  color: rgba(255, 255, 255, 0.88);
+  background:
+    rgba(255, 255, 255, 0.14);
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  color:
+    rgba(255, 255, 255, 0.88);
 
-  font-family: "Poppins", sans-serif;
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  font-family:
+    "Poppins",
+    sans-serif;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
 }
+
+
+/* ============================================================
+   COPY
+============================================================ */
 
 .mag-copy {
-  transform: translateY(0);
+  position: relative;
 
-  transition: transform 0.3s ease;
+  transform:
+    translateY(0);
+
+  transition:
+    transform 0.3s ease;
 }
 
-.mag-card:hover .mag-copy {
-  transform: translateY(-4px);
+.mag-card:hover
+.mag-copy {
+  transform:
+    translateY(-3px);
+}
+
+.mag-title-row {
+  display: flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    space-between;
+
+  gap: 0.6rem;
 }
 
 .mag-overlay h3 {
-  margin: 0 0 0.38rem;
+  flex: 1;
+
+  margin: 0;
 
   color: #ffffff;
 
-  font-family: "Poppins", sans-serif;
-  font-size: 1.02rem;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
+  font-family:
+    "Poppins",
+    sans-serif;
+
+  font-size:
+    1.02rem;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height:
+    1.08;
 
   text-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.42),
-    0 0 16px rgba(92, 195, 173, 0.26);
+    0 4px 16px
+      rgba(0, 0, 0, 0.42),
+    0 0 16px
+      rgba(92, 195, 173, 0.26);
 }
 
-.mag-overlay p {
-  margin: 0;
 
-  color: rgba(255, 255, 255, 0.88);
+/* ============================================================
+   TOGGLE
+============================================================ */
 
-  font-family: "Nunito", sans-serif;
-  font-size: 0.74rem;
-  font-weight: 700;
-  line-height: 1.42;
+.mag-toggle {
+  flex-shrink: 0;
+
+  width: 1.8rem;
+  height: 1.8rem;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.26);
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(255, 255, 255, 0.14);
+
+  color:
+    #ffffff;
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  font-family:
+    "Poppins",
+    sans-serif;
+
+  font-size:
+    1.05rem;
+
+  font-weight:
+    500;
+
+  line-height:
+    1;
+
+  box-shadow:
+    0 5px 14px
+    rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.mag-card:hover
+.mag-toggle {
+  transform:
+    scale(1.08);
+
+  background:
+    rgba(255, 255, 255, 0.20);
+}
+
+.mag-card.is-open
+.mag-toggle {
+  background:
+    rgba(255, 255, 255, 0.24);
+}
+
+
+/* ============================================================
+   DESCRIPTION
+============================================================ */
+
+.mag-description {
+  margin:
+    0.55rem 0 0;
+
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  font-family:
+    "Nunito",
+    sans-serif;
+
+  font-size:
+    0.74rem;
+
+  font-weight:
+    700;
+
+  line-height:
+    1.42;
 
   text-shadow:
-    0 2px 12px rgba(0, 0, 0, 0.44);
+    0 2px 12px
+    rgba(0, 0, 0, 0.44);
+
+  animation:
+    technologyDescriptionReveal
+    0.3s
+    cubic-bezier(.22, 1, .36, 1)
+    both;
+}
+
+@keyframes technologyDescriptionReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* ============================================================
+   TOUCH
+============================================================ */
+
+@media (hover: none) {
+  .mag-card:hover {
+    transform: none;
+  }
+
+  .mag-card:hover img {
+    transform:
+      scale(1.04);
+  }
+
+  .mag-card.is-open img {
+    transform:
+      scale(1.02);
+  }
 }
 
 

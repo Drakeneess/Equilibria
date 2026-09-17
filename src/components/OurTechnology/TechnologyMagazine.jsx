@@ -15,100 +15,153 @@ export default function TechnologyMagazine({ items = [] }) {
   const [hasLeft, setHasLeft] = useState(false);
   const [hasRight, setHasRight] = useState(false);
 
+  const [openCard, setOpenCard] = useState(null);
+
   const sortedItems = useMemo(() => {
-    return [...items].sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+    return [...items].sort(
+      (a, b) => (a.order ?? 999) - (b.order ?? 999)
+    );
   }, [items]);
 
   const updateScrollState = () => {
     const el = gridRef.current;
+
     if (!el) return;
 
-    const maxScroll = el.scrollWidth - el.clientWidth;
+    const maxScroll =
+      el.scrollWidth - el.clientWidth;
+
     const tolerance = 16;
 
-    setHasLeft(el.scrollLeft > tolerance);
-    setHasRight(el.scrollLeft < maxScroll - tolerance);
+    setHasLeft(
+      el.scrollLeft > tolerance
+    );
+
+    setHasRight(
+      el.scrollLeft < maxScroll - tolerance
+    );
   };
 
   const scroll = (direction) => {
-  const el = gridRef.current;
-  if (!el) return;
+    const el = gridRef.current;
 
-  const cards = Array.from(
-    el.querySelectorAll(".mag-card")
-  );
+    if (!el) return;
 
-  if (!cards.length) return;
+    const cards = Array.from(
+      el.querySelectorAll(".mag-card")
+    );
 
-  const containerRect = el.getBoundingClientRect();
+    if (!cards.length) return;
 
-  const containerCenter =
-    containerRect.left + containerRect.width / 2;
+    const containerRect =
+      el.getBoundingClientRect();
 
-  const tolerance = 30;
+    const containerCenter =
+      containerRect.left +
+      containerRect.width / 2;
 
-  const cardPositions = cards.map((card) => {
-    const rect = card.getBoundingClientRect();
+    const tolerance = 30;
 
-    return {
-      card,
-      rect,
-      center: rect.left + rect.width / 2
-    };
-  });
+    const cardPositions = cards.map((card) => {
+      const rect =
+        card.getBoundingClientRect();
 
-  let target = null;
+      return {
+        card,
+        rect,
+        center:
+          rect.left +
+          rect.width / 2
+      };
+    });
 
-  if (direction > 0) {
-    // Primera tarjeta cuyo centro se encuentre
-    // claramente a la derecha del centro actual.
-    target = cardPositions
-      .filter(
-        ({ center }) =>
-          center > containerCenter + tolerance
-      )
-      .sort(
-        (a, b) =>
-          a.center - b.center
-      )[0];
-  } else {
-    // Primera tarjeta hacia la izquierda.
-    target = cardPositions
-      .filter(
-        ({ center }) =>
-          center < containerCenter - tolerance
-      )
-      .sort(
-        (a, b) =>
-          b.center - a.center
-      )[0];
-  }
+    let target = null;
 
-  if (!target) return;
+    if (direction > 0) {
+      target = cardPositions
+        .filter(
+          ({ center }) =>
+            center >
+            containerCenter + tolerance
+        )
+        .sort(
+          (a, b) =>
+            a.center - b.center
+        )[0];
+    } else {
+      target = cardPositions
+        .filter(
+          ({ center }) =>
+            center <
+            containerCenter - tolerance
+        )
+        .sort(
+          (a, b) =>
+            b.center - a.center
+        )[0];
+    }
 
-  // Distancia exacta necesaria para colocar
-  // el centro de la tarjeta en el centro del viewport.
-  const delta =
-    target.center - containerCenter;
+    if (!target) return;
 
-  el.scrollBy({
-    left: delta,
-    behavior: "smooth"
-  });
-};
+    const delta =
+      target.center - containerCenter;
+
+    el.scrollBy({
+      left: delta,
+      behavior: "smooth"
+    });
+  };
+
+  const toggleCard = (cardKey) => {
+    setOpenCard((current) =>
+      current === cardKey
+        ? null
+        : cardKey
+    );
+  };
+
+  const handleCardKeyDown = (
+    event,
+    cardKey
+  ) => {
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
+      event.preventDefault();
+
+      toggleCard(cardKey);
+    }
+  };
 
   useEffect(() => {
     const el = gridRef.current;
+
     if (!el) return;
 
     updateScrollState();
 
-    el.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
+    el.addEventListener(
+      "scroll",
+      updateScrollState,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      updateScrollState
+    );
 
     return () => {
-      el.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
+      el.removeEventListener(
+        "scroll",
+        updateScrollState
+      );
+
+      window.removeEventListener(
+        "resize",
+        updateScrollState
+      );
     };
   }, [sortedItems.length]);
 
@@ -122,7 +175,11 @@ export default function TechnologyMagazine({ items = [] }) {
 
   return (
     <div
-      className={`magazine-wrapper ${hasLeft ? "has-left" : ""} ${hasRight ? "has-right" : ""}`}
+      className={`magazine-wrapper ${
+        hasLeft ? "has-left" : ""
+      } ${
+        hasRight ? "has-right" : ""
+      }`}
     >
       <button
         type="button"
@@ -131,7 +188,9 @@ export default function TechnologyMagazine({ items = [] }) {
         disabled={!hasLeft}
         aria-label="Ver tecnologías anteriores"
       >
-        <span aria-hidden="true">‹</span>
+        <span aria-hidden="true">
+          ‹
+        </span>
       </button>
 
       <div
@@ -139,28 +198,86 @@ export default function TechnologyMagazine({ items = [] }) {
         ref={gridRef}
         onScroll={updateScrollState}
       >
-        {sortedItems.map((item, index) => (
-          <article
-            key={item.id || item.name || index}
-            className="mag-card"
-            style={getGridSpan(item.grid)}
-          >
-            <img
-              src={item.img}
-              alt={item.name}
-              loading="lazy"
-            />
+        {sortedItems.map(
+          (item, index) => {
+            const cardKey =
+              item.id ||
+              item.name ||
+              index;
 
-            <div className="mag-overlay">
-              <span className="mag-chip">Tecnología</span>
+            const isOpen =
+              openCard === cardKey;
 
-              <div className="mag-copy">
-                <h3>{item.name}</h3>
-                <p>{item.desc}</p>
-              </div>
-            </div>
-          </article>
-        ))}
+            return (
+              <article
+                key={cardKey}
+                className={`mag-card ${
+                  isOpen
+                    ? "is-open"
+                    : ""
+                }`}
+                style={getGridSpan(
+                  item.grid
+                )}
+                onClick={() =>
+                  toggleCard(cardKey)
+                }
+                onKeyDown={(event) =>
+                  handleCardKeyDown(
+                    event,
+                    cardKey
+                  )
+                }
+                role="button"
+                tabIndex={0}
+                aria-expanded={isOpen}
+                aria-label={`${item.name}. ${
+                  isOpen
+                    ? "Ocultar descripción"
+                    : "Ver descripción"
+                }`}
+              >
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  loading="lazy"
+                />
+
+                <div className="mag-overlay">
+                  <span className="mag-chip">
+                    Tecnología
+                  </span>
+
+                  <div className="mag-copy">
+                    <div className="mag-title-row">
+                      <h3>
+                        {item.name}
+                      </h3>
+
+                      <span
+                        className="mag-toggle"
+                        aria-hidden="true"
+                      >
+                        {isOpen
+                          ? "−"
+                          : "+"}
+                      </span>
+                    </div>
+
+                    {isOpen &&
+                      item.desc && (
+                        <p className="mag-description">
+                          {
+                            item.desc
+                          }
+                        </p>
+                      )}
+                  </div>
+                </div>
+              </article>
+            );
+          }
+        )}
       </div>
 
       <button
@@ -170,7 +287,9 @@ export default function TechnologyMagazine({ items = [] }) {
         disabled={!hasRight}
         aria-label="Ver más tecnologías"
       >
-        <span aria-hidden="true">›</span>
+        <span aria-hidden="true">
+          ›
+        </span>
       </button>
     </div>
   );
