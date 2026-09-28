@@ -98,6 +98,15 @@ export const eventos = [
     description:
       "La Liga La Paz Versión 3 llevó la experiencia de Corremos por La Paz al Circuito Irpavi, reuniendo a corredores en una jornada de actividad, esfuerzo y comunidad.\n\nDesde Equilibria estuvimos presentes acompañando a los participantes y formando parte de una experiencia que pone en movimiento a la ciudad y promueve una relación más consciente con la actividad física.\n\nCada circuito presenta sus propios desafíos y exige preparación, constancia y una adecuada recuperación. Por eso, acompañamos estos espacios desde una perspectiva integral, conectando rendimiento y bienestar.\n\nParticipar en Corremos por La Paz reafirma nuestro compromiso con una comunidad activa y con quienes incorporan el movimiento como parte de un estilo de vida sostenible."
   },
+  {
+    slug: "kilometros-de-esperanza",
+    folder: "kilometros-de-esperanza",
+    title: "Kilómetros de Esperanza",
+    date: "2026-09-27",
+    imageCount: getImageCount("kilometros-de-esperanza"),
+    description:
+      "Kilómetros de Esperanza reunió a corredores y comunidad en una jornada deportiva con un propósito solidario en la ciudad de La Paz.\n\nDesde Equilibria estuvimos presentes acompañando esta carrera benéfica organizada por el Club de Leones Nueva Esperanza, compartiendo con los participantes y formando parte activa de una iniciativa que conectó movimiento, bienestar y compromiso social.\n\nCada kilómetro representó algo más que un desafío físico: fue una oportunidad para sumar esfuerzos alrededor de una causa común y demostrar cómo el deporte también puede convertirse en un espacio de encuentro y apoyo.\n\nAgradecemos al Club de Leones Nueva Esperanza por hacernos parte de esta experiencia y permitirnos acompañar una jornada donde correr también significó aportar."
+  },
 ];
 export const eventosOrdenados = [...eventos].sort(
   (a, b) => new Date(b.date) - new Date(a.date)
