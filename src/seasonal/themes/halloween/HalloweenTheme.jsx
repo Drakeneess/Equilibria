@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useLocation } from "react-router-dom";
 
 import { halloweenConfig } from "./halloween.config";
 import "./halloween.css";
 
 export default function HalloweenTheme() {
   const [heroNode, setHeroNode] = useState(null);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const hero = document.querySelector(".stage-hero");
 
-    if (!hero) return undefined;
-
     setHeroNode(hero);
 
-    if (!halloweenConfig.interaction.enabled) {
+    if (!hero || !halloweenConfig.interaction.enabled) {
       return undefined;
     }
 
@@ -71,7 +71,7 @@ export default function HalloweenTheme() {
       hero.style.removeProperty("--halloween-parallax-x");
       hero.style.removeProperty("--halloween-parallax-y");
     };
-  }, []);
+  }, [pathname]);
 
   if (!heroNode) return null;
 
