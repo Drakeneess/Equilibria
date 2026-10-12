@@ -6,6 +6,7 @@ import "./halloween.css";
 import "./interactive.css";
 import "./navbar.css";
 import "./navbar-interactive.css";
+import "./sections.css";
 
 const MOTES = [
   { left: "8%", top: "24%", delay: "-1.5s", scale: 0.9 },
@@ -27,13 +28,19 @@ const NAV_MOTES = [
 export default function HalloweenTheme() {
   const [heroNode, setHeroNode] = useState(null);
   const [navbarNode, setNavbarNode] = useState(null);
+  const [servicesNode, setServicesNode] = useState(null);
+  const [technologyNode, setTechnologyNode] = useState(null);
 
   useEffect(() => {
     const hero = document.querySelector(".stage-hero");
     const navbar = document.querySelector(".navbar-container");
+    const services = document.querySelector(".services");
+    const technology = document.querySelector(".our-technology");
 
     setHeroNode(hero || null);
     setNavbarNode(navbar || null);
+    setServicesNode(services || null);
+    setTechnologyNode(technology || null);
 
     const cleanups = [];
 
@@ -225,6 +232,42 @@ export default function HalloweenTheme() {
           )}
         </div>,
         navbarNode
+      )}
+
+      {servicesNode && createPortal(
+        <div className="halloween-section-decor halloween-services-decor" aria-hidden="true">
+          <span className="halloween-section-web halloween-section-web--top-left" />
+          <span className="halloween-section-web halloween-section-web--bottom-right" />
+
+          <span className="halloween-services-wisp halloween-services-wisp--1" />
+          <span className="halloween-services-wisp halloween-services-wisp--2" />
+
+          <span className="halloween-services-orb halloween-services-orb--1" />
+          <span className="halloween-services-orb halloween-services-orb--2" />
+          <span className="halloween-services-orb halloween-services-orb--3" />
+
+          <span className="halloween-services-spider-rig">
+            <span className="halloween-services-spider-thread" />
+            <span className="halloween-services-spider" />
+          </span>
+        </div>,
+        servicesNode
+      )}
+
+      {technologyNode && createPortal(
+        <div className="halloween-section-decor halloween-technology-decor" aria-hidden="true">
+          <span className="halloween-section-web halloween-section-web--top-left" />
+
+          <span className="halloween-tech-orbit halloween-tech-orbit--1" />
+          <span className="halloween-tech-orbit halloween-tech-orbit--2" />
+
+          <span className="halloween-tech-circuit" />
+
+          <span className="halloween-tech-spark halloween-tech-spark--1" />
+          <span className="halloween-tech-spark halloween-tech-spark--2" />
+          <span className="halloween-tech-spark halloween-tech-spark--3" />
+        </div>,
+        technologyNode
       )}
     </>
   );
