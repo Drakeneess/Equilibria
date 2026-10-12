@@ -1,0 +1,407 @@
+/* ============================================================
+   HALLOWEEN — HERO SKIN
+
+   Regla: la temporada se adapta al Hero existente. El Hero conserva
+   su tamaño, espaciado y comportamiento responsive; los assets solo
+   reemplazan la representación visual.
+============================================================ */
+
+/* ------------------------------------------------------------
+   BACKGROUND
+   Reutilizamos el <img class="hero-bg"> existente y dejamos que las
+   reglas base del Hero controlen ancho, alto y recorte.
+------------------------------------------------------------ */
+
+.season-halloween .stage-hero .hero-bg {
+  content: url("/seasonal/halloween/hero-background.webp");
+
+  object-fit: cover;
+  object-position: center;
+
+  filter:
+    blur(8px)
+    brightness(0.72)
+    saturate(1.08);
+}
+
+.season-halloween .stage-hero.revealed .hero-bg {
+  filter:
+    blur(0)
+    brightness(0.82)
+    saturate(1.06);
+}
+
+/* El arte ya tiene una dirección cromática fuerte. La atmósfera base
+   se reduce a una capa de contraste para mantener legible el contenido. */
+.season-halloween .stage-hero .hero-atmosphere {
+  background:
+    radial-gradient(
+      circle at 50% 36%,
+      rgba(98, 50, 132, 0.10),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(10, 5, 16, 0.08) 0%,
+      rgba(10, 5, 16, 0.18) 52%,
+      rgba(10, 5, 16, 0.56) 100%
+    );
+}
+
+/* ------------------------------------------------------------
+   UPDATED HALLOWEEN LOGO
+
+   No cambiamos las dimensiones del brand-panel. Sus hijos continúan
+   ocupando espacio, pero se vuelven transparentes; el logo estacional
+   se adapta al espacio que ya existía.
+------------------------------------------------------------ */
+
+.season-halloween .stage-hero .brand-panel > .isotipo,
+.season-halloween .stage-hero .brand-panel > .logotipo,
+.season-halloween .stage-hero .brand-panel > .brand-subtitle {
+  opacity: 0;
+}
+
+.season-halloween .stage-hero .brand-panel::after {
+  content: "";
+
+  position: absolute;
+  inset: 0.65rem;
+  z-index: 2;
+
+  background-image: url("/seasonal/halloween/hero-logo.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  pointer-events: none;
+}
+
+/* Conservamos el glass panel original, pero lo oscurecemos ligeramente
+   para que el logo actualizado no compita con el fondo. */
+.season-halloween .stage-hero .brand-panel {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 9, 28, 0.48),
+      rgba(45, 22, 61, 0.24)
+    );
+
+  border-color: rgba(196, 145, 255, 0.24);
+
+  box-shadow:
+    0 24px 70px rgba(6, 2, 12, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+/* ------------------------------------------------------------
+   ACTIONS
+------------------------------------------------------------ */
+
+.season-halloween .stage-hero .hero-btn-primary {
+  background:
+    linear-gradient(
+      135deg,
+      #39bdb6,
+      #8f56d8
+    );
+
+  box-shadow:
+    0 14px 34px
+      rgba(92, 52, 153, 0.30);
+}
+
+.season-halloween .stage-hero .hero-btn-secondary {
+  background: rgba(15, 8, 23, 0.24);
+}
+
+/* ============================================================
+   INTERACTIVE DECORATIONS
+
+   Se montan dentro del Hero mediante portal. Nunca quedan por encima
+   del Navbar ni interceptan clics. El contenido principal del Hero
+   conserva z-index superior.
+============================================================ */
+
+.season-halloween .stage-hero {
+  --halloween-pointer-x: 50%;
+  --halloween-pointer-y: 50%;
+  --halloween-flee-x: 0px;
+  --halloween-flee-y: 0px;
+  --halloween-parallax-x: 0px;
+  --halloween-parallax-y: 0px;
+}
+
+.halloween-interactive-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.halloween-pointer-glow {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle 180px at var(--halloween-pointer-x) var(--halloween-pointer-y),
+      rgba(184, 112, 255, 0.14),
+      rgba(71, 210, 201, 0.055) 35%,
+      transparent 72%
+    );
+
+  mix-blend-mode: screen;
+  opacity: 0.72;
+
+  transition: opacity 0.25s ease;
+}
+
+.halloween-fog {
+  position: absolute;
+  bottom: -13%;
+
+  width: 52%;
+  height: 42%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(106, 56, 147, 0.16) 0%,
+      rgba(69, 39, 101, 0.08) 42%,
+      transparent 72%
+    );
+
+  filter: blur(26px);
+  opacity: 0.65;
+
+  translate:
+    var(--halloween-parallax-x)
+    var(--halloween-parallax-y);
+
+  transition: translate 0.28s ease-out;
+}
+
+.halloween-fog--left {
+  left: -12%;
+}
+
+.halloween-fog--right {
+  right: -12%;
+  transform: scaleX(-1);
+}
+
+.halloween-bats {
+  position: absolute;
+  inset: 0;
+}
+
+.halloween-bat {
+  position: absolute;
+
+  width: 34px;
+  height: 14px;
+
+  opacity: 0.46;
+
+  translate:
+    var(--halloween-flee-x)
+    var(--halloween-flee-y);
+
+  transition:
+    translate 0.24s cubic-bezier(.22, 1, .36, 1),
+    opacity 0.25s ease;
+
+  animation:
+    halloween-bat-hover
+    5.5s ease-in-out infinite alternate;
+}
+
+.halloween-bat::before,
+.halloween-bat::after {
+  content: "";
+
+  position: absolute;
+  top: 2px;
+
+  width: 19px;
+  height: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(31, 16, 39, 0.96),
+      rgba(80, 39, 98, 0.92)
+    );
+
+  clip-path: polygon(
+    0 32%,
+    28% 7%,
+    55% 31%,
+    77% 0,
+    100% 18%,
+    85% 70%,
+    58% 55%,
+    34% 100%,
+    20% 58%
+  );
+
+  filter:
+    drop-shadow(0 2px 3px rgba(5, 1, 9, 0.55));
+}
+
+.halloween-bat::before {
+  left: 0;
+  transform-origin: 100% 50%;
+  animation: halloween-wing-left 0.72s ease-in-out infinite alternate;
+}
+
+.halloween-bat::after {
+  right: 0;
+  transform: scaleX(-1);
+  transform-origin: 0 50%;
+  animation: halloween-wing-right 0.72s ease-in-out infinite alternate;
+}
+
+.halloween-bat--1 {
+  top: 29%;
+  left: 7%;
+}
+
+.halloween-bat--2 {
+  top: 47%;
+  right: 7%;
+
+  scale: 0.72;
+  opacity: 0.36;
+
+  animation-delay: -1.8s;
+}
+
+.halloween-bat--3 {
+  top: 69%;
+  left: 13%;
+
+  scale: 0.56;
+  opacity: 0.30;
+
+  animation-delay: -3.1s;
+}
+
+@keyframes halloween-bat-hover {
+  from {
+    transform:
+      translateY(-4px)
+      rotate(-3deg);
+  }
+
+  to {
+    transform:
+      translateY(7px)
+      rotate(4deg);
+  }
+}
+
+@keyframes halloween-wing-left {
+  from {
+    rotate: -8deg;
+  }
+
+  to {
+    rotate: 15deg;
+  }
+}
+
+@keyframes halloween-wing-right {
+  from {
+    transform:
+      scaleX(-1)
+      rotate(-8deg);
+  }
+
+  to {
+    transform:
+      scaleX(-1)
+      rotate(15deg);
+  }
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+
+   El Hero NO adopta la relación de aspecto del asset. Solo ajustamos
+   qué zona del mismo queda visible dentro del viewport disponible.
+------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .season-halloween .stage-hero .hero-bg {
+    object-position: 58% center;
+  }
+
+  .halloween-bat--1 {
+    left: 4%;
+  }
+
+  .halloween-bat--2 {
+    right: 4%;
+  }
+}
+
+@media (max-width: 700px) {
+  .season-halloween .stage-hero .hero-bg {
+    object-position: 61% center;
+  }
+
+  .season-halloween .stage-hero .brand-panel::after {
+    inset: 0.9rem;
+  }
+
+  .halloween-pointer-glow {
+    opacity: 0.44;
+  }
+
+  .halloween-fog {
+    width: 72%;
+    height: 34%;
+    opacity: 0.48;
+  }
+
+  .halloween-bat--1 {
+    top: 34%;
+    left: 3%;
+    scale: 0.72;
+  }
+
+  .halloween-bat--2 {
+    top: 61%;
+    right: 3%;
+    scale: 0.54;
+  }
+
+  .halloween-bat--3 {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .halloween-pointer-glow {
+    opacity: 0.34;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-bat,
+  .halloween-bat::before,
+  .halloween-bat::after {
+    animation: none;
+  }
+
+  .halloween-bat,
+  .halloween-fog {
+    transition: none;
+  }
+}

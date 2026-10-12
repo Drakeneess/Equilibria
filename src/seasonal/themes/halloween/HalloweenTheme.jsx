@@ -1,0 +1,274 @@
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+
+import { halloweenConfig } from "./halloween.config";
+import "./halloween.css";
+import "./interactive.css";
+import "./navbar.css";
+import "./navbar-interactive.css";
+import "./sections.css";
+
+const MOTES = [
+  { left: "8%", top: "24%", delay: "-1.5s", scale: 0.9 },
+  { left: "18%", top: "64%", delay: "-4.2s", scale: 0.65 },
+  { left: "31%", top: "42%", delay: "-2.6s", scale: 0.8 },
+  { left: "63%", top: "27%", delay: "-5.1s", scale: 0.7 },
+  { left: "74%", top: "72%", delay: "-3.4s", scale: 1 },
+  { left: "88%", top: "38%", delay: "-6.2s", scale: 0.55 },
+  { left: "92%", top: "78%", delay: "-2.1s", scale: 0.75 },
+];
+
+const NAV_MOTES = [
+  { left: "18%", delay: "-1.1s" },
+  { left: "43%", delay: "-3.6s" },
+  { left: "71%", delay: "-2.2s" },
+  { left: "88%", delay: "-4.8s" },
+];
+
+export default function HalloweenTheme() {
+  const [heroNode, setHeroNode] = useState(null);
+  const [navbarNode, setNavbarNode] = useState(null);
+  const [servicesNode, setServicesNode] = useState(null);
+  const [technologyNode, setTechnologyNode] = useState(null);
+
+  useEffect(() => {
+    const hero = document.querySelector(".stage-hero");
+    const navbar = document.querySelector(".navbar-container");
+    const services = document.querySelector(".services");
+    const technology = document.querySelector(".our-technology");
+
+    setHeroNode(hero || null);
+    setNavbarNode(navbar || null);
+    setServicesNode(services || null);
+    setTechnologyNode(technology || null);
+
+    const cleanups = [];
+
+    if (hero && halloweenConfig.interaction.enabled) {
+      let frameId = null;
+
+      const applyPointer = (event) => {
+        if (frameId) cancelAnimationFrame(frameId);
+
+        frameId = requestAnimationFrame(() => {
+          const rect = hero.getBoundingClientRect();
+          const x = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+          const y = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
+
+          const normalizedX = x * 2 - 1;
+          const normalizedY = y * 2 - 1;
+
+          const fleeX = -normalizedX * halloweenConfig.interaction.maxFleePx;
+          const fleeY = -normalizedY * halloweenConfig.interaction.maxFleePx;
+          const parallaxX = normalizedX * halloweenConfig.interaction.maxParallaxPx;
+          const parallaxY = normalizedY * halloweenConfig.interaction.maxParallaxPx;
+          const spiderDrop = Math.max(
+            0,
+            Math.min(
+              y * halloweenConfig.interaction.maxSpiderDropPx,
+              halloweenConfig.interaction.maxSpiderDropPx
+            )
+          );
+
+          hero.style.setProperty("--halloween-pointer-x", `${x * 100}%`);
+          hero.style.setProperty("--halloween-pointer-y", `${y * 100}%`);
+          hero.style.setProperty("--halloween-flee-x", `${fleeX}px`);
+          hero.style.setProperty("--halloween-flee-y", `${fleeY}px`);
+          hero.style.setProperty("--halloween-parallax-x", `${parallaxX}px`);
+          hero.style.setProperty("--halloween-parallax-y", `${parallaxY}px`);
+          hero.style.setProperty("--halloween-spider-drop", `${spiderDrop}px`);
+        });
+      };
+
+      const resetPointer = () => {
+        hero.style.setProperty("--halloween-pointer-x", "50%");
+        hero.style.setProperty("--halloween-pointer-y", "50%");
+        hero.style.setProperty("--halloween-flee-x", "0px");
+        hero.style.setProperty("--halloween-flee-y", "0px");
+        hero.style.setProperty("--halloween-parallax-x", "0px");
+        hero.style.setProperty("--halloween-parallax-y", "0px");
+        hero.style.setProperty("--halloween-spider-drop", "46px");
+      };
+
+      resetPointer();
+      hero.addEventListener("pointermove", applyPointer, { passive: true });
+      hero.addEventListener("pointerleave", resetPointer);
+
+      cleanups.push(() => {
+        if (frameId) cancelAnimationFrame(frameId);
+        hero.removeEventListener("pointermove", applyPointer);
+        hero.removeEventListener("pointerleave", resetPointer);
+
+        hero.style.removeProperty("--halloween-pointer-x");
+        hero.style.removeProperty("--halloween-pointer-y");
+        hero.style.removeProperty("--halloween-flee-x");
+        hero.style.removeProperty("--halloween-flee-y");
+        hero.style.removeProperty("--halloween-parallax-x");
+        hero.style.removeProperty("--halloween-parallax-y");
+        hero.style.removeProperty("--halloween-spider-drop");
+      });
+    }
+
+    if (navbar && halloweenConfig.navbar.enabled) {
+      let navFrameId = null;
+
+      const applyNavbarPointer = (event) => {
+        if (navFrameId) cancelAnimationFrame(navFrameId);
+
+        navFrameId = requestAnimationFrame(() => {
+          const rect = navbar.getBoundingClientRect();
+          const x = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+          const y = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
+          const normalizedX = x * 2 - 1;
+
+          navbar.style.setProperty("--halloween-nav-pointer-x", `${x * 100}%`);
+          navbar.style.setProperty("--halloween-nav-pointer-y", `${y * 100}%`);
+          navbar.style.setProperty("--halloween-nav-web-shift", `${normalizedX * halloweenConfig.navbar.maxWebShiftPx}px`);
+          navbar.style.setProperty("--halloween-nav-crawler-x", `${x * 100}%`);
+        });
+      };
+
+      const resetNavbarPointer = () => {
+        navbar.style.setProperty("--halloween-nav-pointer-x", "50%");
+        navbar.style.setProperty("--halloween-nav-pointer-y", "50%");
+        navbar.style.setProperty("--halloween-nav-web-shift", "0px");
+        navbar.style.setProperty("--halloween-nav-crawler-x", "50%");
+      };
+
+      resetNavbarPointer();
+      navbar.addEventListener("pointermove", applyNavbarPointer, { passive: true });
+      navbar.addEventListener("pointerleave", resetNavbarPointer);
+
+      cleanups.push(() => {
+        if (navFrameId) cancelAnimationFrame(navFrameId);
+        navbar.removeEventListener("pointermove", applyNavbarPointer);
+        navbar.removeEventListener("pointerleave", resetNavbarPointer);
+
+        navbar.style.removeProperty("--halloween-nav-pointer-x");
+        navbar.style.removeProperty("--halloween-nav-pointer-y");
+        navbar.style.removeProperty("--halloween-nav-web-shift");
+        navbar.style.removeProperty("--halloween-nav-crawler-x");
+      });
+    }
+
+    return () => cleanups.forEach((cleanup) => cleanup());
+  }, []);
+
+  const { decorations, navbar } = halloweenConfig;
+
+  return (
+    <>
+      {heroNode && createPortal(
+        <div className="halloween-interactive-layer" aria-hidden="true">
+          {decorations.pointerGlow && <div className="halloween-pointer-glow" />}
+
+          {decorations.fog && (
+            <>
+              <div className="halloween-fog halloween-fog--left" />
+              <div className="halloween-fog halloween-fog--right" />
+            </>
+          )}
+
+          {decorations.motes && (
+            <div className="halloween-motes">
+              {MOTES.map((mote, index) => (
+                <span
+                  key={index}
+                  className="halloween-mote"
+                  style={{
+                    left: mote.left,
+                    top: mote.top,
+                    animationDelay: mote.delay,
+                    scale: mote.scale,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+
+          {decorations.bats && (
+            <div className="halloween-bats">
+              <span className="halloween-bat halloween-bat--1" />
+              <span className="halloween-bat halloween-bat--2" />
+              <span className="halloween-bat halloween-bat--3" />
+            </div>
+          )}
+
+          {decorations.spider && (
+            <div className="halloween-spider-rig">
+              <span className="halloween-spider-thread" />
+              <span className="halloween-spider" />
+            </div>
+          )}
+        </div>,
+        heroNode
+      )}
+
+      {navbarNode && navbar.enabled && createPortal(
+        <div className="halloween-navbar-interactive" aria-hidden="true">
+          {navbar.pointerGlow && <span className="halloween-navbar-glow" />}
+
+          {navbar.webs && (
+            <>
+              <span className="halloween-navbar-web halloween-navbar-web--left" />
+              <span className="halloween-navbar-web halloween-navbar-web--right" />
+            </>
+          )}
+
+          {navbar.motes && (
+            <div className="halloween-navbar-motes">
+              {NAV_MOTES.map((mote, index) => (
+                <span
+                  key={index}
+                  className="halloween-navbar-mote"
+                  style={{ left: mote.left, animationDelay: mote.delay }}
+                />
+              ))}
+            </div>
+          )}
+
+          {navbar.crawler && (
+            <span className="halloween-navbar-crawler" />
+          )}
+        </div>,
+        navbarNode
+      )}
+
+      {servicesNode && createPortal(
+        <div className="halloween-section-decor halloween-services-decor" aria-hidden="true">
+          <span className="halloween-section-web halloween-section-web--top-left" />
+          <span className="halloween-section-web halloween-section-web--bottom-right" />
+
+          <span className="halloween-services-wisp halloween-services-wisp--1" />
+          <span className="halloween-services-wisp halloween-services-wisp--2" />
+
+          <span className="halloween-services-orb halloween-services-orb--1" />
+          <span className="halloween-services-orb halloween-services-orb--2" />
+          <span className="halloween-services-orb halloween-services-orb--3" />
+
+          <span className="halloween-services-spider-rig">
+            <span className="halloween-services-spider-thread" />
+            <span className="halloween-services-spider" />
+          </span>
+        </div>,
+        servicesNode
+      )}
+
+      {technologyNode && createPortal(
+        <div className="halloween-section-decor halloween-technology-decor" aria-hidden="true">
+          <span className="halloween-section-web halloween-section-web--top-left" />
+
+          <span className="halloween-tech-orbit halloween-tech-orbit--1" />
+          <span className="halloween-tech-orbit halloween-tech-orbit--2" />
+
+          <span className="halloween-tech-circuit" />
+
+          <span className="halloween-tech-spark halloween-tech-spark--1" />
+          <span className="halloween-tech-spark halloween-tech-spark--2" />
+          <span className="halloween-tech-spark halloween-tech-spark--3" />
+        </div>,
+        technologyNode
+      )}
+    </>
+  );
+}

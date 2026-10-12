@@ -1,0 +1,292 @@
+/* ============================================================
+   HALLOWEEN — ACERCA DE NOSOTROS
+
+   Uses externally referenced Tabler Icons v3.49.0 as crisp line-art
+   emblems. The assets are pinned to a version and rendered as CSS masks,
+   so they can keep the Equilibria Halloween palette without changing
+   AboutCard markup.
+
+   Tabler Icons: MIT License
+   https://github.com/tabler/tabler-icons
+============================================================ */
+
+.season-halloween .about-card-content {
+  isolation: isolate;
+}
+
+.season-halloween .about-card-content > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Shared glass badge behind each referenced icon. */
+.season-halloween .about-card-content::after {
+  content: "";
+
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  z-index: 1;
+
+  width: 74px;
+  height: 74px;
+
+  border: 1px solid rgba(228, 207, 245, 0.30);
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 28% 22%,
+      rgba(255, 255, 255, 0.18),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(35, 17, 47, 0.54),
+      rgba(79, 42, 100, 0.30)
+    );
+
+  box-shadow:
+    0 12px 28px rgba(24, 8, 31, 0.20),
+    0 0 24px rgba(151, 81, 194, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+
+  backdrop-filter: blur(9px) saturate(120%);
+  -webkit-backdrop-filter: blur(9px) saturate(120%);
+
+  opacity: 0.92;
+
+  transition:
+    transform 0.38s cubic-bezier(.22, 1, .36, 1),
+    border-color 0.30s ease,
+    box-shadow 0.30s ease,
+    background 0.30s ease;
+
+  pointer-events: none;
+}
+
+/* Shared line-art slot. Each card only swaps the online mask resource. */
+.season-halloween .about-card-content::before {
+  content: "";
+
+  position: absolute;
+  top: 1.80rem;
+  right: 1.80rem;
+  z-index: 2;
+
+  width: 52px;
+  height: 52px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--about-icon-start, #d7b4ef),
+      var(--about-icon-end, #85ddd0)
+    );
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  filter:
+    drop-shadow(0 0 7px rgba(193, 116, 232, 0.30))
+    drop-shadow(0 5px 7px rgba(17, 6, 22, 0.24));
+
+  opacity: 0.98;
+
+  transition:
+    transform 0.38s cubic-bezier(.22, 1, .36, 1),
+    filter 0.30s ease,
+    opacity 0.30s ease;
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   MISIÓN — COMPASS
+   Tabler: compass.svg
+============================================================ */
+
+.season-halloween .about-card--mission {
+  --about-icon-start: #a9eee3;
+  --about-icon-end: #d5adf3;
+}
+
+.season-halloween .about-card--mission .about-card-content::before {
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/compass.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/compass.svg");
+}
+
+.season-halloween .about-card--mission:hover .about-card-content::before,
+.season-halloween .about-card--mission.active .about-card-content::before {
+  transform: rotate(14deg) scale(1.08);
+}
+
+/* ============================================================
+   VISIÓN — TELESCOPE
+   Tabler: telescope.svg
+============================================================ */
+
+.season-halloween .about-card--vision {
+  --about-icon-start: #e0baf8;
+  --about-icon-end: #a8e5dc;
+}
+
+.season-halloween .about-card--vision .about-card-content::before {
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/telescope.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/telescope.svg");
+}
+
+.season-halloween .about-card--vision:hover .about-card-content::before,
+.season-halloween .about-card--vision.active .about-card-content::before {
+  transform: translate(-2px, -3px) rotate(-4deg) scale(1.08);
+}
+
+/* ============================================================
+   VALORES — AFFILIATE / NETWORK
+   Tabler: affiliate.svg
+============================================================ */
+
+.season-halloween .about-card--values {
+  --about-icon-start: #c990ef;
+  --about-icon-end: #74d9cb;
+}
+
+.season-halloween .about-card--values .about-card-content::before {
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/affiliate.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/affiliate.svg");
+}
+
+.season-halloween .about-card--values:hover .about-card-content::before,
+.season-halloween .about-card--values.active .about-card-content::before {
+  transform: rotate(6deg) scale(1.10);
+}
+
+/* ============================================================
+   PROPÓSITO — GUIDING LAMP
+   Tabler: lamp-2.svg
+============================================================ */
+
+.season-halloween .about-card--purpose {
+  --about-icon-start: #efb272;
+  --about-icon-end: #d3a8ee;
+}
+
+.season-halloween .about-card--purpose .about-card-content::before {
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/lamp-2.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/lamp-2.svg");
+}
+
+.season-halloween .about-card--purpose:hover .about-card-content::before,
+.season-halloween .about-card--purpose.active .about-card-content::before {
+  transform: translateY(-3px) rotate(-3deg) scale(1.08);
+
+  filter:
+    drop-shadow(0 0 9px rgba(239, 167, 96, 0.42))
+    drop-shadow(0 6px 8px rgba(17, 6, 22, 0.26));
+}
+
+/* ============================================================
+   SHARED INTERACTION
+============================================================ */
+
+.season-halloween .about-card {
+  border: 1px solid rgba(176, 114, 207, 0.12);
+}
+
+.season-halloween .about-card:hover,
+.season-halloween .about-card.active {
+  border-color: rgba(184, 116, 220, 0.28);
+}
+
+.season-halloween .about-card:hover .about-card-content::after,
+.season-halloween .about-card.active .about-card-content::after {
+  transform: translateY(-3px) scale(1.04);
+
+  border-color: rgba(228, 202, 246, 0.46);
+
+  background:
+    radial-gradient(
+      circle at 28% 22%,
+      rgba(255, 255, 255, 0.22),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(39, 18, 52, 0.64),
+      rgba(91, 46, 116, 0.39)
+    );
+
+  box-shadow:
+    0 15px 34px rgba(24, 8, 31, 0.24),
+    0 0 28px rgba(161, 84, 207, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+.season-halloween .about-card:hover .about-card-content::before,
+.season-halloween .about-card.active .about-card-content::before {
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 9px rgba(196, 117, 235, 0.42))
+    drop-shadow(0 6px 8px rgba(17, 6, 22, 0.26));
+}
+
+.season-halloween .about-card-eyebrow {
+  border-color: rgba(199, 145, 226, 0.18);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(78, 40, 96, 0.56),
+      rgba(108, 58, 128, 0.42)
+    );
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 900px) {
+  .season-halloween .about-card-content::after {
+    top: 1rem;
+    right: 1rem;
+
+    width: 64px;
+    height: 64px;
+
+    border-radius: 19px;
+  }
+
+  .season-halloween .about-card-content::before {
+    top: 1.58rem;
+    right: 1.58rem;
+
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 560px) {
+  .season-halloween .about-card-content::after {
+    width: 58px;
+    height: 58px;
+  }
+
+  .season-halloween .about-card-content::before {
+    top: 1.52rem;
+    right: 1.52rem;
+
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .season-halloween .about-card-content::before,
+  .season-halloween .about-card-content::after {
+    transition: none;
+  }
+}

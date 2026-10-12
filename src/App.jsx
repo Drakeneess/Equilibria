@@ -6,16 +6,21 @@ import EventoDetalle from "./pages/EventoDetalle";
 import Legal from "./pages/Legal";
 import Privacidad from "./pages/Privacidad";
 import Terminos from "./pages/Terminos";
+import SeasonalLayer from "./seasonal/SeasonalLayer";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/eventos/:slug" element={<EventoDetalle />} />
-      <Route path="/legal" element={<Legal />} />
-      <Route path="/privacidad" element={<Privacidad />} />
-      <Route path="/terminos" element={<Terminos />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/eventos/:slug" element={<EventoDetalle />} />
+        <Route path="/legal" element={<Legal />} />
+        <Route path="/privacidad" element={<Privacidad />} />
+        <Route path="/terminos" element={<Terminos />} />
+      </Routes>
+
+      <SeasonalLayer />
+    </>
   );
 }
 

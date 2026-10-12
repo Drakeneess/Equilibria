@@ -1,0 +1,235 @@
+/* ============================================================
+   HALLOWEEN — NAVBAR INTERACTIVE DECORATIONS
+   Everything is clipped inside the existing navbar container and
+   never intercepts pointer input.
+============================================================ */
+
+.season-halloween .navbar-container {
+  --halloween-nav-pointer-x: 50%;
+  --halloween-nav-pointer-y: 50%;
+  --halloween-nav-web-shift: 0px;
+  --halloween-nav-crawler-x: 50%;
+}
+
+.halloween-navbar-interactive {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.halloween-navbar-glow {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle 150px at var(--halloween-nav-pointer-x) var(--halloween-nav-pointer-y),
+      rgba(202, 111, 255, 0.34) 0%,
+      rgba(255, 128, 45, 0.18) 28%,
+      rgba(80, 221, 208, 0.10) 46%,
+      transparent 72%
+    );
+
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.halloween-navbar-web {
+  position: absolute;
+  top: -30px;
+  width: 92px;
+  height: 92px;
+  opacity: 0.34;
+
+  background:
+    repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0 10px,
+      rgba(215, 171, 255, 0.58) 11px 12px,
+      transparent 13px 20px
+    ),
+    conic-gradient(
+      from 0deg at 0 0,
+      rgba(215, 171, 255, 0.56) 0 1deg,
+      transparent 1deg 44deg,
+      rgba(215, 171, 255, 0.56) 44deg 45deg,
+      transparent 45deg 89deg,
+      rgba(215, 171, 255, 0.56) 89deg 90deg,
+      transparent 90deg 134deg,
+      rgba(215, 171, 255, 0.56) 134deg 135deg,
+      transparent 135deg 179deg,
+      rgba(215, 171, 255, 0.56) 179deg 180deg,
+      transparent 180deg 224deg,
+      rgba(215, 171, 255, 0.56) 224deg 225deg,
+      transparent 225deg 269deg,
+      rgba(215, 171, 255, 0.56) 269deg 270deg,
+      transparent 270deg 314deg,
+      rgba(215, 171, 255, 0.56) 314deg 315deg,
+      transparent 315deg 360deg
+    );
+
+  filter: drop-shadow(0 0 5px rgba(157, 89, 224, 0.28));
+  transition: transform 0.22s cubic-bezier(.22, 1, .36, 1), opacity 0.22s ease;
+}
+
+.halloween-navbar-web--left {
+  left: -20px;
+  transform: translateX(var(--halloween-nav-web-shift));
+}
+
+.halloween-navbar-web--right {
+  right: -20px;
+  transform:
+    scaleX(-1)
+    translateX(var(--halloween-nav-web-shift));
+}
+
+.navbar-container:hover .halloween-navbar-web {
+  opacity: 0.56;
+}
+
+.halloween-navbar-motes {
+  position: absolute;
+  inset: 0;
+}
+
+.halloween-navbar-mote {
+  position: absolute;
+  bottom: 8px;
+
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+
+  background: #ff9b42;
+  box-shadow:
+    0 0 7px rgba(255, 137, 52, 0.92),
+    0 0 12px rgba(180, 90, 255, 0.55);
+
+  opacity: 0.68;
+  animation: halloween-navbar-mote-rise 3.8s ease-in-out infinite;
+}
+
+.halloween-navbar-mote:nth-child(even) {
+  background: #b974ff;
+}
+
+.halloween-navbar-crawler {
+  position: absolute;
+  left: var(--halloween-nav-crawler-x);
+  bottom: 2px;
+
+  width: 14px;
+  height: 9px;
+
+  transform: translateX(-50%);
+  transition: left 0.16s ease-out;
+
+  filter:
+    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.65))
+    drop-shadow(0 0 5px rgba(185, 100, 255, 0.38));
+}
+
+.halloween-navbar-crawler::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #160d1f;
+}
+
+.halloween-navbar-crawler::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(35deg, transparent 42%, #281435 43% 52%, transparent 53%) 0 0 / 7px 4px,
+    linear-gradient(-35deg, transparent 42%, #281435 43% 52%, transparent 53%) 7px 0 / 7px 4px,
+    linear-gradient(145deg, transparent 42%, #281435 43% 52%, transparent 53%) 0 5px / 7px 4px,
+    linear-gradient(-145deg, transparent 42%, #281435 43% 52%, transparent 53%) 7px 5px / 7px 4px;
+  background-repeat: no-repeat;
+}
+
+.navbar-container:hover .halloween-navbar-crawler {
+  animation: halloween-navbar-crawler-bob 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes halloween-navbar-mote-rise {
+  0% {
+    translate: 0 5px;
+    opacity: 0;
+  }
+
+  28% {
+    opacity: 0.72;
+  }
+
+  70% {
+    opacity: 0.5;
+  }
+
+  100% {
+    translate: 5px -28px;
+    opacity: 0;
+  }
+}
+
+@keyframes halloween-navbar-crawler-bob {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 -2px;
+  }
+}
+
+@media (max-width: 860px) {
+  .halloween-navbar-web {
+    width: 72px;
+    height: 72px;
+    top: -24px;
+    opacity: 0.28;
+  }
+
+  .halloween-navbar-web--left {
+    left: -18px;
+  }
+
+  .halloween-navbar-web--right {
+    right: -18px;
+  }
+
+  .halloween-navbar-mote:nth-child(n+3) {
+    display: none;
+  }
+
+  .halloween-navbar-crawler {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .halloween-navbar-glow {
+    opacity: 0.48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-navbar-mote,
+  .halloween-navbar-crawler {
+    animation: none;
+  }
+
+  .halloween-navbar-crawler,
+  .halloween-navbar-web {
+    transition: none;
+  }
+}

@@ -1,0 +1,392 @@
+/* ============================================================
+   HALLOWEEN — SERVICIOS
+
+   Decorations that belong to the service UI itself instead of the
+   section background. No markup changes required.
+============================================================ */
+
+/* ------------------------------------------------------------
+   SHELL
+------------------------------------------------------------ */
+
+.season-halloween .services-shell {
+  border-color: rgba(155, 91, 189, 0.16);
+
+  box-shadow:
+    0 28px 70px rgba(82, 37, 104, 0.085),
+    0 12px 30px rgba(218, 113, 46, 0.025),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    inset 0 0 42px rgba(156, 78, 198, 0.018);
+}
+
+/* Thin Halloween accent on the shell perimeter. */
+.season-halloween .services-shell::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+
+  border-radius: inherit;
+
+  border: 1px solid transparent;
+
+  background:
+    linear-gradient(#0000, #0000) padding-box,
+    linear-gradient(
+      115deg,
+      transparent 4%,
+      rgba(237, 143, 69, 0.10) 18%,
+      rgba(169, 88, 215, 0.20) 47%,
+      rgba(87, 201, 186, 0.14) 74%,
+      transparent 94%
+    ) border-box;
+
+  opacity: 0.48;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------
+   LEFT CATEGORY RAIL
+------------------------------------------------------------ */
+
+.season-halloween .services-tabs::before {
+  content: "";
+
+  position: absolute;
+  top: -0.8rem;
+  left: -0.7rem;
+
+  width: 100px;
+  height: 100px;
+
+  z-index: 5;
+
+  opacity: 0.26;
+
+  background:
+    repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0 13px,
+      rgba(113, 61, 139, 0.32) 14px 15px,
+      transparent 16px 28px
+    ),
+    repeating-conic-gradient(
+      from 0deg at 0 0,
+      rgba(106, 56, 132, 0.34) 0deg 1.3deg,
+      transparent 1.3deg 30deg
+    );
+
+  filter: drop-shadow(0 0 6px rgba(161, 83, 204, 0.14));
+  pointer-events: none;
+}
+
+.season-halloween .service-tab {
+  overflow: visible;
+}
+
+.season-halloween .service-tab.active {
+  border-color: rgba(148, 76, 187, 0.32);
+
+  box-shadow:
+    0 16px 34px rgba(117, 59, 145, 0.09),
+    0 7px 20px rgba(229, 128, 55, 0.025),
+    inset 0 0 22px rgba(166, 89, 207, 0.025);
+}
+
+/* Little spectral glow next to the active category. */
+.season-halloween .service-tab.active::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  right: -5px;
+
+  width: 8px;
+  height: 8px;
+
+  translate: 0 -50%;
+
+  border-radius: 50%;
+
+  background: #9f63c8;
+
+  box-shadow:
+    0 0 7px rgba(170, 102, 215, 0.72),
+    0 0 16px rgba(78, 190, 177, 0.24);
+
+  animation: halloween-service-tab-ember 1.8s ease-in-out infinite alternate;
+}
+
+.season-halloween .service-tab-indicator {
+  background:
+    linear-gradient(
+      180deg,
+      #8f57b4 0%,
+      #9b57c5 54%,
+      var(--tab-end) 100%
+    );
+
+  box-shadow:
+    0 0 12px rgba(164, 81, 207, 0.20),
+    0 0 18px rgba(73, 184, 171, 0.06);
+}
+
+/* ------------------------------------------------------------
+   ACTIVE CATEGORY PANEL
+------------------------------------------------------------ */
+
+.season-halloween .services-panel {
+  overflow: hidden;
+}
+
+/* Cobweb behind the service count, deliberately inside the panel. */
+.season-halloween .services-panel::after {
+  content: "";
+
+  position: absolute;
+  top: -26px;
+  right: -28px;
+
+  width: 142px;
+  height: 142px;
+
+  z-index: 1;
+
+  opacity: 0.22;
+
+  background:
+    repeating-radial-gradient(
+      circle at 100% 0,
+      transparent 0 17px,
+      rgba(121, 65, 150, 0.34) 18px 19px,
+      transparent 20px 34px
+    ),
+    repeating-conic-gradient(
+      from 180deg at 100% 0,
+      rgba(110, 59, 137, 0.32) 0deg 1.2deg,
+      transparent 1.2deg 30deg
+    );
+
+  pointer-events: none;
+}
+
+.season-halloween .services-panel-header,
+.season-halloween .services-carousel-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+.season-halloween .services-count {
+  border-color: rgba(153, 82, 191, 0.14);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(168, 91, 208, 0.075),
+      rgba(237, 143, 69, 0.035)
+    );
+
+  box-shadow:
+    0 7px 18px rgba(122, 59, 151, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+/* ------------------------------------------------------------
+   SERVICE CARDS
+------------------------------------------------------------ */
+
+.season-halloween .service-card {
+  border: 1px solid rgba(255, 255, 255, 0.20);
+
+  box-shadow:
+    0 18px 42px rgba(51, 28, 58, 0.12),
+    0 8px 22px rgba(127, 64, 157, 0.075);
+}
+
+/* Small corner web directly on each treatment card. */
+.season-halloween .service-card::after {
+  content: "";
+
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  z-index: 4;
+
+  width: 80px;
+  height: 80px;
+
+  opacity: 0.28;
+
+  background:
+    repeating-radial-gradient(
+      circle at 100% 0,
+      transparent 0 10px,
+      rgba(244, 223, 255, 0.62) 11px 12px,
+      transparent 13px 22px
+    ),
+    repeating-conic-gradient(
+      from 180deg at 100% 0,
+      rgba(244, 223, 255, 0.62) 0deg 1.5deg,
+      transparent 1.5deg 30deg
+    );
+
+  filter: drop-shadow(0 1px 3px rgba(46, 19, 57, 0.28));
+
+  transition:
+    opacity 0.28s ease,
+    transform 0.38s cubic-bezier(.22, 1, .36, 1);
+
+  pointer-events: none;
+}
+
+.season-halloween .service-card:hover::after,
+.season-halloween .service-card.is-open::after {
+  opacity: 0.58;
+  transform: translate(-3px, 3px) scale(1.06);
+}
+
+/* A pair of tiny bat silhouettes becomes visible on hover. */
+.season-halloween .service-overlay::before {
+  content: "";
+
+  position: absolute;
+  top: 1rem;
+  right: 1.15rem;
+
+  width: 38px;
+  height: 15px;
+
+  opacity: 0;
+
+  background:
+    radial-gradient(ellipse at 50% 72%, rgba(22, 8, 27, 0.95) 0 18%, transparent 20%),
+    radial-gradient(ellipse at 23% 42%, rgba(28, 9, 34, 0.92) 0 34%, transparent 36%),
+    radial-gradient(ellipse at 77% 42%, rgba(28, 9, 34, 0.92) 0 34%, transparent 36%);
+
+  filter:
+    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 5px rgba(179, 90, 225, 0.30));
+
+  transform: translateY(5px) scale(0.82);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.32s cubic-bezier(.22, 1, .36, 1);
+
+  pointer-events: none;
+}
+
+.season-halloween .service-card:hover .service-overlay::before,
+.season-halloween .service-card.is-open .service-overlay::before {
+  opacity: 0.72;
+  transform: translateY(0) scale(1);
+}
+
+.season-halloween .service-card-tag {
+  border-color: rgba(238, 214, 250, 0.26);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(111, 51, 137, 0.17),
+      rgba(226, 120, 48, 0.05)
+    );
+
+  box-shadow:
+    0 5px 14px rgba(26, 8, 31, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.season-halloween .service-card-toggle {
+  border-color: rgba(231, 199, 246, 0.28);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(113, 51, 139, 0.28),
+      rgba(225, 117, 44, 0.07)
+    );
+
+  box-shadow:
+    0 6px 16px rgba(23, 8, 28, 0.12),
+    0 0 12px rgba(164, 78, 204, 0.08);
+}
+
+.season-halloween .service-card:hover .service-card-toggle,
+.season-halloween .service-card.is-open .service-card-toggle {
+  box-shadow:
+    0 7px 18px rgba(29, 8, 34, 0.16),
+    0 0 15px rgba(220, 116, 49, 0.05),
+    0 0 20px rgba(160, 76, 202, 0.12);
+}
+
+/* ------------------------------------------------------------
+   CAROUSEL CONTROLS
+------------------------------------------------------------ */
+
+.season-halloween .carousel-side-control:not(.disabled) {
+  border-color: rgba(151, 77, 188, 0.18);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(246, 236, 250, 0.92)
+    );
+
+  color: #8f4fb0;
+
+  box-shadow:
+    0 10px 24px rgba(92, 43, 111, 0.09),
+    0 0 14px rgba(223, 119, 52, 0.025);
+}
+
+.season-halloween .carousel-side-control:not(.disabled):hover {
+  color: #9b5dbc;
+
+  box-shadow:
+    0 14px 30px rgba(95, 43, 115, 0.12),
+    0 0 18px rgba(221, 116, 48, 0.05);
+}
+
+/* ------------------------------------------------------------
+   MOTION
+------------------------------------------------------------ */
+
+@keyframes halloween-service-tab-ember {
+  from {
+    opacity: 0.42;
+    scale: 0.78;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1.08;
+  }
+}
+
+@media (max-width: 768px) {
+  .season-halloween .services-tabs::before {
+    width: 72px;
+    height: 72px;
+    opacity: 0.18;
+  }
+
+  .season-halloween .services-panel::after {
+    width: 105px;
+    height: 105px;
+    opacity: 0.16;
+  }
+
+  .season-halloween .service-card::after {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .season-halloween .service-tab.active::after {
+    animation: none;
+  }
+}
