@@ -7,7 +7,7 @@ import {
   groupServicesByCategory
 } from "../../utils/servicesBackup";
 
-const API_URL = "https://api.equilibria.sbs/api/services.php";
+const API_URL = "https://api.equilibria.cloud/api/services.php";
 
 const categoryThemes = [
   {

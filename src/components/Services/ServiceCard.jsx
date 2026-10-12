@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function ServiceCard({ id, title, short_desc }) {
-  const API_URL = `https://api.equilibria.sbs/api/services.php?image=${id}`;
+  const API_URL = `https://api.equilibria.cloud/api/services.php?image=${id}`;
 
   const [loaded, setLoaded] = useState(false);
   const [expanded, setExpanded] = useState(false);

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./PromoBanner.css";
 
-const API_URL = "https://api.equilibria.sbs/api/promos.php";
+const API_URL = "https://api.equilibria.cloud/api/promos.php";
 
 export default function PromoBanner() {
   const [images, setImages] = useState([]);
