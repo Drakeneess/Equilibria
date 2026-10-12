@@ -1,0 +1,233 @@
+/* ============================================================
+   HALLOWEEN — PAGE TONE
+
+   Ajuste cromático global y deliberadamente ligero. No cambia layout,
+   espaciado ni comportamiento de los componentes base.
+============================================================ */
+
+body.season-halloween {
+  --color-primary: #9bdcd2;
+  --color-secondary: #c2a4dd;
+  --color-primary-strong: #4db7a8;
+  --color-secondary-strong: #8d62bd;
+  --color-accent-green: #2d8175;
+  --color-accent-purple: #70468f;
+  --color-accent-yellow: #efb15c;
+
+  --halloween-orange: #d7793d;
+  --halloween-orange-soft: rgba(215, 121, 61, 0.10);
+  --halloween-violet-soft: rgba(112, 70, 143, 0.11);
+  --halloween-mint-soft: rgba(77, 183, 168, 0.10);
+
+  background:
+    radial-gradient(
+      circle at 10% 12%,
+      rgba(215, 121, 61, 0.055),
+      transparent 22rem
+    ),
+    radial-gradient(
+      circle at 92% 32%,
+      rgba(112, 70, 143, 0.05),
+      transparent 24rem
+    ),
+    #fbf8f6;
+}
+
+body.season-halloween #root {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.22),
+      rgba(248, 244, 250, 0.30)
+    );
+}
+
+body.season-halloween ::selection {
+  background: rgba(141, 98, 189, 0.25);
+  color: #3f254f;
+}
+
+/* ============================================================
+   SECTION TITLES
+============================================================ */
+
+.season-halloween .section-title {
+  color: #70468f;
+}
+
+.season-halloween .section-title::after {
+  width: 92px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d7793d 0%,
+      #8d62bd 52%,
+      #4db7a8 100%
+    );
+
+  box-shadow:
+    0 3px 12px rgba(141, 98, 189, 0.14);
+}
+
+/* ============================================================
+   TRUST BAR
+============================================================ */
+
+.season-halloween .trustbar {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(77, 183, 168, 0.13),
+      rgba(215, 121, 61, 0.075) 48%,
+      rgba(141, 98, 189, 0.13)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.70),
+    inset 0 -1px 0 rgba(112, 70, 143, 0.06);
+}
+
+.season-halloween .trust-item svg {
+  color: #8d62bd;
+}
+
+.season-halloween .trustbar-link {
+  color: #4a9f92;
+}
+
+.season-halloween .trustbar-link:hover {
+  color: #d7793d;
+}
+
+/* ============================================================
+   PAGE RHYTHM
+
+   Dos variaciones muy suaves para que las secciones no se sientan como
+   un bloque blanco continuo. El blanco sigue siendo dominante.
+============================================================ */
+
+.season-halloween .ceo-container,
+.season-halloween .our-technology,
+.season-halloween .event-section {
+  background:
+    radial-gradient(
+      circle at 10% 18%,
+      rgba(215, 121, 61, 0.085),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 88% 78%,
+      rgba(141, 98, 189, 0.13),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #faf7fc 48%,
+      #ffffff 100%
+    );
+}
+
+.season-halloween .services,
+.season-halloween .about-container,
+.season-halloween .contact {
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(77, 183, 168, 0.12),
+      transparent 33%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(215, 121, 61, 0.085),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fbf8f6 48%,
+      #ffffff 100%
+    );
+}
+
+.season-halloween .ceo-container,
+.season-halloween .services,
+.season-halloween .our-technology,
+.season-halloween .about-container,
+.season-halloween .event-section,
+.season-halloween .contact {
+  box-shadow:
+    inset 0 1px 0 rgba(141, 98, 189, 0.045),
+    inset 0 -1px 0 rgba(215, 121, 61, 0.035);
+}
+
+/* ============================================================
+   KICKERS
+============================================================ */
+
+.season-halloween .ceo-kicker,
+.season-halloween .services-kicker,
+.season-halloween .technology-kicker,
+.season-halloween .about-kicker,
+.season-halloween .event-kicker,
+.season-halloween .contact-kicker {
+  border-color: rgba(141, 98, 189, 0.20);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.82),
+      rgba(215, 121, 61, 0.055)
+    );
+
+  color: #6a4b84;
+
+  box-shadow:
+    0 10px 24px rgba(112, 70, 143, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+/* ============================================================
+   COMMON GLASS SURFACES
+
+   Solo retocamos borde y sombra. Los rellenos blancos originales se
+   conservan para que la página siga sintiéndose Equilibria.
+============================================================ */
+
+.season-halloween .services-shell,
+.season-halloween .magazine-wrapper,
+.season-halloween .ceo-text,
+.season-halloween .contact-info,
+.season-halloween .contact-map-card,
+.season-halloween .contact-video-card {
+  border-color: rgba(141, 98, 189, 0.14);
+
+  box-shadow:
+    0 24px 60px rgba(77, 183, 168, 0.07),
+    0 10px 28px rgba(112, 70, 143, 0.07),
+    0 7px 24px rgba(215, 121, 61, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.90);
+}
+
+/* ============================================================
+   SMALL ACCENTS
+============================================================ */
+
+.season-halloween .services-kicker,
+.season-halloween .technology-kicker,
+.season-halloween .event-kicker {
+  color: #75508f;
+}
+
+.season-halloween .about-kicker,
+.season-halloween .contact-kicker,
+.season-halloween .ceo-kicker {
+  color: #4b8379;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.season-halloween {
+    scroll-behavior: auto;
+  }
+}
