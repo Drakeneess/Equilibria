@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { halloweenConfig } from "./halloween.config";
 import "./halloween.css";
 import "./interactive.css";
+import "./navbar.css";
 
 const MOTES = [
   { left: "8%", top: "24%", delay: "-1.5s", scale: 0.9 },
