@@ -14,7 +14,7 @@
 
   box-shadow:
     0 28px 70px rgba(82, 37, 104, 0.10),
-    0 12px 30px rgba(218, 113, 46, 0.07),
+    0 12px 30px rgba(83, 160, 151, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.92),
     inset 0 0 42px rgba(156, 78, 198, 0.025);
 }
@@ -36,7 +36,7 @@
     linear-gradient(
       115deg,
       transparent 4%,
-      rgba(237, 143, 69, 0.30) 18%,
+      rgba(157, 92, 199, 0.28) 18%,
       rgba(169, 88, 215, 0.28) 47%,
       rgba(87, 201, 186, 0.20) 74%,
       transparent 94%
@@ -90,11 +90,11 @@
 
   box-shadow:
     0 16px 34px rgba(117, 59, 145, 0.12),
-    0 7px 20px rgba(229, 128, 55, 0.08),
+    0 7px 20px rgba(77, 168, 157, 0.06),
     inset 0 0 22px rgba(166, 89, 207, 0.04);
 }
 
-/* Little ember next to the active category. */
+/* Little spectral glow next to the active category. */
 .season-halloween .service-tab.active::after {
   content: "";
 
@@ -109,11 +109,11 @@
 
   border-radius: 50%;
 
-  background: #ed9148;
+  background: #9f63c8;
 
   box-shadow:
-    0 0 7px rgba(247, 157, 75, 0.88),
-    0 0 16px rgba(176, 83, 224, 0.56);
+    0 0 7px rgba(170, 102, 215, 0.76),
+    0 0 16px rgba(78, 190, 177, 0.30);
 
   animation: halloween-service-tab-ember 1.8s ease-in-out infinite alternate;
 }
@@ -122,14 +122,14 @@
   background:
     linear-gradient(
       180deg,
-      #e98742 0%,
+      #8f57b4 0%,
       #9b57c5 54%,
       var(--tab-end) 100%
     );
 
   box-shadow:
     0 0 12px rgba(164, 81, 207, 0.24),
-    0 0 18px rgba(231, 130, 61, 0.10);
+    0 0 18px rgba(73, 184, 171, 0.08);
 }
 
 /* ------------------------------------------------------------
@@ -184,7 +184,7 @@
     linear-gradient(
       135deg,
       rgba(168, 91, 208, 0.10),
-      rgba(237, 143, 69, 0.10)
+      rgba(87, 201, 186, 0.08)
     );
 
   box-shadow:
@@ -290,7 +290,7 @@
     linear-gradient(
       135deg,
       rgba(111, 51, 137, 0.23),
-      rgba(226, 120, 48, 0.18)
+      rgba(75, 170, 159, 0.14)
     );
 
   box-shadow:
@@ -305,7 +305,7 @@
     linear-gradient(
       135deg,
       rgba(113, 51, 139, 0.36),
-      rgba(225, 117, 44, 0.26)
+      rgba(70, 166, 155, 0.20)
     );
 
   box-shadow:
@@ -317,7 +317,7 @@
 .season-halloween .service-card.is-open .service-card-toggle {
   box-shadow:
     0 7px 18px rgba(29, 8, 34, 0.20),
-    0 0 15px rgba(220, 116, 49, 0.18),
+    0 0 15px rgba(72, 175, 163, 0.14),
     0 0 20px rgba(160, 76, 202, 0.16);
 }
 
@@ -339,15 +339,15 @@
 
   box-shadow:
     0 10px 24px rgba(92, 43, 111, 0.12),
-    0 0 14px rgba(223, 119, 52, 0.06);
+    0 0 14px rgba(67, 171, 159, 0.05);
 }
 
 .season-halloween .carousel-side-control:not(.disabled):hover {
-  color: #d97837;
+  color: #5aaea5;
 
   box-shadow:
     0 14px 30px rgba(95, 43, 115, 0.16),
-    0 0 18px rgba(221, 116, 48, 0.14);
+    0 0 18px rgba(68, 175, 162, 0.12);
 }
 
 /* ------------------------------------------------------------
