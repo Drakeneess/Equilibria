@@ -1,0 +1,340 @@
+/* ============================================================
+   HALLOWEEN — INTERACTION V2
+
+   Deliberately more visible than the base ambient pass. This file is
+   loaded after halloween.css and only overrides/extends interactive
+   decoration styles.
+============================================================ */
+
+.season-halloween .stage-hero {
+  --halloween-spider-drop: 46px;
+}
+
+/* Pointer light: large enough to be perceived as an effect, not just
+   a slight color correction. */
+.halloween-pointer-glow {
+  background:
+    radial-gradient(
+      circle 340px at var(--halloween-pointer-x) var(--halloween-pointer-y),
+      rgba(196, 107, 255, 0.32) 0%,
+      rgba(84, 226, 215, 0.15) 28%,
+      rgba(101, 47, 148, 0.10) 48%,
+      transparent 72%
+    );
+
+  mix-blend-mode: screen;
+  opacity: 0.96;
+}
+
+/* Fog now reads as a foreground layer rather than a nearly invisible
+   tint. It still remains behind the actual Hero content. */
+.halloween-fog {
+  bottom: -18%;
+  width: 68%;
+  height: 58%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(138, 66, 190, 0.28) 0%,
+      rgba(82, 48, 126, 0.18) 38%,
+      rgba(32, 116, 113, 0.08) 58%,
+      transparent 76%
+    );
+
+  filter: blur(22px);
+  opacity: 0.92;
+
+  translate:
+    var(--halloween-parallax-x)
+    var(--halloween-parallax-y);
+
+  animation: halloween-fog-breathe 6.8s ease-in-out infinite alternate;
+}
+
+.halloween-fog--left {
+  left: -15%;
+}
+
+.halloween-fog--right {
+  right: -15%;
+}
+
+/* Bats: noticeably larger and with a purple rim so they do not vanish
+   into the dark parts of the campaign artwork. */
+.halloween-bat {
+  width: 52px;
+  height: 21px;
+  opacity: 0.82;
+
+  translate:
+    var(--halloween-flee-x)
+    var(--halloween-flee-y);
+
+  filter:
+    drop-shadow(0 4px 7px rgba(4, 0, 8, 0.78))
+    drop-shadow(0 0 6px rgba(179, 95, 255, 0.42));
+}
+
+.halloween-bat::before,
+.halloween-bat::after {
+  width: 29px;
+  height: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16, 7, 22, 0.99),
+      rgba(91, 39, 114, 0.98)
+    );
+}
+
+.halloween-bat--1 {
+  top: 24%;
+  left: 5%;
+  scale: 1.08;
+}
+
+.halloween-bat--2 {
+  top: 40%;
+  right: 5%;
+  scale: 0.90;
+  opacity: 0.74;
+}
+
+.halloween-bat--3 {
+  top: 68%;
+  left: 9%;
+  scale: 0.76;
+  opacity: 0.68;
+}
+
+/* Floating sparks / supernatural dust. Orange + violet makes them
+   separate visually from the teal brand lighting. */
+.halloween-motes {
+  position: absolute;
+  inset: 0;
+}
+
+.halloween-mote {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  background: #f7a24b;
+  box-shadow:
+    0 0 5px rgba(255, 185, 92, 0.95),
+    0 0 14px rgba(201, 94, 255, 0.82),
+    0 0 28px rgba(120, 61, 178, 0.45);
+
+  opacity: 0.78;
+
+  animation:
+    halloween-mote-float 5.4s ease-in-out infinite alternate,
+    halloween-mote-pulse 2.1s ease-in-out infinite alternate;
+}
+
+/* Hanging spider. The thread and body extend as the pointer moves
+   lower in the Hero, making the interaction obvious without stealing
+   clicks from the page. */
+.halloween-spider-rig {
+  position: absolute;
+  top: 5.4rem;
+  left: 4.5%;
+
+  width: 54px;
+  height: 230px;
+
+  opacity: 0.96;
+}
+
+.halloween-spider-thread {
+  position: absolute;
+  top: -5.4rem;
+  left: 50%;
+
+  width: 2px;
+  height: calc(5.4rem + var(--halloween-spider-drop));
+
+  transform: translateX(-50%);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(235, 220, 255, 0.26),
+      rgba(211, 165, 255, 0.88)
+    );
+
+  box-shadow: 0 0 5px rgba(169, 91, 236, 0.48);
+
+  transition: height 0.22s cubic-bezier(.22, 1, .36, 1);
+}
+
+.halloween-spider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: 25px;
+  height: 31px;
+
+  translate: -50% var(--halloween-spider-drop);
+
+  border-radius: 48% 48% 54% 54%;
+
+  background:
+    radial-gradient(circle at 36% 33%, #ff8d53 0 7%, transparent 8%),
+    radial-gradient(circle at 64% 33%, #ff8d53 0 7%, transparent 8%),
+    linear-gradient(160deg, #382044, #120a17 68%);
+
+  box-shadow:
+    0 6px 9px rgba(4, 0, 8, 0.58),
+    0 0 12px rgba(191, 91, 255, 0.55);
+
+  transition: translate 0.22s cubic-bezier(.22, 1, .36, 1);
+  animation: halloween-spider-sway 2.8s ease-in-out infinite alternate;
+}
+
+.halloween-spider::before,
+.halloween-spider::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+
+  width: 26px;
+  height: 20px;
+
+  border-top: 3px solid rgba(36, 18, 44, 0.98);
+  border-bottom: 3px solid rgba(36, 18, 44, 0.98);
+  border-radius: 50%;
+}
+
+.halloween-spider::before {
+  right: 14px;
+  rotate: -18deg;
+}
+
+.halloween-spider::after {
+  left: 14px;
+  rotate: 18deg;
+}
+
+@keyframes halloween-fog-breathe {
+  from {
+    scale: 0.96 0.90;
+    opacity: 0.74;
+  }
+
+  to {
+    scale: 1.08 1.03;
+    opacity: 0.98;
+  }
+}
+
+@keyframes halloween-mote-float {
+  from {
+    translate: -5px 8px;
+  }
+
+  to {
+    translate: 8px -18px;
+  }
+}
+
+@keyframes halloween-mote-pulse {
+  from {
+    opacity: 0.34;
+    filter: brightness(0.85);
+  }
+
+  to {
+    opacity: 0.92;
+    filter: brightness(1.32);
+  }
+}
+
+@keyframes halloween-spider-sway {
+  from {
+    rotate: -5deg;
+  }
+
+  to {
+    rotate: 6deg;
+  }
+}
+
+@media (max-width: 900px) {
+  .halloween-pointer-glow {
+    opacity: 0.84;
+  }
+
+  .halloween-spider-rig {
+    left: 2.5%;
+    scale: 0.88;
+  }
+}
+
+@media (max-width: 700px) {
+  .halloween-pointer-glow {
+    background:
+      radial-gradient(
+        circle 250px at var(--halloween-pointer-x) var(--halloween-pointer-y),
+        rgba(196, 107, 255, 0.25),
+        rgba(84, 226, 215, 0.11) 34%,
+        transparent 72%
+      );
+    opacity: 0.72;
+  }
+
+  .halloween-fog {
+    width: 82%;
+    height: 42%;
+    opacity: 0.74;
+  }
+
+  .halloween-bat--1 {
+    top: 31%;
+    left: 2%;
+    scale: 0.76;
+  }
+
+  .halloween-bat--2 {
+    top: 58%;
+    right: 2%;
+    scale: 0.62;
+  }
+
+  .halloween-bat--3 {
+    display: none;
+  }
+
+  .halloween-spider-rig {
+    top: 5.8rem;
+    left: 1.25%;
+    scale: 0.72;
+  }
+
+  .halloween-mote:nth-child(even) {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .halloween-spider-rig {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-fog,
+  .halloween-mote,
+  .halloween-spider {
+    animation: none;
+  }
+
+  .halloween-spider,
+  .halloween-spider-thread {
+    transition: none;
+  }
+}
