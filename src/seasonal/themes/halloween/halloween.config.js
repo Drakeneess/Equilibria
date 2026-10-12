@@ -3,10 +3,13 @@ export const halloweenConfig = {
     pointerGlow: true,
     bats: true,
     fog: true,
+    spider: true,
+    motes: true,
   },
   interaction: {
     enabled: true,
-    maxFleePx: 18,
-    maxParallaxPx: 10,
+    maxFleePx: 40,
+    maxParallaxPx: 24,
+    maxSpiderDropPx: 155,
   },
 };
