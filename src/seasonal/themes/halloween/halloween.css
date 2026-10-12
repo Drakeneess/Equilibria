@@ -1,235 +1,139 @@
 /* ============================================================
    HALLOWEEN — HERO SKIN
-   Seasonal CSS may adapt existing component classes, while the
-   base components remain unaware of the active seasonal theme.
+
+   Regla: la temporada se adapta al Hero existente. El Hero conserva
+   su tamaño, espaciado y comportamiento responsive; los assets solo
+   reemplazan la representación visual.
 ============================================================ */
 
-.season-halloween .stage-hero {
-  min-height: 0;
-  max-height: none;
-  aspect-ratio: 1600 / 595;
+/* ------------------------------------------------------------
+   BACKGROUND
+   Reutilizamos el <img class="hero-bg"> existente y dejamos que las
+   reglas base del Hero controlen ancho, alto y recorte.
+------------------------------------------------------------ */
 
-  background-color: #100a18;
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(11, 6, 18, 0.02) 0%,
-      rgba(11, 6, 18, 0.02) 68%,
-      rgba(11, 6, 18, 0.42) 100%
-    ),
-    url("/seasonal/halloween/hero-halloween.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* The regular hero background still exists in the DOM, but the
-   Halloween skin takes visual ownership of the background. */
 .season-halloween .stage-hero .hero-bg {
-  opacity: 0;
-  visibility: hidden;
+  content: url("/seasonal/halloween/hero-background.webp");
+
+  object-fit: cover;
+  object-position: center;
+
+  filter:
+    blur(8px)
+    brightness(0.72)
+    saturate(1.08);
 }
 
+.season-halloween .stage-hero.revealed .hero-bg {
+  filter:
+    blur(0)
+    brightness(0.82)
+    saturate(1.06);
+}
+
+/* El arte ya tiene una dirección cromática fuerte. La atmósfera base
+   se reduce a una capa de contraste para mantener legible el contenido. */
 .season-halloween .stage-hero .hero-atmosphere {
   background:
+    radial-gradient(
+      circle at 50% 36%,
+      rgba(98, 50, 132, 0.10),
+      transparent 38%
+    ),
     linear-gradient(
       180deg,
-      rgba(12, 7, 19, 0.02) 0%,
-      rgba(12, 7, 19, 0.02) 70%,
-      rgba(12, 7, 19, 0.32) 100%
+      rgba(10, 5, 16, 0.08) 0%,
+      rgba(10, 5, 16, 0.18) 52%,
+      rgba(10, 5, 16, 0.56) 100%
     );
-  opacity: 1;
 }
 
-/* The campaign artwork already contains the Equilibria identity and
-   Halloween message. We keep the original copy in the accessibility
-   tree, but remove it from the visual composition to avoid duplication. */
-.season-halloween .stage-hero .brand-panel {
-  display: none;
+/* ------------------------------------------------------------
+   UPDATED HALLOWEEN LOGO
+
+   No cambiamos las dimensiones del brand-panel. Sus hijos continúan
+   ocupando espacio, pero se vuelven transparentes; el logo estacional
+   se adapta al espacio que ya existía.
+------------------------------------------------------------ */
+
+.season-halloween .stage-hero .brand-panel > .isotipo,
+.season-halloween .stage-hero .brand-panel > .logotipo,
+.season-halloween .stage-hero .brand-panel > .brand-subtitle {
+  opacity: 0;
 }
 
-.season-halloween .stage-hero .slogan-container,
-.season-halloween .stage-hero .hero-description {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
+.season-halloween .stage-hero .brand-panel::after {
+  content: "";
 
-.season-halloween .stage-hero .hero-overlay {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  inset: 0.65rem;
+  z-index: 2;
 
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  background-image: url("/seasonal/halloween/hero-logo.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 
-  padding: 0 2rem 2.4rem;
   pointer-events: none;
 }
 
-.season-halloween .stage-hero .hero-copy {
-  width: auto;
-  max-width: none;
-  pointer-events: auto;
+/* Conservamos el glass panel original, pero lo oscurecemos ligeramente
+   para que el logo actualizado no compita con el fondo. */
+.season-halloween .stage-hero .brand-panel {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 9, 28, 0.48),
+      rgba(45, 22, 61, 0.24)
+    );
+
+  border-color: rgba(196, 145, 255, 0.24);
+
+  box-shadow:
+    0 24px 70px rgba(6, 2, 12, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20);
 }
 
-.season-halloween .stage-hero .hero-actions {
-  margin-top: 0;
-  padding: 0.55rem;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-
-  background: rgba(14, 7, 22, 0.42);
-  backdrop-filter: blur(12px) saturate(130%);
-  -webkit-backdrop-filter: blur(12px) saturate(130%);
-
-  box-shadow: 0 14px 40px rgba(7, 3, 12, 0.28);
-}
+/* ------------------------------------------------------------
+   ACTIONS
+------------------------------------------------------------ */
 
 .season-halloween .stage-hero .hero-btn-primary {
-  background: linear-gradient(135deg, #28a9a0, #8f56d8);
-  box-shadow: 0 12px 28px rgba(85, 45, 142, 0.28);
+  background:
+    linear-gradient(
+      135deg,
+      #39bdb6,
+      #8f56d8
+    );
+
+  box-shadow:
+    0 14px 34px
+      rgba(92, 52, 153, 0.30);
 }
 
 .season-halloween .stage-hero .hero-btn-secondary {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(15, 8, 23, 0.24);
 }
 
-.season-halloween .stage-hero .hero-scroll-indicator {
-  display: none;
-}
+/* ------------------------------------------------------------
+   RESPONSIVE
 
-/* ============================================================
-   AMBIENT DECORATION
-   No decoration is allowed in the navigation safety area.
-============================================================ */
+   El Hero NO adopta la relación de aspecto del asset. Solo ajustamos
+   qué zona del mismo queda visible dentro del viewport disponible.
+------------------------------------------------------------ */
 
-.halloween-layer {
-  position: fixed;
-  top: 8rem;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  z-index: 20;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.halloween-bat {
-  position: absolute;
-  width: 24px;
-  height: 10px;
-  opacity: 0.34;
-  animation: halloween-drift 11s ease-in-out infinite alternate;
-}
-
-.halloween-bat::before,
-.halloween-bat::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  width: 14px;
-  height: 9px;
-  background: #171019;
-  border-radius: 80% 10% 80% 20%;
-}
-
-.halloween-bat::before {
-  left: 0;
-  transform: rotate(-22deg);
-}
-
-.halloween-bat::after {
-  right: 0;
-  transform: scaleX(-1) rotate(-22deg);
-}
-
-.halloween-bat--1 {
-  top: 38%;
-  left: 4%;
-  animation-delay: -2s;
-}
-
-.halloween-bat--2 {
-  top: 64%;
-  right: 5%;
-  transform: scale(0.78);
-  animation-delay: -6s;
-}
-
-@keyframes halloween-drift {
-  from {
-    translate: -6px -2px;
-    rotate: -3deg;
-  }
-
-  to {
-    translate: 10px 7px;
-    rotate: 4deg;
+@media (max-width: 900px) {
+  .season-halloween .stage-hero .hero-bg {
+    object-position: 58% center;
   }
 }
 
-/* ============================================================
-   MOBILE HERO
-   The square campaign artwork works as the mobile composition.
-============================================================ */
-
-@media (max-width: 760px) {
-  .season-halloween .stage-hero {
-    min-height: 88svh;
-    aspect-ratio: auto;
-
-    padding: 6.5rem 1rem 1.5rem;
-
-    background-color: #07040e;
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(7, 4, 14, 0.02) 0%,
-        rgba(7, 4, 14, 0.04) 64%,
-        rgba(7, 4, 14, 0.78) 100%
-      ),
-      url("/seasonal/halloween/hero-halloween-mobile.webp");
-    background-position: center 5.4rem;
-    background-size: 100% auto;
+@media (max-width: 700px) {
+  .season-halloween .stage-hero .hero-bg {
+    object-position: 61% center;
   }
 
-  .season-halloween .stage-hero .hero-overlay {
-    padding: 0 1rem 1.4rem;
-  }
-
-  .season-halloween .stage-hero .hero-actions {
-    width: min(100%, 360px);
-    padding: 0.45rem;
-    gap: 0.45rem;
-  }
-
-  .season-halloween .stage-hero .hero-btn {
-    min-width: 0;
-    flex: 1 1 140px;
-    padding: 0.8rem 1rem;
-  }
-
-  .halloween-layer {
-    top: 7rem;
-  }
-
-  .halloween-bat--2 {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .halloween-bat {
-    animation: none;
+  .season-halloween .stage-hero .brand-panel::after {
+    inset: 0.9rem;
   }
 }
