@@ -12,4 +12,12 @@ export const halloweenConfig = {
     maxParallaxPx: 24,
     maxSpiderDropPx: 155,
   },
+  navbar: {
+    enabled: true,
+    pointerGlow: true,
+    webs: true,
+    crawler: true,
+    motes: true,
+    maxWebShiftPx: 10,
+  },
 };
