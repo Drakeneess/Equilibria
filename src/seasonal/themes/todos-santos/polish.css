@@ -1,0 +1,91 @@
+/* ============================================================
+   TODOS SANTOS — COMPOSITION POLISH
+
+   Ajustes finales de lectura visual: retiramos el badge superior y
+   damos al caballito un rostro más claro con dos ojos y hocico.
+============================================================ */
+
+/* El Hero ya comunica la temporada mediante la composición completa. */
+.season-todos-santos .todos-santos-season-badge {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   CABALLITO — rostro
+------------------------------------------------------------ */
+
+.season-todos-santos .todos-santos-altar-bread--horse .horse-head {
+  background:
+    radial-gradient(
+      circle at 32% 37%,
+      #5a3117 0 2.5px,
+      rgba(90, 49, 23, 0.16) 2.8px,
+      transparent 3.5px
+    ),
+    radial-gradient(
+      circle at 68% 37%,
+      #5a3117 0 2.5px,
+      rgba(90, 49, 23, 0.16) 2.8px,
+      transparent 3.5px
+    ),
+    linear-gradient(
+      180deg,
+      #f1bd78,
+      #d28a48
+    );
+}
+
+/* Sustituye el único punto que hacía de ojo en la versión anterior. */
+.season-todos-santos .todos-santos-altar-bread--horse .horse-head::after {
+  content: none;
+}
+
+.season-todos-santos .todos-santos-altar-bread--horse .horse-head::before {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 3px;
+
+  width: 22px;
+  height: 13px;
+
+  translate: -50% 0;
+
+  border-radius: 55% 55% 48% 48%;
+
+  background:
+    radial-gradient(
+      circle at 31% 48%,
+      #7b4726 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 69% 48%,
+      #7b4726 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      ellipse at 50% 83%,
+      rgba(126, 69, 36, 0.62) 0 4px,
+      transparent 4.8px
+    ),
+    linear-gradient(
+      180deg,
+      #f4d7ac,
+      #e7b978
+    );
+
+  border: 1px solid rgba(143, 75, 31, 0.18);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 226, 0.36),
+    0 2px 4px rgba(85, 43, 18, 0.08);
+}
+
+@media (max-width: 700px) {
+  .season-todos-santos .todos-santos-altar-bread--horse .horse-head::before {
+    width: 20px;
+    height: 12px;
+  }
+}
