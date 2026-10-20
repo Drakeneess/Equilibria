@@ -13,34 +13,31 @@ const PETALS = [
 ];
 
 const TOP_FLOWERS = [
-  { left: "9%", top: "24%", tone: 1 },
-  { left: "23%", top: "58%", tone: 2 },
-  { left: "38%", top: "26%", tone: 3 },
-  { left: "58%", top: "60%", tone: 1 },
-  { left: "74%", top: "24%", tone: 2 },
-  { left: "89%", top: "54%", tone: 3 },
+  { left: "3%", top: "42%", tone: 1 },
+  { left: "11%", top: "18%", tone: 3 },
+  { left: "20%", top: "54%", tone: 2 },
+  { left: "80%", top: "52%", tone: 3 },
+  { left: "89%", top: "18%", tone: 2 },
+  { left: "97%", top: "42%", tone: 1 },
 ];
 
 const TOP_STARS = [
-  { left: "4%", top: "68%", size: "8px" },
-  { left: "17%", top: "12%", size: "6px" },
-  { left: "31%", top: "72%", size: "7px" },
-  { left: "49%", top: "16%", size: "8px" },
-  { left: "65%", top: "70%", size: "6px" },
-  { left: "81%", top: "14%", size: "8px" },
-  { left: "96%", top: "66%", size: "7px" },
+  { left: "7%", top: "68%", size: "7px" },
+  { left: "16%", top: "8%", size: "6px" },
+  { left: "27%", top: "72%", size: "7px" },
+  { left: "73%", top: "70%", size: "6px" },
+  { left: "84%", top: "10%", size: "8px" },
+  { left: "93%", top: "66%", size: "7px" },
 ];
 
 const TOP_PASANKALLAS = Array.from({ length: 18 }, (_, index) => ({
   tone: (index % 6) + 1,
-  scale: 0.72 + (index % 4) * 0.12,
-  offset: (index % 3) * 4,
+  scale: 0.74 + (index % 4) * 0.12,
+  offset: (index % 3) * 5,
 }));
 
-const ALTAR_PASANKALLAS = Array.from({ length: 12 }, (_, index) => ({
-  tone: ((index + 2) % 6) + 1,
-  scale: 0.7 + (index % 3) * 0.14,
-}));
+const LEFT_PASANKALLAS = TOP_PASANKALLAS.slice(0, 9);
+const RIGHT_PASANKALLAS = TOP_PASANKALLAS.slice(9);
 
 export default function TodosSantosTheme() {
   const [heroNode, setHeroNode] = useState(null);
@@ -62,6 +59,18 @@ export default function TodosSantosTheme() {
   }, []);
 
   if (!heroNode) return null;
+
+  const renderPasankallas = (items, prefix) =>
+    items.map((item, index) => (
+      <span
+        key={`${prefix}-pasankalla-${index}`}
+        className={`todos-santos-pasankalla todos-santos-pasankalla--${item.tone}`}
+        style={{
+          scale: item.scale,
+          translate: `0 ${item.offset}px`,
+        }}
+      />
+    ));
 
   return createPortal(
     <div className="todos-santos-hero-layer" aria-hidden="true">
@@ -96,17 +105,12 @@ export default function TodosSantosTheme() {
         ))}
       </div>
 
-      <div className="todos-santos-pasankallas todos-santos-pasankallas--top">
-        {TOP_PASANKALLAS.map((item, index) => (
-          <span
-            key={`top-pasankalla-${index}`}
-            className={`todos-santos-pasankalla todos-santos-pasankalla--${item.tone}`}
-            style={{
-              scale: item.scale,
-              translate: `0 ${item.offset}px`,
-            }}
-          />
-        ))}
+      <div className="todos-santos-pasankallas todos-santos-pasankallas--top-left">
+        {renderPasankallas(LEFT_PASANKALLAS, "left")}
+      </div>
+
+      <div className="todos-santos-pasankallas todos-santos-pasankallas--top-right">
+        {renderPasankallas(RIGHT_PASANKALLAS, "right")}
       </div>
 
       <span className="todos-santos-cane todos-santos-cane--left" />
@@ -129,8 +133,14 @@ export default function TodosSantosTheme() {
         <span className="todos-santos-altar-cloth" />
         <span className="todos-santos-altar-leg todos-santos-altar-leg--1" />
         <span className="todos-santos-altar-leg todos-santos-altar-leg--2" />
-        <span className="todos-santos-altar-candle" />
+
+        <span className="todos-santos-altar-candle todos-santos-altar-candle--left" />
+        <span className="todos-santos-altar-candle todos-santos-altar-candle--right" />
         <span className="todos-santos-altar-flower" />
+
+        <span className="todos-santos-bread todos-santos-bread--wawa todos-santos-altar-bread todos-santos-altar-bread--wawa">
+          <span className="bread-face" />
+        </span>
       </div>
 
       <div className="todos-santos-side-altar todos-santos-side-altar--right">
@@ -138,37 +148,18 @@ export default function TodosSantosTheme() {
         <span className="todos-santos-altar-cloth" />
         <span className="todos-santos-altar-leg todos-santos-altar-leg--1" />
         <span className="todos-santos-altar-leg todos-santos-altar-leg--2" />
-        <span className="todos-santos-altar-mini-wawa">
-          <span className="todos-santos-altar-mini-face" />
-        </span>
+
+        <span className="todos-santos-altar-candle todos-santos-altar-candle--right" />
         <span className="todos-santos-altar-flower" />
-      </div>
 
-      <div className="todos-santos-candle-group todos-santos-candle-group--left">
-        <span className="todos-santos-candle todos-santos-candle--sm" />
-        <span className="todos-santos-candle todos-santos-candle--lg" />
-      </div>
-
-      <div className="todos-santos-candle-group todos-santos-candle-group--right">
-        <span className="todos-santos-candle todos-santos-candle--lg" />
-        <span className="todos-santos-candle todos-santos-candle--sm" />
-      </div>
-
-      <div className="todos-santos-bread-altar">
-        <span className="todos-santos-bread-shadow" />
-
-        <span className="todos-santos-bread todos-santos-bread--wawa">
-          <span className="bread-face" />
-        </span>
-
-        <span className="todos-santos-bread todos-santos-bread--ladder">
+        <span className="todos-santos-bread todos-santos-bread--ladder todos-santos-altar-bread todos-santos-altar-bread--ladder">
           <span className="ladder-rung ladder-rung--1" />
           <span className="ladder-rung ladder-rung--2" />
           <span className="ladder-rung ladder-rung--3" />
           <span className="ladder-rung ladder-rung--4" />
         </span>
 
-        <span className="todos-santos-bread todos-santos-bread--horse">
+        <span className="todos-santos-bread todos-santos-bread--horse todos-santos-altar-bread todos-santos-altar-bread--horse">
           <span className="horse-head" />
           <span className="horse-ear horse-ear--1" />
           <span className="horse-ear horse-ear--2" />
@@ -178,16 +169,6 @@ export default function TodosSantosTheme() {
           <span className="horse-leg horse-leg--4" />
           <span className="horse-tail" />
         </span>
-      </div>
-
-      <div className="todos-santos-pasankallas todos-santos-pasankallas--altar">
-        {ALTAR_PASANKALLAS.map((item, index) => (
-          <span
-            key={`altar-pasankalla-${index}`}
-            className={`todos-santos-pasankalla todos-santos-pasankalla--${item.tone}`}
-            style={{ scale: item.scale }}
-          />
-        ))}
       </div>
 
       <div className="todos-santos-petals">
