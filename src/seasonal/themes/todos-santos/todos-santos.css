@@ -1,0 +1,510 @@
+/* ============================================================
+   TODOS SANTOS — HERO
+
+   Tema claro inspirado en la mesa boliviana de Todos Santos:
+   flores, velas, pan y caña. Conserva el Hero base y solo modifica
+   su presentación visual dentro de la temporada.
+============================================================ */
+
+.season-todos-santos .stage-hero {
+  --todos-ivory: #f7efe2;
+  --todos-gold: #d8a047;
+  --todos-violet: #765093;
+  --todos-teal: #4fae9f;
+  --todos-wine: #7c485d;
+
+  background: #ded2c2;
+}
+
+/* ------------------------------------------------------------
+   BACKGROUND / ATMOSPHERE
+------------------------------------------------------------ */
+
+.season-todos-santos .stage-hero .hero-bg {
+  object-fit: cover;
+  object-position: center 46%;
+
+  filter:
+    blur(7px)
+    brightness(0.84)
+    saturate(0.92)
+    sepia(0.12);
+}
+
+.season-todos-santos .stage-hero.revealed .hero-bg {
+  filter:
+    blur(0)
+    brightness(0.91)
+    saturate(0.95)
+    sepia(0.08);
+}
+
+.season-todos-santos .stage-hero .hero-atmosphere {
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(247, 239, 226, 0.26),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 12% 72%,
+      rgba(216, 160, 71, 0.14),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 68%,
+      rgba(118, 80, 147, 0.14),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(42, 28, 31, 0.05) 0%,
+      rgba(43, 31, 35, 0.13) 54%,
+      rgba(30, 23, 27, 0.43) 100%
+    );
+}
+
+/* ------------------------------------------------------------
+   BRAND PANEL
+------------------------------------------------------------ */
+
+.season-todos-santos .stage-hero .brand-panel {
+  border-color: rgba(244, 225, 196, 0.46);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 249, 239, 0.33),
+      rgba(247, 239, 226, 0.16)
+    );
+
+  box-shadow:
+    0 24px 66px rgba(51, 31, 38, 0.20),
+    0 0 32px rgba(216, 160, 71, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+}
+
+.season-todos-santos .stage-hero .brand-panel::before {
+  background:
+    radial-gradient(
+      circle at 26% 30%,
+      rgba(216, 160, 71, 0.22),
+      transparent 52%
+    ),
+    radial-gradient(
+      circle at 74% 72%,
+      rgba(79, 174, 159, 0.18),
+      transparent 50%
+    );
+}
+
+.season-todos-santos .stage-hero .isotipo {
+  filter:
+    drop-shadow(0 8px 16px rgba(41, 25, 31, 0.26))
+    drop-shadow(0 0 18px rgba(216, 160, 71, 0.20));
+}
+
+/* ------------------------------------------------------------
+   COPY / ACTIONS
+------------------------------------------------------------ */
+
+.season-todos-santos .stage-hero .hero-title {
+  text-shadow:
+    0 2px 14px rgba(42, 27, 32, 0.32),
+    0 0 28px rgba(246, 229, 202, 0.12);
+}
+
+.season-todos-santos .stage-hero .hero-btn-primary {
+  background:
+    linear-gradient(
+      135deg,
+      #5cb6a7,
+      #765093 72%,
+      #8a5e74
+    );
+
+  box-shadow:
+    0 14px 34px rgba(75, 55, 98, 0.24),
+    0 0 18px rgba(216, 160, 71, 0.08);
+}
+
+.season-todos-santos .stage-hero .hero-btn-secondary {
+  border-color: rgba(247, 232, 210, 0.40);
+  background: rgba(83, 53, 65, 0.20);
+}
+
+/* ============================================================
+   DECORATIVE LAYER
+============================================================ */
+
+.todos-santos-hero-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------
+   SEASON BADGE
+------------------------------------------------------------ */
+
+.todos-santos-season-badge {
+  position: absolute;
+  top: 6.35rem;
+  left: 50%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+
+  padding: 0.55rem 0.88rem;
+
+  translate: -50% 0;
+
+  border: 1px solid rgba(246, 225, 194, 0.44);
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(91, 57, 72, 0.48),
+      rgba(86, 58, 109, 0.38)
+    );
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 24px rgba(37, 22, 28, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+
+  color: #fff8ef;
+
+  font-family: "Nunito", sans-serif;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.todos-santos-season-badge span {
+  font-weight: 900;
+}
+
+.todos-santos-season-badge small {
+  color: rgba(255, 238, 211, 0.78);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   REFERENCED LINE ICONS
+------------------------------------------------------------ */
+
+.todos-santos-icon {
+  display: block;
+
+  background: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.todos-santos-icon--flower {
+  width: 34px;
+  height: 34px;
+  color: rgba(240, 196, 103, 0.88);
+
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+
+  filter: drop-shadow(0 0 7px rgba(216, 160, 71, 0.25));
+}
+
+.todos-santos-icon--bread {
+  position: absolute;
+
+  width: 70px;
+  height: 70px;
+
+  color: rgba(244, 208, 149, 0.54);
+
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/bread.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/bread.svg");
+
+  filter: drop-shadow(0 0 10px rgba(111, 68, 86, 0.18));
+}
+
+.todos-santos-icon--candle {
+  width: 28px;
+  height: 28px;
+
+  color: rgba(255, 225, 171, 0.86);
+
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/candle.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/candle.svg");
+
+  filter:
+    drop-shadow(0 0 6px rgba(247, 188, 80, 0.56))
+    drop-shadow(0 0 14px rgba(247, 188, 80, 0.20));
+}
+
+/* ------------------------------------------------------------
+   FLORAL CORNERS
+------------------------------------------------------------ */
+
+.todos-santos-floral {
+  position: absolute;
+  top: 19%;
+
+  display: flex;
+  gap: 0.18rem;
+
+  opacity: 0.74;
+}
+
+.todos-santos-floral--left {
+  left: 2.8%;
+  transform: rotate(-16deg);
+}
+
+.todos-santos-floral--right {
+  right: 2.8%;
+  transform: rotate(16deg) scaleX(-1);
+}
+
+.todos-santos-floral .todos-santos-icon:nth-child(2) {
+  color: rgba(179, 125, 199, 0.82);
+  transform: translateY(10px) scale(0.86);
+}
+
+.todos-santos-floral .todos-santos-icon:nth-child(3) {
+  color: rgba(105, 190, 175, 0.82);
+  transform: translateY(-2px) scale(0.70);
+}
+
+/* ------------------------------------------------------------
+   CAÑA — vertical ceremonial framing
+------------------------------------------------------------ */
+
+.todos-santos-cane {
+  position: absolute;
+  bottom: -4%;
+
+  width: 18px;
+  height: 58%;
+
+  border-radius: 999px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(130, 163, 85, 0.78) 0 46px,
+      rgba(239, 222, 171, 0.74) 46px 50px,
+      rgba(113, 145, 74, 0.78) 50px 95px,
+      rgba(239, 222, 171, 0.72) 95px 99px
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(244, 228, 188, 0.12),
+    0 10px 28px rgba(35, 49, 24, 0.13);
+
+  opacity: 0.62;
+}
+
+.todos-santos-cane::before,
+.todos-santos-cane::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+
+  width: 62px;
+  height: 22px;
+
+  border-radius: 100% 0 100% 0;
+
+  background: rgba(104, 148, 78, 0.54);
+}
+
+.todos-santos-cane::before {
+  top: 12%;
+  transform: translateX(-5px) rotate(-24deg);
+}
+
+.todos-santos-cane::after {
+  top: 31%;
+  transform: translateX(-56px) rotate(22deg) scaleX(-1);
+}
+
+.todos-santos-cane--left {
+  left: 2.3%;
+  rotate: 4deg;
+}
+
+.todos-santos-cane--right {
+  right: 2.3%;
+  rotate: -4deg;
+}
+
+/* ------------------------------------------------------------
+   BREAD / CANDLES
+------------------------------------------------------------ */
+
+.todos-santos-bread--left {
+  left: 7.4%;
+  bottom: 13%;
+  rotate: -10deg;
+}
+
+.todos-santos-bread--right {
+  right: 7.4%;
+  bottom: 17%;
+  rotate: 10deg;
+}
+
+.todos-santos-candle-row {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2rem;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 1.4rem;
+
+  translate: -50% 0;
+
+  opacity: 0.68;
+}
+
+.todos-santos-candle-row .todos-santos-icon:nth-child(2) {
+  width: 34px;
+  height: 34px;
+  color: rgba(255, 214, 139, 0.94);
+}
+
+/* ------------------------------------------------------------
+   PETALS
+------------------------------------------------------------ */
+
+.todos-santos-petal {
+  position: absolute;
+  top: -30px;
+
+  width: 11px;
+  height: 16px;
+
+  border-radius: 70% 30% 70% 30%;
+
+  opacity: 0.58;
+
+  animation-name: todos-santos-petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.todos-santos-petal--1 {
+  background: rgba(236, 179, 72, 0.88);
+}
+
+.todos-santos-petal--2 {
+  background: rgba(169, 110, 190, 0.78);
+}
+
+.todos-santos-petal--3 {
+  background: rgba(92, 178, 162, 0.76);
+}
+
+@keyframes todos-santos-petal-fall {
+  0% {
+    translate: 0 -7vh;
+    rotate: 0deg;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.58;
+  }
+
+  55% {
+    translate: 24px 46vh;
+    rotate: 180deg;
+  }
+
+  100% {
+    translate: -15px 96vh;
+    rotate: 360deg;
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 900px) {
+  .todos-santos-cane {
+    opacity: 0.48;
+  }
+
+  .todos-santos-floral {
+    opacity: 0.58;
+  }
+
+  .todos-santos-icon--bread {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 700px) {
+  .todos-santos-season-badge {
+    top: 5.8rem;
+    gap: 0.45rem;
+    padding: 0.45rem 0.68rem;
+  }
+
+  .todos-santos-season-badge small {
+    display: none;
+  }
+
+  .todos-santos-cane {
+    width: 13px;
+    height: 48%;
+    opacity: 0.36;
+  }
+
+  .todos-santos-floral {
+    top: 23%;
+    opacity: 0.44;
+  }
+
+  .todos-santos-floral .todos-santos-icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .todos-santos-bread--left,
+  .todos-santos-bread--right {
+    bottom: 8%;
+    opacity: 0.36;
+  }
+
+  .todos-santos-candle-row {
+    bottom: 1rem;
+    opacity: 0.48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .todos-santos-petal {
+    animation: none;
+    display: none;
+  }
+}
