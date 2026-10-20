@@ -1,4 +1,4 @@
 export const seasonalConfig = {
   enabled: true,
-  activeTheme: "halloween",
+  activeTheme: "todos-santos",
 };
