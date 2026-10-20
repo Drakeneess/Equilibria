@@ -1,47 +1,48 @@
 /* ============================================================
    TODOS SANTOS — PAGE TONE
 
-   Calidez general para la temporada sin convertir la interfaz en un
-   filtro naranja. Equilibria conserva violeta + turquesa y Todos Santos
-   aporta marfil, miel, terracota y luz cálida.
+   Variante violeta suave para toda la página. Conserva la calidez de
+   Todos Santos mediante marfil, dorado y pequeños acentos miel, pero
+   desplaza el tono dominante hacia lavanda, malva y violeta claro.
 ============================================================ */
 
 body.season-todos-santos {
-  --todos-page-ivory: #fffaf3;
-  --todos-page-cream: #f9efe2;
-  --todos-page-peach: #f6e2cd;
-  --todos-page-orange: #c96f3d;
-  --todos-page-orange-soft: rgba(201, 111, 61, 0.10);
-  --todos-page-gold: #d49a46;
+  --todos-page-ivory: #fcfafc;
+  --todos-page-lilac: #f4eef8;
+  --todos-page-lavender: #e9def1;
+  --todos-page-violet-soft: #d7c3e5;
   --todos-page-violet: #765093;
-  --todos-page-teal: #4fae9f;
-  --todos-page-ink: #4a3933;
+  --todos-page-violet-deep: #65447e;
+  --todos-page-teal: #5aafa3;
+  --todos-page-gold: #d7a255;
+  --todos-page-gold-soft: rgba(215, 162, 85, 0.10);
+  --todos-page-ink: #463d4b;
 
-  --color-primary: #92d3c8;
-  --color-secondary: #c4add8;
-  --color-primary-strong: #4fae9f;
+  --color-primary: #9ad4ca;
+  --color-secondary: #cbb5dd;
+  --color-primary-strong: #55a99d;
   --color-secondary-strong: #765093;
-  --color-accent-green: #3f8d81;
+  --color-accent-green: #478b82;
   --color-accent-purple: #765093;
-  --color-accent-yellow: #d49a46;
+  --color-accent-yellow: #d7a255;
 
   background:
     radial-gradient(
       circle at 8% 14%,
-      rgba(218, 150, 73, 0.11),
+      rgba(153, 119, 180, 0.10),
       transparent 24rem
     ),
     radial-gradient(
       circle at 92% 34%,
-      rgba(201, 111, 61, 0.075),
+      rgba(208, 181, 225, 0.15),
       transparent 25rem
     ),
     radial-gradient(
       circle at 52% 78%,
-      rgba(118, 80, 147, 0.045),
+      rgba(90, 175, 163, 0.045),
       transparent 30rem
     ),
-    #fffaf4;
+    #fbf9fc;
 
   color: var(--todos-page-ink);
 }
@@ -50,14 +51,14 @@ body.season-todos-santos #root {
   background:
     linear-gradient(
       180deg,
-      rgba(255, 252, 247, 0.16),
-      rgba(249, 237, 222, 0.18)
+      rgba(255, 255, 255, 0.18),
+      rgba(237, 228, 244, 0.20)
     );
 }
 
 body.season-todos-santos ::selection {
-  background: rgba(212, 154, 70, 0.30);
-  color: #513421;
+  background: rgba(155, 119, 183, 0.27);
+  color: #493457;
 }
 
 /* ============================================================
@@ -65,7 +66,7 @@ body.season-todos-santos ::selection {
 ============================================================ */
 
 .season-todos-santos .section-title {
-  color: #6e4b72;
+  color: #6e4d82;
 }
 
 .season-todos-santos .section-title::after {
@@ -74,15 +75,15 @@ body.season-todos-santos ::selection {
   background:
     linear-gradient(
       90deg,
-      #c96f3d 0%,
-      #d49a46 42%,
-      #765093 70%,
-      #4fae9f 100%
+      #d7a255 0%,
+      #b990cf 34%,
+      #765093 67%,
+      #5aafa3 100%
     );
 
   box-shadow:
-    0 3px 12px rgba(201, 111, 61, 0.16),
-    0 0 14px rgba(212, 154, 70, 0.10);
+    0 3px 12px rgba(118, 80, 147, 0.14),
+    0 0 14px rgba(215, 162, 85, 0.08);
 }
 
 /* ============================================================
@@ -93,33 +94,33 @@ body.season-todos-santos ::selection {
   background:
     linear-gradient(
       90deg,
-      rgba(255, 248, 236, 0.94),
-      rgba(246, 221, 193, 0.76) 46%,
-      rgba(235, 214, 224, 0.72)
+      rgba(249, 244, 252, 0.96),
+      rgba(232, 217, 242, 0.78) 48%,
+      rgba(241, 234, 247, 0.88)
     );
 
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.82),
-    inset 0 -1px 0 rgba(201, 111, 61, 0.08);
+    inset 0 1px 0 rgba(255, 255, 255, 0.86),
+    inset 0 -1px 0 rgba(118, 80, 147, 0.075);
 }
 
 .season-todos-santos .trust-item svg {
-  color: #c47b45;
+  color: #8863a0;
 }
 
 .season-todos-santos .trustbar-link {
-  color: #7b5a40;
+  color: #6f5580;
 }
 
 .season-todos-santos .trustbar-link:hover {
-  color: #765093;
+  color: #4f9f94;
 }
 
 /* ============================================================
    PAGE RHYTHM
 
-   Alternamos marfil, durazno muy suave y pequeñas nubes cromáticas.
-   El naranja aparece como temperatura, no como capa uniforme.
+   Alternamos blanco-lila y lavanda muy suave. El dorado queda como
+   temperatura secundaria para no perder la identidad de Todos Santos.
 ============================================================ */
 
 .season-todos-santos .ceo-container,
@@ -128,19 +129,19 @@ body.season-todos-santos ::selection {
   background:
     radial-gradient(
       circle at 10% 20%,
-      rgba(218, 150, 73, 0.13),
+      rgba(183, 145, 207, 0.12),
       transparent 32%
     ),
     radial-gradient(
       circle at 89% 78%,
-      rgba(118, 80, 147, 0.075),
+      rgba(215, 162, 85, 0.055),
       transparent 34%
     ),
     linear-gradient(
       180deg,
-      #fffdf9 0%,
-      #faefe3 48%,
-      #fffaf4 100%
+      #fffefe 0%,
+      #f4eef8 48%,
+      #fbf8fd 100%
     );
 }
 
@@ -150,19 +151,19 @@ body.season-todos-santos ::selection {
   background:
     radial-gradient(
       circle at 12% 18%,
-      rgba(201, 111, 61, 0.10),
+      rgba(118, 80, 147, 0.095),
       transparent 32%
     ),
     radial-gradient(
       circle at 89% 80%,
-      rgba(79, 174, 159, 0.075),
+      rgba(90, 175, 163, 0.065),
       transparent 33%
     ),
     linear-gradient(
       180deg,
-      #fffaf4 0%,
-      #f8e8d8 48%,
-      #fffaf4 100%
+      #fbf9fd 0%,
+      #eee5f4 48%,
+      #fbf9fd 100%
     );
 }
 
@@ -173,8 +174,8 @@ body.season-todos-santos ::selection {
 .season-todos-santos .event-section,
 .season-todos-santos .contact {
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.74),
-    inset 0 -1px 0 rgba(201, 111, 61, 0.055);
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -1px 0 rgba(118, 80, 147, 0.05);
 }
 
 /* ============================================================
@@ -187,25 +188,25 @@ body.season-todos-santos ::selection {
 .season-todos-santos .about-kicker,
 .season-todos-santos .event-kicker,
 .season-todos-santos .contact-kicker {
-  border-color: rgba(201, 111, 61, 0.20);
+  border-color: rgba(118, 80, 147, 0.20);
 
   background:
     linear-gradient(
       135deg,
-      rgba(255, 252, 246, 0.92),
-      rgba(246, 220, 190, 0.52)
+      rgba(255, 255, 255, 0.92),
+      rgba(234, 222, 242, 0.58)
     );
 
-  color: #855b3f;
+  color: #705486;
 
   box-shadow:
-    0 10px 24px rgba(181, 103, 55, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    0 10px 24px rgba(103, 74, 126, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
 }
 
 .season-todos-santos .about-kicker,
 .season-todos-santos .contact-kicker {
-  color: #6e5577;
+  color: #5f6f77;
 }
 
 /* ============================================================
@@ -218,15 +219,15 @@ body.season-todos-santos ::selection {
 .season-todos-santos .contact-info,
 .season-todos-santos .contact-map-card,
 .season-todos-santos .contact-video-card {
-  border-color: rgba(201, 111, 61, 0.15);
+  border-color: rgba(118, 80, 147, 0.14);
 
-  background-color: rgba(255, 252, 247, 0.72);
+  background-color: rgba(253, 250, 255, 0.76);
 
   box-shadow:
-    0 24px 60px rgba(173, 101, 54, 0.075),
-    0 10px 28px rgba(118, 80, 147, 0.055),
-    0 6px 22px rgba(212, 154, 70, 0.045),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    0 24px 60px rgba(98, 68, 120, 0.065),
+    0 10px 28px rgba(148, 111, 176, 0.06),
+    0 6px 22px rgba(215, 162, 85, 0.028),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
 }
 
 /* ============================================================
@@ -237,36 +238,36 @@ body.season-todos-santos ::selection {
   background:
     radial-gradient(
       circle at 14% 18%,
-      rgba(218, 150, 73, 0.15),
+      rgba(183, 145, 207, 0.13),
       transparent 32%
     ),
     radial-gradient(
       circle at 86% 76%,
-      rgba(118, 80, 147, 0.09),
+      rgba(90, 175, 163, 0.065),
       transparent 34%
     ),
     linear-gradient(
       180deg,
-      #fffaf4 0%,
-      #f7e7d6 55%,
-      #f4e1cf 100%
+      #fbf9fd 0%,
+      #eee5f4 55%,
+      #e8ddf0 100%
     );
 }
 
 .season-todos-santos .footer-shell {
-  border-color: rgba(201, 111, 61, 0.16);
+  border-color: rgba(118, 80, 147, 0.15);
 
   background:
     linear-gradient(
       135deg,
-      rgba(255, 252, 247, 0.88),
-      rgba(251, 238, 223, 0.72)
+      rgba(255, 253, 255, 0.90),
+      rgba(239, 230, 246, 0.76)
     );
 
   box-shadow:
-    0 28px 70px rgba(174, 103, 57, 0.09),
-    0 12px 30px rgba(118, 80, 147, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    0 28px 70px rgba(96, 66, 117, 0.075),
+    0 12px 30px rgba(118, 80, 147, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
 }
 
 @media (prefers-reduced-motion: reduce) {
