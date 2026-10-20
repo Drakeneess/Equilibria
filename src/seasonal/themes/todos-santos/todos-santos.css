@@ -1,0 +1,1046 @@
+/* ============================================================
+   TODOS SANTOS — HERO
+
+   Tema inspirado en la mesa boliviana de Todos Santos. La temporada
+   conserva el Hero base y refuerza flores, velas, caña y panes con
+   formas tradicionales: t'antawawa, escalera y caballito.
+============================================================ */
+
+.season-todos-santos .stage-hero {
+  --todos-ivory: #fff4e5;
+  --todos-gold: #e3ad50;
+  --todos-gold-soft: #f2cf83;
+  --todos-violet: #7d57a4;
+  --todos-violet-soft: #d8baf0;
+  --todos-teal: #57bfae;
+  --todos-rose: #df829e;
+  --todos-wine: #7c485d;
+  --todos-bread: #dfa258;
+  --todos-bread-deep: #a9602b;
+
+  background: #e2d3c2;
+}
+
+/* ------------------------------------------------------------
+   BACKGROUND / ATMOSPHERE
+------------------------------------------------------------ */
+
+.season-todos-santos .stage-hero .hero-bg {
+  object-fit: cover;
+  object-position: center 46%;
+
+  filter:
+    blur(7px)
+    brightness(0.88)
+    saturate(1.13)
+    sepia(0.07);
+}
+
+.season-todos-santos .stage-hero.revealed .hero-bg {
+  filter:
+    blur(0)
+    brightness(0.96)
+    saturate(1.11)
+    sepia(0.04);
+}
+
+.season-todos-santos .stage-hero .hero-atmosphere {
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 239, 203, 0.24),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 12% 70%,
+      rgba(229, 174, 76, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 67%,
+      rgba(126, 88, 169, 0.18),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 70% 18%,
+      rgba(87, 191, 174, 0.10),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(43, 27, 27, 0.04) 0%,
+      rgba(44, 28, 33, 0.10) 52%,
+      rgba(30, 22, 25, 0.40) 100%
+    );
+}
+
+/* ------------------------------------------------------------
+   BRAND PANEL
+------------------------------------------------------------ */
+
+.season-todos-santos .stage-hero .brand-panel {
+  border-color: rgba(255, 227, 180, 0.50);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 249, 239, 0.36),
+      rgba(247, 239, 226, 0.17)
+    );
+
+  box-shadow:
+    0 24px 66px rgba(51, 31, 38, 0.19),
+    0 0 34px rgba(227, 173, 80, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
+.season-todos-santos .stage-hero .brand-panel::before {
+  background:
+    radial-gradient(
+      circle at 26% 30%,
+      rgba(227, 173, 80, 0.26),
+      transparent 52%
+    ),
+    radial-gradient(
+      circle at 74% 72%,
+      rgba(87, 191, 174, 0.20),
+      transparent 50%
+    );
+}
+
+.season-todos-santos .stage-hero .isotipo {
+  filter:
+    drop-shadow(0 8px 16px rgba(41, 25, 31, 0.26))
+    drop-shadow(0 0 20px rgba(227, 173, 80, 0.24));
+}
+
+/* ------------------------------------------------------------
+   COPY / ACTIONS
+------------------------------------------------------------ */
+
+.season-todos-santos .stage-hero .hero-title {
+  text-shadow:
+    0 2px 14px rgba(42, 27, 32, 0.30),
+    0 0 28px rgba(255, 231, 193, 0.16);
+}
+
+.season-todos-santos .stage-hero .hero-btn-primary {
+  background:
+    linear-gradient(
+      135deg,
+      #62c6b5,
+      #8059aa 70%,
+      #9a657f
+    );
+
+  box-shadow:
+    0 14px 34px rgba(75, 55, 98, 0.24),
+    0 0 20px rgba(227, 173, 80, 0.10);
+}
+
+.season-todos-santos .stage-hero .hero-btn-secondary {
+  border-color: rgba(255, 235, 205, 0.44);
+  background: rgba(83, 53, 65, 0.18);
+}
+
+/* ============================================================
+   DECORATIVE LAYER
+============================================================ */
+
+.todos-santos-hero-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------
+   SEASON BADGE
+------------------------------------------------------------ */
+
+.todos-santos-season-badge {
+  position: absolute;
+  top: 6.35rem;
+  left: 50%;
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+
+  padding: 0.55rem 0.9rem;
+
+  translate: -50% 0;
+
+  border: 1px solid rgba(255, 229, 188, 0.52);
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(104, 64, 83, 0.58),
+      rgba(90, 59, 116, 0.48)
+    );
+
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+
+  box-shadow:
+    0 10px 24px rgba(37, 22, 28, 0.16),
+    0 0 20px rgba(227, 173, 80, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  color: #fff8ef;
+
+  font-family: "Nunito", sans-serif;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.todos-santos-season-badge span {
+  font-weight: 900;
+}
+
+.todos-santos-season-badge small {
+  color: rgba(255, 239, 214, 0.84);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------
+   TOP ORNAMENT
+   Guirnalda liviana y estrellas de pasanqalla para ocupar la parte
+   superior sin competir con la navegación.
+------------------------------------------------------------ */
+
+.todos-santos-top-ornament {
+  position: absolute;
+  top: 5.55rem;
+  left: 50%;
+  z-index: 2;
+
+  width: min(88vw, 1020px);
+  height: 108px;
+
+  translate: -50% 0;
+
+  opacity: 0.96;
+}
+
+.todos-santos-top-ribbon {
+  position: absolute;
+  top: 52%;
+
+  width: 43%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(247, 207, 132, 0.68),
+      rgba(130, 91, 174, 0.62),
+      rgba(87, 191, 174, 0.46),
+      transparent
+    );
+
+  filter:
+    drop-shadow(0 0 6px rgba(245, 203, 125, 0.28));
+}
+
+.todos-santos-top-ribbon--left {
+  left: 0;
+}
+
+.todos-santos-top-ribbon--right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.todos-santos-top-flower {
+  position: absolute;
+
+  width: 31px;
+  height: 31px;
+
+  background: currentColor;
+
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  filter:
+    drop-shadow(0 0 8px rgba(255, 214, 138, 0.24))
+    drop-shadow(0 0 15px rgba(127, 88, 170, 0.14));
+}
+
+.todos-santos-top-flower--1 {
+  color: #f0bf63;
+}
+
+.todos-santos-top-flower--2 {
+  color: #d5a4ee;
+}
+
+.todos-santos-top-flower--3 {
+  color: #6fd2c1;
+}
+
+.todos-santos-top-star {
+  position: absolute;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      #fff8e8 0%,
+      #f2c870 55%,
+      rgba(242, 200, 112, 0.12) 100%
+    );
+
+  box-shadow:
+    0 0 8px rgba(242, 200, 112, 0.50),
+    0 0 17px rgba(126, 88, 169, 0.16);
+
+  animation: todos-santos-star-pulse 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes todos-santos-star-pulse {
+  from {
+    opacity: 0.48;
+    transform: scale(0.82);
+  }
+
+  to {
+    opacity: 0.96;
+    transform: scale(1.13);
+  }
+}
+
+/* ------------------------------------------------------------
+   REFERENCED FLOWER ICONS
+------------------------------------------------------------ */
+
+.todos-santos-icon {
+  display: block;
+  background: currentColor;
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.todos-santos-icon--flower {
+  width: 42px;
+  height: 42px;
+  color: rgba(242, 190, 90, 0.98);
+
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+
+  filter:
+    drop-shadow(0 0 8px rgba(227, 173, 80, 0.34));
+}
+
+/* ------------------------------------------------------------
+   FLORAL CORNERS
+------------------------------------------------------------ */
+
+.todos-santos-floral {
+  position: absolute;
+  top: 18%;
+
+  display: flex;
+  gap: 0.08rem;
+
+  opacity: 0.94;
+}
+
+.todos-santos-floral--left {
+  left: 2.6%;
+  transform: rotate(-16deg);
+}
+
+.todos-santos-floral--right {
+  right: 2.6%;
+  transform: rotate(16deg) scaleX(-1);
+}
+
+.todos-santos-floral .todos-santos-icon:nth-child(2) {
+  color: rgba(205, 145, 232, 0.96);
+  transform: translateY(12px) scale(0.90);
+}
+
+.todos-santos-floral .todos-santos-icon:nth-child(3) {
+  color: rgba(99, 204, 186, 0.96);
+  transform: translateY(-2px) scale(0.76);
+}
+
+/* ------------------------------------------------------------
+   CAÑA — ceremonial framing
+------------------------------------------------------------ */
+
+.todos-santos-cane {
+  position: absolute;
+  bottom: -4%;
+
+  width: 19px;
+  height: 60%;
+
+  border-radius: 999px;
+
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(139, 174, 84, 0.86) 0 46px,
+      rgba(244, 224, 168, 0.82) 46px 50px,
+      rgba(115, 151, 72, 0.86) 50px 95px,
+      rgba(244, 224, 168, 0.80) 95px 99px
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(248, 229, 184, 0.16),
+    0 10px 28px rgba(35, 49, 24, 0.15),
+    0 0 22px rgba(227, 173, 80, 0.06);
+
+  opacity: 0.78;
+}
+
+.todos-santos-cane::before,
+.todos-santos-cane::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+
+  width: 68px;
+  height: 24px;
+
+  border-radius: 100% 0 100% 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(112, 158, 75, 0.76),
+      rgba(151, 186, 92, 0.54)
+    );
+}
+
+.todos-santos-cane::before {
+  top: 12%;
+  transform: translateX(-5px) rotate(-24deg);
+}
+
+.todos-santos-cane::after {
+  top: 31%;
+  transform: translateX(-61px) rotate(22deg) scaleX(-1);
+}
+
+.todos-santos-cane--left {
+  left: 2.3%;
+  rotate: 4deg;
+}
+
+.todos-santos-cane--right {
+  right: 2.3%;
+  rotate: -4deg;
+}
+
+/* ------------------------------------------------------------
+   CANDLES
+------------------------------------------------------------ */
+
+.todos-santos-candle-group {
+  position: absolute;
+  bottom: 9.5%;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 0.7rem;
+
+  opacity: 0.94;
+}
+
+.todos-santos-candle-group--left {
+  left: 15%;
+}
+
+.todos-santos-candle-group--right {
+  right: 15%;
+}
+
+.todos-santos-candle {
+  position: relative;
+
+  width: 19px;
+  border-radius: 999px 999px 10px 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 239, 0.99),
+      rgba(245, 220, 179, 0.98)
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(255, 237, 203, 0.20),
+    0 8px 18px rgba(96, 54, 19, 0.13),
+    inset 0 0 9px rgba(222, 174, 103, 0.10);
+}
+
+.todos-santos-candle::before {
+  content: "";
+
+  position: absolute;
+  top: -16px;
+  left: 50%;
+
+  width: 11px;
+  height: 17px;
+
+  translate: -50% 0;
+
+  background:
+    radial-gradient(circle at 50% 68%, rgba(255, 255, 229, 0.98), transparent 35%),
+    linear-gradient(
+      180deg,
+      #fff7ad 0%,
+      #ffd166 42%,
+      #f79549 78%,
+      rgba(247, 149, 73, 0) 100%
+    );
+
+  clip-path: ellipse(48% 50% at 50% 50%);
+
+  filter:
+    drop-shadow(0 0 8px rgba(255, 207, 104, 0.70))
+    drop-shadow(0 0 18px rgba(245, 154, 70, 0.36));
+
+  animation: todos-santos-flame 1.25s ease-in-out infinite alternate;
+}
+
+.todos-santos-candle::after {
+  content: "";
+
+  position: absolute;
+  top: -2px;
+  left: 50%;
+
+  width: 2px;
+  height: 7px;
+
+  translate: -50% 0;
+  border-radius: 999px;
+  background: rgba(91, 54, 24, 0.72);
+}
+
+.todos-santos-candle--sm {
+  height: 45px;
+}
+
+.todos-santos-candle--lg {
+  height: 62px;
+}
+
+@keyframes todos-santos-flame {
+  from {
+    transform: translateX(-1px) scale(0.93) rotate(-2deg);
+  }
+
+  to {
+    transform: translateX(1px) scale(1.07) rotate(2deg);
+  }
+}
+
+/* ------------------------------------------------------------
+   TRADITIONAL BREAD ALTAR
+------------------------------------------------------------ */
+
+.todos-santos-bread-altar {
+  position: absolute;
+  left: 50%;
+  bottom: 7.5%;
+  z-index: 3;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 1.05rem;
+
+  translate: -50% 0;
+
+  opacity: 0.92;
+}
+
+.todos-santos-bread-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  z-index: -1;
+
+  width: 260px;
+  height: 34px;
+
+  translate: -50% 0;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(72, 37, 14, 0.22),
+      transparent 70%
+    );
+
+  filter: blur(10px);
+}
+
+.todos-santos-bread {
+  position: relative;
+  display: inline-block;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f1bd78 0%,
+      #dc964c 62%,
+      #b86c2d 100%
+    );
+
+  border: 1px solid rgba(171, 95, 34, 0.28);
+
+  box-shadow:
+    inset 0 2px 0 rgba(255, 233, 192, 0.42),
+    0 10px 18px rgba(92, 49, 20, 0.17),
+    0 0 14px rgba(235, 178, 96, 0.10);
+}
+
+/* T'ANTAWAWA */
+.todos-santos-bread--wawa {
+  width: 50px;
+  height: 78px;
+
+  border-radius: 25px 25px 20px 20px / 29px 29px 19px 19px;
+}
+
+.todos-santos-bread--wawa::before {
+  content: "";
+
+  position: absolute;
+  top: -25px;
+  left: 50%;
+
+  width: 39px;
+  height: 39px;
+
+  translate: -50% 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f1bd78,
+      #d28a48
+    );
+
+  border: 1px solid rgba(171, 95, 34, 0.28);
+
+  box-shadow:
+    inset 0 2px 0 rgba(255, 233, 192, 0.42);
+}
+
+.todos-santos-bread--wawa::after {
+  content: "";
+
+  position: absolute;
+  top: 24px;
+  left: 50%;
+
+  width: 70px;
+  height: 18px;
+
+  translate: -50% 0;
+
+  background:
+    radial-gradient(circle at 14px 9px, #d98f46 0 6px, transparent 7px),
+    radial-gradient(circle at calc(100% - 14px) 9px, #d98f46 0 6px, transparent 7px),
+    linear-gradient(180deg, transparent 0 44%, #d98f46 44% 60%, transparent 60% 100%);
+}
+
+.bread-face {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  z-index: 2;
+
+  width: 23px;
+  height: 15px;
+
+  translate: -50% 0;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(circle at 30% 42%, #583117 0 1.8px, transparent 2.2px),
+    radial-gradient(circle at 70% 42%, #583117 0 1.8px, transparent 2.2px),
+    radial-gradient(ellipse at 50% 72%, #b94d54 0 3px, transparent 3.5px),
+    #f7e8d2;
+
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.38),
+    0 4px 8px rgba(75, 38, 14, 0.11);
+}
+
+/* ESCALERA */
+.todos-santos-bread--ladder {
+  width: 42px;
+  height: 104px;
+
+  border-radius: 14px;
+}
+
+.todos-santos-bread--ladder::before,
+.todos-santos-bread--ladder::after {
+  content: "";
+
+  position: absolute;
+  top: 7px;
+  bottom: 7px;
+
+  width: 6px;
+
+  border-radius: 999px;
+  background: rgba(149, 77, 31, 0.42);
+}
+
+.todos-santos-bread--ladder::before {
+  left: 7px;
+}
+
+.todos-santos-bread--ladder::after {
+  right: 7px;
+}
+
+.ladder-rung {
+  position: absolute;
+  left: 50%;
+
+  width: 23px;
+  height: 5px;
+
+  translate: -50% 0;
+
+  border-radius: 999px;
+  background: rgba(149, 77, 31, 0.42);
+}
+
+.ladder-rung--1 { top: 18px; }
+.ladder-rung--2 { top: 39px; }
+.ladder-rung--3 { top: 60px; }
+.ladder-rung--4 { top: 81px; }
+
+/* CABALLITO */
+.todos-santos-bread--horse {
+  width: 84px;
+  height: 55px;
+
+  border-radius: 22px 18px 18px 18px;
+}
+
+.horse-head {
+  position: absolute;
+  top: -18px;
+  left: 10px;
+
+  width: 29px;
+  height: 29px;
+
+  border-radius: 14px 14px 10px 10px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f1bd78,
+      #d28a48
+    );
+
+  border: 1px solid rgba(171, 95, 34, 0.28);
+  transform: rotate(-8deg);
+}
+
+.horse-head::after {
+  content: "";
+
+  position: absolute;
+  top: 9px;
+  left: 8px;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+  background: #5b3218;
+}
+
+.horse-ear {
+  position: absolute;
+  top: -25px;
+
+  width: 8px;
+  height: 15px;
+
+  border-radius: 8px 8px 2px 2px;
+
+  background: #d98f46;
+}
+
+.horse-ear--1 {
+  left: 15px;
+  transform: rotate(-14deg);
+}
+
+.horse-ear--2 {
+  left: 28px;
+  transform: rotate(10deg);
+}
+
+.horse-leg {
+  position: absolute;
+  bottom: -19px;
+
+  width: 8px;
+  height: 23px;
+
+  border-radius: 0 0 8px 8px;
+
+  background: #c77d39;
+}
+
+.horse-leg--1 { left: 12px; }
+.horse-leg--2 { left: 29px; }
+.horse-leg--3 { right: 29px; }
+.horse-leg--4 { right: 12px; }
+
+.horse-tail {
+  position: absolute;
+  top: 10px;
+  right: -9px;
+
+  width: 13px;
+  height: 25px;
+
+  border-radius: 0 16px 16px 0;
+
+  background: #c17836;
+  transform: rotate(20deg);
+}
+
+/* ------------------------------------------------------------
+   PETALS
+------------------------------------------------------------ */
+
+.todos-santos-petals {
+  position: absolute;
+  inset: 0;
+}
+
+.todos-santos-petal {
+  position: absolute;
+  top: -30px;
+
+  width: 13px;
+  height: 18px;
+
+  border-radius: 70% 30% 70% 30%;
+
+  opacity: 0.74;
+
+  box-shadow:
+    0 0 8px rgba(255, 220, 150, 0.12);
+
+  animation-name: todos-santos-petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.todos-santos-petal--1 {
+  background:
+    linear-gradient(135deg, #f1c568, #e8a444);
+}
+
+.todos-santos-petal--2 {
+  background:
+    linear-gradient(135deg, #d7a6ed, #a96bc9);
+}
+
+.todos-santos-petal--3 {
+  background:
+    linear-gradient(135deg, #7ed5c6, #4fae9f);
+}
+
+@keyframes todos-santos-petal-fall {
+  0% {
+    translate: 0 -7vh;
+    rotate: 0deg;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.78;
+  }
+
+  55% {
+    translate: 27px 46vh;
+    rotate: 180deg;
+  }
+
+  100% {
+    translate: -18px 96vh;
+    rotate: 360deg;
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1000px) {
+  .todos-santos-top-ornament {
+    width: min(94vw, 940px);
+  }
+
+  .todos-santos-candle-group--left {
+    left: 11%;
+  }
+
+  .todos-santos-candle-group--right {
+    right: 11%;
+  }
+
+  .todos-santos-floral {
+    opacity: 0.82;
+  }
+}
+
+@media (max-width: 900px) {
+  .todos-santos-cane {
+    opacity: 0.64;
+  }
+
+  .todos-santos-top-flower {
+    width: 27px;
+    height: 27px;
+  }
+}
+
+@media (max-width: 700px) {
+  .todos-santos-season-badge {
+    top: 5.75rem;
+    gap: 0.45rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+  .todos-santos-season-badge small {
+    display: none;
+  }
+
+  .todos-santos-top-ornament {
+    top: 5.2rem;
+    height: 78px;
+  }
+
+  .todos-santos-top-ribbon {
+    width: 34%;
+  }
+
+  .todos-santos-top-flower {
+    width: 21px;
+    height: 21px;
+  }
+
+  .todos-santos-cane {
+    width: 13px;
+    height: 49%;
+    opacity: 0.48;
+  }
+
+  .todos-santos-floral {
+    top: 22%;
+    opacity: 0.58;
+  }
+
+  .todos-santos-floral .todos-santos-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .todos-santos-candle-group {
+    bottom: 7.5%;
+    gap: 0.45rem;
+    opacity: 0.76;
+  }
+
+  .todos-santos-candle-group--left {
+    left: 5.5%;
+  }
+
+  .todos-santos-candle-group--right {
+    right: 5.5%;
+  }
+
+  .todos-santos-bread-altar {
+    bottom: 6.3%;
+    gap: 0.65rem;
+    scale: 0.82;
+  }
+}
+
+@media (max-width: 540px) {
+  .todos-santos-top-ribbon {
+    width: 31%;
+  }
+
+  .todos-santos-cane,
+  .todos-santos-floral {
+    opacity: 0.42;
+  }
+
+  .todos-santos-candle-group {
+    display: none;
+  }
+
+  .todos-santos-bread-altar {
+    bottom: 5.2%;
+    scale: 0.68;
+  }
+
+  .todos-santos-bread-shadow {
+    width: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .todos-santos-petal,
+  .todos-santos-top-star,
+  .todos-santos-candle::before {
+    animation: none;
+  }
+
+  .todos-santos-petal {
+    display: none;
+  }
+}

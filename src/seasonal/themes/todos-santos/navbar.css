@@ -1,0 +1,327 @@
+/* ============================================================
+   TODOS SANTOS — NAVBAR
+
+   Navbar estacional claro, cálido y ceremonial. Mantiene el layout y
+   comportamiento base; solo cambia tratamiento visual y decoración.
+============================================================ */
+
+.season-todos-santos .navbar-container {
+  border-color: rgba(203, 133, 70, 0.28);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 250, 242, 0.94),
+      rgba(248, 229, 208, 0.88) 48%,
+      rgba(246, 235, 227, 0.92)
+    );
+
+  backdrop-filter: blur(20px) saturate(155%);
+  -webkit-backdrop-filter: blur(20px) saturate(155%);
+
+  box-shadow:
+    0 18px 48px rgba(145, 78, 38, 0.15),
+    0 7px 22px rgba(118, 80, 147, 0.08),
+    0 0 26px rgba(212, 154, 70, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+/* Capa ceremonial con luz cálida y pequeños puntos tipo pasanqalla. */
+.season-todos-santos .navbar-container::before {
+  background:
+    radial-gradient(circle at 8% 50%, rgba(217, 145, 69, 0.20), transparent 18%),
+    radial-gradient(circle at 90% 48%, rgba(126, 83, 149, 0.12), transparent 22%),
+    radial-gradient(circle at 23% 24%, rgba(255, 222, 158, 0.42) 0 2px, transparent 3px),
+    radial-gradient(circle at 41% 72%, rgba(204, 123, 69, 0.26) 0 2px, transparent 3px),
+    radial-gradient(circle at 63% 28%, rgba(122, 82, 151, 0.20) 0 2px, transparent 3px),
+    linear-gradient(
+      110deg,
+      transparent 12%,
+      rgba(255, 231, 188, 0.18) 36%,
+      rgba(235, 180, 112, 0.13) 52%,
+      transparent 72%
+    );
+
+  background-size:
+    100% 100%,
+    100% 100%,
+    170px 70px,
+    210px 82px,
+    190px 76px,
+    170% 100%;
+
+  opacity: 0.88;
+  animation: todos-santos-navbar-sheen 9s ease-in-out infinite alternate;
+}
+
+.season-todos-santos .navbar-container::after {
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(201, 111, 61, 0.82) 20%,
+      rgba(212, 154, 70, 0.88) 42%,
+      rgba(118, 80, 147, 0.68) 68%,
+      rgba(79, 174, 159, 0.54) 82%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 10px rgba(212, 154, 70, 0.20),
+    0 0 16px rgba(118, 80, 147, 0.08);
+}
+
+/* ============================================================
+   BRAND / FLORES
+============================================================ */
+
+.season-todos-santos .nav-brand {
+  border: 1px solid rgba(206, 137, 73, 0.24);
+
+  background:
+    radial-gradient(
+      circle at 42% 34%,
+      rgba(255, 232, 183, 0.72),
+      rgba(236, 198, 150, 0.36) 44%,
+      rgba(230, 210, 225, 0.38) 74%
+    );
+
+  box-shadow:
+    inset 0 0 18px rgba(220, 161, 91, 0.12),
+    0 0 18px rgba(170, 105, 58, 0.10);
+}
+
+.season-todos-santos .nav-brand::before,
+.season-todos-santos .nav-brand::after {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  width: 22px;
+  height: 22px;
+
+  background: linear-gradient(180deg, #e2ad5d, #c96f3d 58%, #87609d);
+
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  opacity: 0.78;
+  filter: drop-shadow(0 0 6px rgba(211, 146, 72, 0.24));
+
+  pointer-events: none;
+}
+
+.season-todos-santos .nav-brand::before {
+  top: -5px;
+  left: -7px;
+  rotate: -24deg;
+}
+
+.season-todos-santos .nav-brand::after {
+  right: -7px;
+  bottom: -5px;
+  rotate: 28deg;
+  scale: 0.82;
+
+  background: linear-gradient(180deg, #8f6aa5, #c88664 62%, #d9a34d);
+}
+
+.season-todos-santos .nav-brand:hover {
+  transform: translateY(-2px) scale(1.05);
+
+  box-shadow:
+    0 0 18px rgba(209, 135, 70, 0.22),
+    0 0 26px rgba(118, 80, 147, 0.12),
+    inset 0 0 18px rgba(255, 235, 196, 0.18);
+}
+
+.season-todos-santos .nav-logo {
+  filter:
+    brightness(1.05)
+    saturate(1.04)
+    drop-shadow(0 3px 7px rgba(91, 51, 32, 0.15))
+    drop-shadow(0 0 8px rgba(216, 160, 71, 0.14));
+}
+
+/* ============================================================
+   LINKS
+============================================================ */
+
+.season-todos-santos .nav-link {
+  color: #765777;
+}
+
+.season-todos-santos .nav-link::before {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(244, 210, 166, 0.52),
+      rgba(224, 195, 217, 0.38)
+    );
+
+  box-shadow: inset 0 0 0 1px rgba(201, 111, 61, 0.06);
+}
+
+.season-todos-santos .nav-link::after {
+  background:
+    linear-gradient(
+      135deg,
+      #cf7742,
+      #d49a46 54%,
+      #765093
+    );
+
+  box-shadow:
+    0 0 9px rgba(209, 126, 62, 0.42),
+    0 0 14px rgba(118, 80, 147, 0.18);
+}
+
+.season-todos-santos .nav-link:hover {
+  color: #a55d36;
+  text-shadow: 0 0 9px rgba(214, 148, 80, 0.15);
+}
+
+.season-todos-santos .nav-link.active {
+  color: #6f507b;
+}
+
+/* ============================================================
+   CTA
+============================================================ */
+
+.season-todos-santos .nav-cta {
+  border: 1px solid rgba(255, 234, 198, 0.40);
+
+  background:
+    linear-gradient(
+      135deg,
+      #d98a48 0%,
+      #c56c43 44%,
+      #8a5f8d 100%
+    );
+
+  box-shadow:
+    0 12px 26px rgba(177, 94, 48, 0.20),
+    0 6px 18px rgba(118, 80, 147, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+}
+
+.season-todos-santos .nav-cta::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 238, 206, 0.60),
+      rgba(255, 220, 167, 0.36),
+      transparent
+    );
+}
+
+.season-todos-santos .nav-cta:hover {
+  transform: translateY(-2px) scale(1.015);
+
+  box-shadow:
+    0 16px 32px rgba(181, 95, 49, 0.26),
+    0 9px 22px rgba(118, 80, 147, 0.14),
+    0 0 20px rgba(214, 151, 77, 0.12);
+}
+
+/* ============================================================
+   TOGGLE / MOBILE
+============================================================ */
+
+.season-todos-santos .nav-toggle {
+  border: 1px solid rgba(201, 111, 61, 0.18);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(241, 200, 151, 0.62),
+      rgba(219, 190, 216, 0.48)
+    );
+
+  box-shadow: inset 0 0 14px rgba(212, 154, 70, 0.08);
+}
+
+.season-todos-santos .nav-toggle span {
+  background: #725276;
+  box-shadow: 0 0 6px rgba(191, 116, 63, 0.14);
+}
+
+@media (max-width: 860px) {
+  .season-todos-santos .nav-links {
+    border-color: rgba(201, 111, 61, 0.22);
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255, 250, 243, 0.98),
+        rgba(247, 229, 211, 0.95)
+      );
+
+    box-shadow:
+      0 20px 42px rgba(130, 76, 44, 0.16),
+      0 8px 22px rgba(118, 80, 147, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.84);
+  }
+
+  .season-todos-santos .nav-link {
+    color: #765777;
+  }
+
+  .season-todos-santos .nav-link:hover,
+  .season-todos-santos .nav-link.active {
+    color: #a55d36;
+  }
+
+  .season-todos-santos .nav-brand::before,
+  .season-todos-santos .nav-brand::after {
+    opacity: 0.62;
+  }
+}
+
+@media (max-width: 480px) {
+  .season-todos-santos .nav-brand::before,
+  .season-todos-santos .nav-brand::after {
+    width: 18px;
+    height: 18px;
+    opacity: 0.52;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .season-todos-santos .navbar-container::before {
+    animation: none;
+  }
+}
+
+@keyframes todos-santos-navbar-sheen {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0 0,
+      0% 0;
+  }
+
+  to {
+    background-position:
+      0 0,
+      0 0,
+      26px 6px,
+      -18px -4px,
+      14px 5px,
+      100% 0;
+  }
+}

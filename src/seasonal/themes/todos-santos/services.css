@@ -1,0 +1,561 @@
+/* ============================================================
+   TODOS SANTOS — SERVICES
+
+   Pane, flor, vela y pasanqalla decorations are mounted absolutely in
+   the section so they never participate in the component layout.
+============================================================ */
+
+/* ------------------------------------------------------------
+   SHARED SECTION DECORATION PRIMITIVES
+------------------------------------------------------------ */
+
+.todos-santos-section-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.todos-santos-section-bread {
+  position: absolute;
+  z-index: 1;
+
+  opacity: 0.82;
+
+  filter:
+    drop-shadow(0 10px 16px rgba(95, 50, 19, 0.12))
+    drop-shadow(0 0 14px rgba(224, 154, 70, 0.08));
+}
+
+.todos-santos-section-bread-symbol {
+  position: absolute;
+  z-index: 1;
+
+  display: block;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f2bd78,
+      #dc954b 62%,
+      #b76b2d
+    );
+
+  border: 1px solid rgba(154, 83, 32, 0.24);
+
+  box-shadow:
+    inset 0 2px 0 rgba(255, 235, 197, 0.42),
+    0 10px 18px rgba(92, 49, 20, 0.14);
+
+  opacity: 0.82;
+}
+
+.todos-santos-section-bread-symbol--cross {
+  width: 72px;
+  height: 82px;
+
+  clip-path: polygon(
+    37% 0,
+    63% 0,
+    63% 28%,
+    100% 28%,
+    100% 54%,
+    63% 54%,
+    63% 100%,
+    37% 100%,
+    37% 54%,
+    0 54%,
+    0 28%,
+    37% 28%
+  );
+}
+
+.todos-santos-section-bread-symbol--sun {
+  width: 92px;
+  height: 92px;
+
+  border-radius: 50%;
+
+  clip-path: polygon(
+    50% 0%, 61% 17%, 79% 5%, 79% 25%, 100% 25%,
+    83% 40%, 100% 50%, 82% 61%, 96% 79%, 75% 78%,
+    76% 100%, 58% 82%, 50% 100%, 41% 82%, 24% 100%,
+    25% 78%, 4% 79%, 19% 61%, 0% 50%, 18% 40%,
+    0% 25%, 22% 25%, 21% 5%, 40% 17%
+  );
+}
+
+.todos-santos-section-bread-symbol--sun::after {
+  content: "";
+
+  position: absolute;
+  inset: 28%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at 35% 40%, #6c3e20 0 2px, transparent 2.5px),
+    radial-gradient(circle at 65% 40%, #6c3e20 0 2px, transparent 2.5px),
+    radial-gradient(ellipse at 50% 67%, rgba(131, 65, 32, 0.48) 0 4px, transparent 4.5px),
+    rgba(255, 219, 159, 0.62);
+}
+
+.todos-santos-section-bread-symbol--moon {
+  width: 88px;
+  height: 88px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at 67% 34%, rgba(255, 249, 238, 0.94) 0 41%, transparent 42%),
+    linear-gradient(180deg, #f2bd78, #d98d45 68%, #b7682d);
+}
+
+.todos-santos-section-flower {
+  position: absolute;
+  z-index: 1;
+
+  width: 48px;
+  height: 48px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #efbb58,
+      #db819c 50%,
+      #8158a9
+    );
+
+  -webkit-mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  mask-image: url("https://cdn.jsdelivr.net/npm/@tabler/icons@3.49.0/icons/outline/flower.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  opacity: 0.72;
+
+  filter:
+    drop-shadow(0 0 8px rgba(224, 158, 69, 0.22));
+}
+
+.todos-santos-section-candle {
+  position: absolute;
+  z-index: 1;
+
+  width: 18px;
+  height: 54px;
+
+  border-radius: 999px 999px 8px 8px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffaf0,
+      #efd3a5
+    );
+
+  box-shadow:
+    0 7px 14px rgba(87, 46, 19, 0.12),
+    inset 0 0 8px rgba(211, 157, 85, 0.12);
+
+  opacity: 0.84;
+}
+
+.todos-santos-section-candle::before {
+  content: "";
+
+  position: absolute;
+  top: -16px;
+  left: 50%;
+
+  width: 10px;
+  height: 16px;
+
+  translate: -50% 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff6b0,
+      #ffc460 54%,
+      #ee8544
+    );
+
+  clip-path: ellipse(48% 50% at 50% 50%);
+
+  filter:
+    drop-shadow(0 0 8px rgba(255, 194, 89, 0.62))
+    drop-shadow(0 0 15px rgba(238, 133, 68, 0.24));
+
+  animation: todos-santos-flame 1.25s ease-in-out infinite alternate;
+}
+
+.todos-santos-section-pasankallas {
+  position: absolute;
+  z-index: 1;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.28rem;
+
+  width: 96px;
+
+  opacity: 0.72;
+}
+
+/* ------------------------------------------------------------
+   EXTERNAL SERVICES DECORATION
+------------------------------------------------------------ */
+
+.todos-santos-section-pasankallas--services-left {
+  top: 14%;
+  left: 2.1%;
+
+  transform: rotate(-12deg);
+}
+
+.todos-santos-section-pasankallas--services-right {
+  right: 2.2%;
+  bottom: 14%;
+
+  transform: rotate(11deg);
+}
+
+.todos-santos-services-bread--wawa {
+  top: 31%;
+  left: 2.8%;
+
+  scale: 1.18;
+  rotate: -8deg;
+}
+
+.todos-santos-services-bread--ladder {
+  top: 30%;
+  right: 3.2%;
+
+  scale: 1.08;
+  rotate: 7deg;
+}
+
+.todos-santos-services-bread--cross {
+  left: 4.6%;
+  bottom: 11%;
+
+  rotate: -5deg;
+}
+
+.todos-santos-services-flower--1 {
+  top: 13%;
+  right: 6%;
+
+  rotate: 14deg;
+}
+
+.todos-santos-services-flower--2 {
+  left: 8.2%;
+  bottom: 19%;
+
+  width: 40px;
+  height: 40px;
+
+  rotate: -10deg;
+}
+
+.todos-santos-services-candle {
+  right: 7.4%;
+  bottom: 12%;
+}
+
+/* ------------------------------------------------------------
+   SERVICES UI SKIN
+------------------------------------------------------------ */
+
+.season-todos-santos .services-header,
+.season-todos-santos .services-shell {
+  position: relative;
+  z-index: 2;
+}
+
+.season-todos-santos .services-shell {
+  border-color: rgba(198, 116, 61, 0.17);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 253, 249, 0.86),
+      rgba(252, 239, 224, 0.68) 50%,
+      rgba(246, 236, 246, 0.60)
+    );
+
+  box-shadow:
+    0 28px 70px rgba(171, 96, 51, 0.09),
+    0 12px 30px rgba(118, 80, 147, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.season-todos-santos .services-shell::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+
+  border-radius: inherit;
+
+  border: 1px solid transparent;
+
+  background:
+    linear-gradient(#0000, #0000) padding-box,
+    linear-gradient(
+      115deg,
+      transparent 4%,
+      rgba(217, 139, 69, 0.18) 22%,
+      rgba(124, 84, 158, 0.14) 51%,
+      rgba(79, 174, 159, 0.11) 76%,
+      transparent 95%
+    ) border-box;
+
+  pointer-events: none;
+}
+
+/* Small bread cross on the category rail. */
+.season-todos-santos .services-tabs::before {
+  content: "";
+
+  position: absolute;
+  top: -0.55rem;
+  left: -0.5rem;
+  z-index: 4;
+
+  width: 38px;
+  height: 44px;
+
+  background:
+    linear-gradient(180deg, #efb66e, #cf7d3d);
+
+  clip-path: polygon(
+    37% 0, 63% 0, 63% 28%, 100% 28%, 100% 54%,
+    63% 54%, 63% 100%, 37% 100%, 37% 54%, 0 54%,
+    0 28%, 37% 28%
+  );
+
+  opacity: 0.42;
+
+  filter: drop-shadow(0 4px 7px rgba(109, 59, 26, 0.14));
+
+  pointer-events: none;
+}
+
+.season-todos-santos .service-tab.active {
+  border-color: rgba(201, 119, 64, 0.24);
+
+  box-shadow:
+    0 16px 34px rgba(166, 95, 52, 0.07),
+    0 8px 20px rgba(118, 80, 147, 0.045);
+}
+
+.season-todos-santos .service-tab.active::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  right: -4px;
+
+  width: 8px;
+  height: 8px;
+
+  translate: 0 -50%;
+
+  border-radius: 50%;
+  background: #d99a46;
+
+  box-shadow:
+    0 0 8px rgba(217, 154, 70, 0.58),
+    0 0 14px rgba(118, 80, 147, 0.14);
+
+  animation: todos-santos-service-glow 1.9s ease-in-out infinite alternate;
+}
+
+.season-todos-santos .services-panel {
+  overflow: hidden;
+}
+
+/* Sun-bread watermark inside the panel. */
+.season-todos-santos .services-panel::after {
+  content: "";
+
+  position: absolute;
+  top: -28px;
+  right: -28px;
+  z-index: 1;
+
+  width: 128px;
+  height: 128px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at center, rgba(255, 238, 202, 0.62) 0 23%, transparent 24%),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(211, 139, 68, 0.18) 0deg 12deg,
+      transparent 12deg 24deg
+    );
+
+  opacity: 0.42;
+
+  pointer-events: none;
+}
+
+.season-todos-santos .services-panel-header,
+.season-todos-santos .services-carousel-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+.season-todos-santos .services-count {
+  border-color: rgba(202, 122, 65, 0.15);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(226, 159, 88, 0.10),
+      rgba(118, 80, 147, 0.05)
+    );
+}
+
+.season-todos-santos .service-card {
+  border: 1px solid rgba(255, 239, 216, 0.22);
+
+  box-shadow:
+    0 18px 42px rgba(69, 39, 29, 0.11),
+    0 8px 22px rgba(166, 91, 49, 0.07);
+}
+
+/* Tiny sun-shaped bread stamp on treatment cards. */
+.season-todos-santos .service-card::after {
+  content: "";
+
+  position: absolute;
+  top: 0.9rem;
+  right: 0.95rem;
+  z-index: 4;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(circle at center, #f2cf93 0 29%, #d78d45 30% 52%, #bd6f31 53% 100%);
+
+  clip-path: polygon(
+    50% 0%, 61% 18%, 79% 5%, 78% 25%, 100% 25%,
+    82% 40%, 100% 50%, 82% 60%, 96% 79%, 75% 78%,
+    76% 100%, 58% 82%, 50% 100%, 42% 82%, 24% 100%,
+    25% 78%, 4% 79%, 18% 60%, 0% 50%, 18% 40%,
+    0% 25%, 22% 25%, 21% 5%, 40% 18%
+  );
+
+  opacity: 0.34;
+
+  filter: drop-shadow(0 3px 5px rgba(63, 30, 17, 0.20));
+
+  transition:
+    opacity 0.28s ease,
+    transform 0.35s cubic-bezier(.22, 1, .36, 1);
+
+  pointer-events: none;
+}
+
+.season-todos-santos .service-card:hover::after,
+.season-todos-santos .service-card.is-open::after {
+  opacity: 0.78;
+  transform: rotate(8deg) scale(1.06);
+}
+
+.season-todos-santos .service-card-tag,
+.season-todos-santos .service-card-toggle {
+  border-color: rgba(255, 230, 196, 0.28);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139, 84, 111, 0.22),
+      rgba(211, 126, 63, 0.12),
+      rgba(103, 74, 136, 0.16)
+    );
+}
+
+.season-todos-santos .carousel-side-control:not(.disabled) {
+  border-color: rgba(199, 116, 61, 0.17);
+
+  color: #9a643f;
+
+  box-shadow:
+    0 10px 24px rgba(164, 93, 51, 0.075),
+    0 0 14px rgba(118, 80, 147, 0.035);
+}
+
+.season-todos-santos .carousel-side-control:not(.disabled):hover {
+  color: #765093;
+}
+
+@keyframes todos-santos-service-glow {
+  from {
+    opacity: 0.45;
+    scale: 0.78;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1.08;
+  }
+}
+
+@media (max-width: 1180px) {
+  .todos-santos-services-bread--wawa,
+  .todos-santos-services-bread--ladder,
+  .todos-santos-services-bread--cross {
+    opacity: 0.54;
+    scale: 0.84;
+  }
+}
+
+@media (max-width: 900px) {
+  .todos-santos-section-pasankallas--services-left,
+  .todos-santos-section-pasankallas--services-right {
+    opacity: 0.42;
+  }
+
+  .todos-santos-services-bread--wawa,
+  .todos-santos-services-bread--ladder,
+  .todos-santos-services-bread--cross,
+  .todos-santos-services-candle {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .todos-santos-services-flower--1,
+  .todos-santos-services-flower--2 {
+    opacity: 0.34;
+  }
+
+  .season-todos-santos .service-card::after {
+    width: 31px;
+    height: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .season-todos-santos .service-tab.active::after,
+  .todos-santos-section-candle::before {
+    animation: none;
+  }
+}
