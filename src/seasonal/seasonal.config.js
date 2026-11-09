@@ -1,19 +1,8 @@
 export const seasonalConfig = {
-  enabled: true,
-
-  // Local development keeps the theme under construction visible while
-  // production follows the calendar below.
-  previewTheme: "todos-santos",
-
-  fallbackTheme: "halloween",
-
-  schedule: [
-    {
-      // Bolivia / America/La_Paz (UTC-04:00)
-      at: "2026-11-01T08:00:00-04:00",
-      theme: "todos-santos",
-    },
-  ],
+  enabled: false,
+  previewTheme: null,
+  fallbackTheme: null,
+  schedule: [],
 };
 
 export function resolveActiveTheme(now = new Date()) {
