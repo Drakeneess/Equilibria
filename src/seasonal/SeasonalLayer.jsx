@@ -14,16 +14,18 @@ export default function SeasonalLayer() {
   const [now, setNow] = useState(() => new Date());
 
   const scheduledTheme = resolveActiveTheme(now);
-  const activeTheme = import.meta.env.DEV && seasonalConfig.previewTheme
-    ? seasonalConfig.previewTheme
-    : scheduledTheme;
+  const activeTheme = !seasonalConfig.enabled
+    ? null
+    : import.meta.env.DEV && seasonalConfig.previewTheme
+      ? seasonalConfig.previewTheme
+      : scheduledTheme;
 
   const ActiveTheme = activeTheme
     ? seasonalRegistry[activeTheme]
     : null;
 
   useEffect(() => {
-    if (import.meta.env.DEV && seasonalConfig.previewTheme) {
+    if (!seasonalConfig.enabled || (import.meta.env.DEV && seasonalConfig.previewTheme)) {
       return undefined;
     }
 
